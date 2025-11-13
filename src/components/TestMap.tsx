@@ -1,83 +1,111 @@
 import { Marker } from '@googlemaps/markerclusterer'
+import { scheduleIdle } from '@solid-primitives/scheduled'
 import { AdvancedMarker, APIProvider, InfoWindow, Map } from 'solid-google-maps'
-import {
-  createEffect,
-  createMemo,
-  createSignal,
-  For,
-  onMount,
-  Show,
-} from 'solid-js'
+import { createEffect, createMemo, createSignal, For, Show } from 'solid-js'
 
 import { ClusteredMarkers } from '~/components/ClusteredMarkers'
+import * as POI from '~/poi.json'
 import { API_KEY, MAP_ID } from '~/utils/env'
 
-function loadTreeDataset(): Promise<Tree[]> {
-  return Promise.resolve([
-    {
-      key: '1',
-      name: 'Oak Tree',
-      category: 'Oak',
-      position: { lat: 41.545, lng: -8.427 },
-    },
-    {
-      key: '2',
-      name: 'Pine Tree',
-      category: 'Pine',
-      position: { lat: 41.546, lng: -8.428 },
-    },
-    {
-      key: '3',
-      name: 'Maple Tree',
-      category: 'Maple',
-      position: { lat: 41.547, lng: -8.429 },
-    },
-  ])
+// eslint-disable-next-line @typescript-eslint/require-await
+async function loadTreeDataset(): Promise<POIBasic[]> {
+  return POI.data.publicGetMapInformation.points
+    .map(
+      (poi) =>
+        ({
+          id: poi.id,
+          latitude: parseFloat(poi.latitude),
+          longitude: parseFloat(poi.longitude),
+          slug: poi.slug,
+          type: poi.type,
+          families_pope: poi.families_pope,
+          location_types_pope: poi.location_types_pope,
+          plainWastes: poi.plainWastes,
+          plainTypes: poi.plainTypes,
+          plainFilters: poi.plainFilters,
+        }) satisfies POIBasic,
+    )
+    .filter((poi) => !isNaN(poi.latitude) && !isNaN(poi.longitude))
 }
 
-type Tree = {
-  key: string
-  name: string
-  category: string
-  position: google.maps.LatLngLiteral
+type POIBasic = {
+  id: string
+  latitude: number
+  longitude: number
+  slug: string
+  type: string
+  families_pope: { slug: string }[]
+  location_types_pope: { slug: string }[]
+  plainWastes: string
+  plainTypes: string
+  plainFilters: string
+}
+
+const DEFAULT_MAP_PROPS = {
+  center: { lat: 41.544581, lng: -8.427375 },
+  zoom: 14,
 }
 
 export function TestMap() {
-  const [trees, setTrees] = createSignal<Tree[]>()
+  const [trees, setTrees] = createSignal<POIBasic[]>()
+  const [mapZoom, setMapZoom] = createSignal<number>(DEFAULT_MAP_PROPS.zoom)
+  const [mapCenter, setMapCenter] = createSignal<google.maps.LatLngLiteral>(
+    DEFAULT_MAP_PROPS.center,
+  )
+  const [mapBounds, setMapBounds] =
+    createSignal<google.maps.LatLngBounds | null>(null)
 
-  const [lastUserLocation] = createSignal<google.maps.LatLngLiteral | null>({
-    lat: 41.544581,
-    lng: -8.427375,
+  const treesWithVisibility = createMemo(() => {
+    const bounds = mapBounds()
+    return trees()?.map((tree) => {
+      return {
+        ...tree,
+        visible: bounds?.contains(
+          new google.maps.LatLng(tree.latitude, tree.longitude),
+        ),
+      }
+    })
   })
 
-  const [userLocation, setUserLocation] =
-    // eslint-disable-next-line solid/reactivity
-    createSignal<google.maps.LatLngLiteral | null>(lastUserLocation())
+  const setMapZoomDebounced = scheduleIdle(setMapZoom, 1000)
+  const setMapCenterDebounced = scheduleIdle(setMapCenter, 1000)
 
-  let mapRef: google.maps.Map | null = null
+  const [mapRef, setMapRef] = createSignal<google.maps.Map | null>(null)
 
-  onMount(() => {
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //       (position) => {
-    //         setUserLocation({
-    //           lat: position.coords.latitude,
-    //           lng: position.coords.longitude,
-    //         })
-    //         if (mapRef) {
-    //           mapRef.setCenter({
-    //             lat: position.coords.latitude,
-    //             lng: position.coords.longitude,
-    //           })
-    //         }
-    //       },
-    //       (error) => {
-    //         console.error('Error getting user location:', error)
-    //       },
-    //     )
-    //   } else {
-    //     console.error('Geolocation is not supported by this browser.')
-    //   }
+  createEffect(() => {
+    const mapRef_ = mapRef()
+    if (mapRef_) {
+      const zoomListener = google.maps.event.addListener(
+        mapRef_,
+        'zoom_changed',
+        () => {
+          console.log('Zoom changed event detected')
+          setMapZoomDebounced(mapRef_.getZoom() || DEFAULT_MAP_PROPS.zoom)
+          setMapBounds(mapRef_.getBounds() ?? null)
+        },
+      )
+
+      const centerListener = google.maps.event.addListener(
+        mapRef_,
+        'center_changed',
+        () => {
+          console.log('Center changed event detected')
+          const center = mapRef_.getCenter()
+          if (center) {
+            setMapCenterDebounced({
+              lat: center.lat(),
+              lng: center.lng(),
+            })
+            setMapBounds(mapRef_.getBounds() ?? null)
+          }
+        },
+      )
+
+      return () => {
+        google.maps.event.removeListener(zoomListener)
+        google.maps.event.removeListener(centerListener)
+      }
+    }
   })
 
   // load data asynchronously
@@ -92,7 +120,7 @@ export function TestMap() {
   )
   const selectedTree = createMemo(() =>
     selectedTreeKey()
-      ? (trees()?.find((t) => t.key === selectedTreeKey()) ?? null)
+      ? (trees()?.find((t) => t.id === selectedTreeKey()) ?? null)
       : null,
   )
   const [markers, setMarkers] = createSignal<{ [key: string]: Marker }>({})
@@ -102,23 +130,28 @@ export function TestMap() {
       <Map
         style={{ height: '100vh', width: '100vw' }}
         mapId={MAP_ID}
-        defaultCenter={userLocation() || { lat: 22.54992, lng: 0 }}
-        defaultZoom={14}
+        defaultCenter={DEFAULT_MAP_PROPS.center}
+        defaultZoom={DEFAULT_MAP_PROPS.zoom}
         gestureHandling={'greedy'}
         disableDefaultUI
-        ref={(map) => (mapRef = map)}
+        ref={setMapRef}
       >
         <ClusteredMarkers ref={setMarkers}>
           {(addToCluster) => (
-            <For each={trees()}>
+            <For each={treesWithVisibility()}>
               {(tree) => (
-                <AdvancedMarker
-                  position={tree.position}
-                  ref={(ref) => addToCluster(ref, tree.key)}
-                  onClick={() => setSelectedTreeKey(tree.key)}
-                >
-                  <span class="text-lg">🌳</span>
-                </AdvancedMarker>
+                <Show when={tree.visible}>
+                  <AdvancedMarker
+                    position={{
+                      lat: tree.latitude,
+                      lng: tree.longitude,
+                    }}
+                    ref={(ref) => addToCluster(ref, tree.id)}
+                    onClick={() => setSelectedTreeKey(tree.id)}
+                  >
+                    <span class="text-lg">🌳</span>
+                  </AdvancedMarker>
+                </Show>
               )}
             </For>
           )}
@@ -128,7 +161,7 @@ export function TestMap() {
             anchor={markers()[selectedTreeKey()!]}
             onCloseClick={() => setSelectedTreeKey(null)}
           >
-            {selectedTree()?.name}
+            {selectedTree()?.slug}
           </InfoWindow>
         </Show>
       </Map>

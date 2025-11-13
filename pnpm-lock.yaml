@@ -11,6 +11,9 @@ importers:
       '@googlemaps/markerclusterer':
         specifier: ^2.6.2
         version: 2.6.2
+      '@solid-primitives/scheduled':
+        specifier: ^1.5.2
+        version: 1.5.2(solid-js@1.9.10)
       '@solidjs/router':
         specifier: ^0.15.0
         version: 0.15.4(solid-js@1.9.10)
@@ -853,6 +856,11 @@ packages:
 
   '@solid-primitives/refs@1.1.2':
     resolution: {integrity: sha512-K7tf2thy7L+YJjdqXspXOg5xvNEOH8tgEWsp0+1mQk3obHBRD6hEjYZk7p7FlJphSZImS35je3UfmWuD7MhDfg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
+  '@solid-primitives/scheduled@1.5.2':
+    resolution: {integrity: sha512-/j2igE0xyNaHhj6kMfcUQn5rAVSTLbAX+CDEBm25hSNBmNiHLu2lM7Usj2kJJ5j36D67bE8wR1hBNA8hjtvsQA==}
     peerDependencies:
       solid-js: ^1.6.12
 
@@ -4804,6 +4812,10 @@ snapshots:
   '@solid-primitives/refs@1.1.2(solid-js@1.9.10)':
     dependencies:
       '@solid-primitives/utils': 6.3.2(solid-js@1.9.10)
+      solid-js: 1.9.10
+
+  '@solid-primitives/scheduled@1.5.2(solid-js@1.9.10)':
+    dependencies:
       solid-js: 1.9.10
 
   '@solid-primitives/transition-group@1.1.2(solid-js@1.9.10)':
