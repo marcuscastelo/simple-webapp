@@ -30,6 +30,7 @@ export default [
         process: 'readonly',
         NodeJS: 'readonly',
         '__COMMIT_SHA__': 'readonly',
+        'google': 'readonly',
       },
     },
     plugins: {
