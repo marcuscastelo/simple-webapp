@@ -14,8 +14,10 @@
     "tw:build": "tailwindcss -c tailwind.config.cjs -i ./src/app.css -o ./src/tailwind-build-debug.css"
   },
   "dependencies": {
+    "@googlemaps/markerclusterer": "^2.6.2",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
+    "@types/google.maps": "^3.58.1",
     "clsx": "^2.1.1",
     "solid-google-maps": "^0.0.2",
     "solid-js": "^1.9.5",

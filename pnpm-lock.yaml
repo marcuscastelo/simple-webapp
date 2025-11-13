@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@googlemaps/markerclusterer':
+        specifier: ^2.6.2
+        version: 2.6.2
       '@solidjs/router':
         specifier: ^0.15.0
         version: 0.15.4(solid-js@1.9.10)
       '@solidjs/start':
         specifier: ^1.1.0
         version: 1.2.0(solid-js@1.9.10)(vinxi@0.5.8(@types/node@24.10.1)(db0@0.3.4)(ioredis@5.8.2)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))
+      '@types/google.maps':
+        specifier: ^3.58.1
+        version: 3.58.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -426,6 +432,9 @@ packages:
   '@eslint/js@9.39.1':
     resolution: {integrity: sha512-S26Stp4zCy88tH94QbBv3XCuzRQiZ9yXofEILmglYTh/Ug/a9/umqvgFtYBAo3Lp0nsI/5/qH1CCrbdK3AP1Tw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@googlemaps/markerclusterer@2.6.2':
+    resolution: {integrity: sha512-U6uVhq8iWhiIckA89sgRu8OK35mjd6/3CuoZKWakKEf0QmRRWpatlsPb3kqXkoWSmbcZkopRiI4dnW6DQSd7bQ==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -995,6 +1004,9 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/geojson@7946.0.16':
+    resolution: {integrity: sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==}
+
   '@types/google.maps@3.58.1':
     resolution: {integrity: sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ==}
 
@@ -1018,6 +1030,9 @@ packages:
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+
+  '@types/supercluster@7.1.3':
+    resolution: {integrity: sha512-Z0pOY34GDFl3Q6hUFYf3HkTwKEE02e7QgtJppBt+beEAxnyOpJua+voGFvxINBHa06GwLFFym7gRPY2SiKIfIA==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2049,6 +2064,10 @@ packages:
   fast-diff@1.3.0:
     resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
 
+  fast-equals@5.3.3:
+    resolution: {integrity: sha512-/boTcHZeIAQ2r/tL11voclBHDeP9WPxLt+tyAbVSyyXuUFyh0Tne7gJZTqGbxnvj79TjLdCXLOY7UIPhyG5MTw==}
+    engines: {node: '>=6.0.0'}
+
   fast-fifo@1.3.2:
     resolution: {integrity: sha512-/d9sfos4yxzpwkDkuN7k2SqFKtYNmCTzgfEpz82x34IM9/zc8KGxQoXg1liNC/izpRM/MBdt44Nmx41ZWqk+FQ==}
 
@@ -2603,6 +2622,9 @@ packages:
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
+
+  kdbush@4.0.2:
+    resolution: {integrity: sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==}
 
   kebab-case@1.0.2:
     resolution: {integrity: sha512-7n6wXq4gNgBELfDCpzKc+mRrZFs7D+wgfF5WRFLNAr4DA/qtr9Js8uOAVAfHhuLMfAcQ0pRKqbpjx+TcJVdE1Q==}
@@ -3574,6 +3596,9 @@ packages:
   style-to-object@1.0.12:
     resolution: {integrity: sha512-ddJqYnoT4t97QvN2C95bCgt+m7AAgXjVnkk/jxAfmp7EAB8nnqqZYEbMd3em7/vEomDb2LAQKAy1RFfv41mdNw==}
 
+  supercluster@8.0.1:
+    resolution: {integrity: sha512-IiOea5kJ9iqzD2t7QJq/cREyLHTtSmUT6gQsweojg9WH2sYJqZK9SswTu6jrscO6D1G5v5vYZ9ru/eq85lXeZQ==}
+
   supports-color@10.2.2:
     resolution: {integrity: sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==}
     engines: {node: '>=18'}
@@ -4388,6 +4413,12 @@ snapshots:
 
   '@eslint/js@9.39.1': {}
 
+  '@googlemaps/markerclusterer@2.6.2':
+    dependencies:
+      '@types/supercluster': 7.1.3
+      fast-equals: 5.3.3
+      supercluster: 8.0.1
+
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -4953,6 +4984,8 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/geojson@7946.0.16': {}
+
   '@types/google.maps@3.58.1': {}
 
   '@types/hast@3.0.4':
@@ -4976,6 +5009,10 @@ snapshots:
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/resolve@1.20.2': {}
+
+  '@types/supercluster@7.1.3':
+    dependencies:
+      '@types/geojson': 7946.0.16
 
   '@types/unist@3.0.3': {}
 
@@ -6155,6 +6192,8 @@ snapshots:
 
   fast-diff@1.3.0: {}
 
+  fast-equals@5.3.3: {}
+
   fast-fifo@1.3.2: {}
 
   fast-glob@3.3.3:
@@ -6710,6 +6749,8 @@ snapshots:
       array.prototype.flat: 1.3.3
       object.assign: 4.1.7
       object.values: 1.2.1
+
+  kdbush@4.0.2: {}
 
   kebab-case@1.0.2: {}
 
@@ -7855,6 +7896,10 @@ snapshots:
   style-to-object@1.0.12:
     dependencies:
       inline-style-parser: 0.2.6
+
+  supercluster@8.0.1:
+    dependencies:
+      kdbush: 4.0.2
 
   supports-color@10.2.2: {}
 
