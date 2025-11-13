@@ -17,6 +17,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      solid-google-maps:
+        specifier: ^0.0.2
+        version: 0.0.2(solid-js@1.9.10)
       solid-js:
         specifier: ^1.9.5
         version: 1.9.10
@@ -991,6 +994,9 @@ packages:
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
+
+  '@types/google.maps@3.58.1':
+    resolution: {integrity: sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ==}
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
@@ -3416,6 +3422,11 @@ packages:
   smob@1.5.0:
     resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
 
+  solid-google-maps@0.0.2:
+    resolution: {integrity: sha512-PigzAxrf/rlBhEZwIGMaBisttmkpUKVwfR5UTe43R2KV8s2ZzE8dMpSJ+A+VFyQW6r0ooTNv1P/3tN77XcI0Mw==}
+    peerDependencies:
+      solid-js: ^1.8.0
+
   solid-js@1.9.10:
     resolution: {integrity: sha512-Coz956cos/EPDlhs6+jsdTxKuJDPT7B5SVIWgABwROyxjY7Xbr8wkzD68Et+NxnV7DLJ3nJdAC2r9InuV/4Jew==}
 
@@ -4941,6 +4952,8 @@ snapshots:
   '@types/braces@3.0.5': {}
 
   '@types/estree@1.0.8': {}
+
+  '@types/google.maps@3.58.1': {}
 
   '@types/hast@3.0.4':
     dependencies:
@@ -7662,6 +7675,11 @@ snapshots:
   slash@5.1.0: {}
 
   smob@1.5.0: {}
+
+  solid-google-maps@0.0.2(solid-js@1.9.10):
+    dependencies:
+      '@types/google.maps': 3.58.1
+      solid-js: 1.9.10
 
   solid-js@1.9.10:
     dependencies:
