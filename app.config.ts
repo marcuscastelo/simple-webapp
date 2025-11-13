@@ -4,12 +4,14 @@ import fs from 'fs';
 export default defineConfig({
   ssr: false,
   vite: {
-    server: {
-      https: {
-        key: fs.readFileSync('./.cert/key.pem'),
-        cert: fs.readFileSync('./.cert/cert.pem'),
-      }
-    },
+    server: fs.existsSync('./.cert/key.pem') && fs.existsSync('./.cert/cert.pem')
+      ? {
+          https: {
+            key: fs.readFileSync('./.cert/key.pem'),
+            cert: fs.readFileSync('./.cert/cert.pem'),
+          },
+        }
+      : {},
     plugins: [
       tailwindcss(),
     ],

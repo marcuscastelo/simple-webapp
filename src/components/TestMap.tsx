@@ -10,7 +10,7 @@ import {
 } from 'solid-js'
 
 import { ClusteredMarkers } from '~/components/ClusteredMarkers'
-import { API_KEY } from '~/utils/env'
+import { API_KEY, MAP_ID } from '~/utils/env'
 
 function loadTreeDataset(): Promise<Tree[]> {
   return Promise.resolve([])
@@ -69,7 +69,6 @@ export function TestMap() {
             lng: position.coords.longitude,
           })
           if (mapRef) {
-            alert('Recent location found!')
             mapRef.setCenter({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
@@ -115,7 +114,7 @@ export function TestMap() {
     <APIProvider apiKey={API_KEY}>
       <Map
         style={{ height: '100vh', width: '100vw' }}
-        mapId={'40527d464f34e7febe80350b'}
+        mapId={MAP_ID}
         defaultCenter={userLocation() || { lat: 22.54992, lng: 0 }}
         defaultZoom={14}
         gestureHandling={'greedy'}
