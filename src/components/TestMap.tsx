@@ -48,65 +48,8 @@ const DEFAULT_MAP_PROPS = {
 
 export function TestMap() {
   const [trees, setTrees] = createSignal<POIBasic[]>()
-  const [mapZoom, setMapZoom] = createSignal<number>(DEFAULT_MAP_PROPS.zoom)
-  const [mapCenter, setMapCenter] = createSignal<google.maps.LatLngLiteral>(
-    DEFAULT_MAP_PROPS.center,
-  )
-  const [mapBounds, setMapBounds] =
-    createSignal<google.maps.LatLngBounds | null>(null)
 
-  const treesWithVisibility = createMemo(() => {
-    const bounds = mapBounds()
-    return trees()?.map((tree) => {
-      return {
-        ...tree,
-        visible: bounds?.contains(
-          new google.maps.LatLng(tree.latitude, tree.longitude),
-        ),
-      }
-    })
-  })
-
-  const setMapZoomDebounced = scheduleIdle(setMapZoom, 1000)
-  const setMapCenterDebounced = scheduleIdle(setMapCenter, 1000)
-
-  const [mapRef, setMapRef] = createSignal<google.maps.Map | null>(null)
-
-  createEffect(() => {
-    const mapRef_ = mapRef()
-    if (mapRef_) {
-      const zoomListener = google.maps.event.addListener(
-        mapRef_,
-        'zoom_changed',
-        () => {
-          console.log('Zoom changed event detected')
-          setMapZoomDebounced(mapRef_.getZoom() || DEFAULT_MAP_PROPS.zoom)
-          setMapBounds(mapRef_.getBounds() ?? null)
-        },
-      )
-
-      const centerListener = google.maps.event.addListener(
-        mapRef_,
-        'center_changed',
-        () => {
-          console.log('Center changed event detected')
-          const center = mapRef_.getCenter()
-          if (center) {
-            setMapCenterDebounced({
-              lat: center.lat(),
-              lng: center.lng(),
-            })
-            setMapBounds(mapRef_.getBounds() ?? null)
-          }
-        },
-      )
-
-      return () => {
-        google.maps.event.removeListener(zoomListener)
-        google.maps.event.removeListener(centerListener)
-      }
-    }
-  })
+  const [setMapRef] = createSignal<google.maps.Map | null>(null)
 
   // load data asynchronously
   createEffect(() => {
@@ -138,20 +81,18 @@ export function TestMap() {
       >
         <ClusteredMarkers ref={setMarkers}>
           {(addToCluster) => (
-            <For each={treesWithVisibility()}>
+            <For each={trees()}>
               {(tree) => (
-                <Show when={tree.visible}>
-                  <AdvancedMarker
-                    position={{
-                      lat: tree.latitude,
-                      lng: tree.longitude,
-                    }}
-                    ref={(ref) => addToCluster(ref, tree.id)}
-                    onClick={() => setSelectedTreeKey(tree.id)}
-                  >
-                    <span class="text-lg">🌳</span>
-                  </AdvancedMarker>
-                </Show>
+                <AdvancedMarker
+                  position={{
+                    lat: tree.latitude,
+                    lng: tree.longitude,
+                  }}
+                  ref={(ref) => addToCluster(ref, tree.id)}
+                  onClick={() => setSelectedTreeKey(tree.id)}
+                >
+                  <span class="text-lg">🌳</span>
+                </AdvancedMarker>
               )}
             </For>
           )}
