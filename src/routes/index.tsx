@@ -1,3 +1,9 @@
+import { TestMap } from '~/components/TestMap'
+
 export default function Home() {
-  return <main class="">Simple Test</main>
+  return (
+    <main class="">
+      <TestMap />
+    </main>
+  )
 }
