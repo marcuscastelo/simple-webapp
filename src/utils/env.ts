@@ -1,23 +1,19 @@
-/**
- * Google Maps API key loaded from environment variables.
- * @throws {Error} If VITE_GOOGLE_MAPS_API_KEY is not defined
- */
-export const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''
+const envVars = [
+  'VITE_GOOGLE_MAPS_API_KEY',
+  'VITE_GOOGLE_MAPS_MAP_ID',
+  'VITE_PUBLIC_SUPABASE_ANON_KEY',
+  'VITE_PUBLIC_SUPABASE_URL',
+] as const
 
-/**
- * Google Maps Map ID loaded from environment variables.
- * @throws {Error} If VITE_GOOGLE_MAPS_MAP_ID is not defined
- */
-export const MAP_ID = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID
+envVars.forEach((varName) => {
+  if (!import.meta.env[varName]) {
+    throw new Error(`${varName} is not defined in environment variables`)
+  }
+})
 
-if (!API_KEY) {
-  throw new Error(
-    'VITE_GOOGLE_MAPS_API_KEY is not defined in environment variables',
-  )
-}
-
-if (!MAP_ID) {
-  throw new Error(
-    'VITE_GOOGLE_MAPS_MAP_ID is not defined in environment variables',
-  )
+export const env: Record<(typeof envVars)[number], string> = {
+  VITE_GOOGLE_MAPS_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!,
+  VITE_GOOGLE_MAPS_MAP_ID: import.meta.env.VITE_GOOGLE_MAPS_MAP_ID!,
+  VITE_PUBLIC_SUPABASE_ANON_KEY: import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY!,
+  VITE_PUBLIC_SUPABASE_URL: import.meta.env.VITE_PUBLIC_SUPABASE_URL!,
 }

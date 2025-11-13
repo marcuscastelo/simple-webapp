@@ -10,7 +10,7 @@ import {
 } from 'solid-js'
 
 import { ClusteredMarkers } from '~/components/ClusteredMarkers'
-import { API_KEY, MAP_ID } from '~/utils/env'
+import { env } from '~/utils/env'
 
 function loadTreeDataset(): Promise<Tree[]> {
   return Promise.resolve([])
@@ -111,10 +111,10 @@ export function TestMap() {
   const [markers, setMarkers] = createSignal<{ [key: string]: Marker }>({})
 
   return (
-    <APIProvider apiKey={API_KEY}>
+    <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY}>
       <Map
         style={{ height: '100vh', width: '100vw' }}
-        mapId={MAP_ID}
+        mapId={env.VITE_GOOGLE_MAPS_MAP_ID}
         defaultCenter={userLocation() || { lat: 22.54992, lng: 0 }}
         defaultZoom={14}
         gestureHandling={'greedy'}
