@@ -10,6 +10,7 @@ export const TestMap: Component = () => {
         style={{ width: '100vw', height: '100vh' }}
         defaultCenter={{ lat: 22.54992, lng: 0 }}
         defaultZoom={3}
+        mapId={'40527d464f34e7febe80350b'}
         gestureHandling={'greedy'}
         disableDefaultUI={true}
       />
