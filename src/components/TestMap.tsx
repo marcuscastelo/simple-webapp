@@ -13,7 +13,26 @@ import { ClusteredMarkers } from '~/components/ClusteredMarkers'
 import { API_KEY, MAP_ID } from '~/utils/env'
 
 function loadTreeDataset(): Promise<Tree[]> {
-  return Promise.resolve([])
+  return Promise.resolve([
+    {
+      key: '1',
+      name: 'Oak Tree',
+      category: 'Oak',
+      position: { lat: 41.545, lng: -8.427 },
+    },
+    {
+      key: '2',
+      name: 'Pine Tree',
+      category: 'Pine',
+      position: { lat: 41.546, lng: -8.428 },
+    },
+    {
+      key: '3',
+      name: 'Maple Tree',
+      category: 'Maple',
+      position: { lat: 41.547, lng: -8.429 },
+    },
+  ])
 }
 
 type Tree = {
@@ -25,7 +44,6 @@ type Tree = {
 
 export function TestMap() {
   const [trees, setTrees] = createSignal<Tree[]>()
-  const [selectedCategory] = createSignal<string | null>(null)
 
   const [lastUserLocation] = createSignal<google.maps.LatLngLiteral | null>({
     lat: 41.544581,
@@ -39,27 +57,27 @@ export function TestMap() {
   let mapRef: google.maps.Map | null = null
 
   onMount(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          })
-          if (mapRef) {
-            mapRef.setCenter({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            })
-          }
-        },
-        (error) => {
-          console.error('Error getting user location:', error)
-        },
-      )
-    } else {
-      console.error('Geolocation is not supported by this browser.')
-    }
+    //   if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(
+    //       (position) => {
+    //         setUserLocation({
+    //           lat: position.coords.latitude,
+    //           lng: position.coords.longitude,
+    //         })
+    //         if (mapRef) {
+    //           mapRef.setCenter({
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude,
+    //           })
+    //         }
+    //       },
+    //       (error) => {
+    //         console.error('Error getting user location:', error)
+    //       },
+    //     )
+    //   } else {
+    //     console.error('Geolocation is not supported by this browser.')
+    //   }
   })
 
   // load data asynchronously
@@ -69,21 +87,12 @@ export function TestMap() {
       .catch(console.error)
   })
 
-  // get category information for the filter-dropdown
-  const filteredTrees = createMemo(() => {
-    return (
-      trees()?.filter(
-        (t) => !selectedCategory() || t.category === selectedCategory(),
-      ) || []
-    )
-  })
-
   const [selectedTreeKey, setSelectedTreeKey] = createSignal<string | null>(
     null,
   )
   const selectedTree = createMemo(() =>
     selectedTreeKey()
-      ? filteredTrees().find((t) => t.key === selectedTreeKey())!
+      ? (trees()?.find((t) => t.key === selectedTreeKey()) ?? null)
       : null,
   )
   const [markers, setMarkers] = createSignal<{ [key: string]: Marker }>({})
@@ -101,7 +110,7 @@ export function TestMap() {
       >
         <ClusteredMarkers ref={setMarkers}>
           {(addToCluster) => (
-            <For each={filteredTrees()}>
+            <For each={trees()}>
               {(tree) => (
                 <AdvancedMarker
                   position={tree.position}
