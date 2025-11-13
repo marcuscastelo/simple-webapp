@@ -23,28 +23,6 @@ type Tree = {
   position: google.maps.LatLngLiteral
 }
 
-// export const TestMap: Component = () => {
-//   return (
-//     <APIProvider apiKey={API_KEY}>
-//       <Map
-//         style={{ width: '100vw', height: '100vh' }}
-//         defaultCenter={{ lat: 22.54992, lng: 0 }}
-//         defaultZoom={3}
-//         mapId={'40527d464f34e7febe80350b'}
-//         gestureHandling={'greedy'}
-//         disableDefaultUI={true}
-//       >
-//         <Marker
-//           position={{ lat: 10, lng: 10 }}
-//           clickable={true}
-//           onClick={() => alert('marker was clicked!')}
-//           title={'clickable google.maps.Marker'}
-//         />{' '}
-//       </Map>
-//     </APIProvider>
-//   )
-// }
-
 export function TestMap() {
   const [trees, setTrees] = createSignal<Tree[]>()
   const [selectedCategory] = createSignal<string | null>(null)
