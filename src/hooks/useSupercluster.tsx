@@ -1,53 +1,56 @@
-import { Accessor, createMemo } from 'solid-js'
-import Supercluster from 'supercluster'
+import { FeatureCollection, GeoJsonProperties, Point } from 'geojson'
+import { Accessor, createEffect, createMemo, createSignal } from 'solid-js'
+import Supercluster, { ClusterProperties } from 'supercluster'
 
-import { POIBasic } from '~/hooks/usePOI'
-
-export function useSupercluster(props: {
-  points: Accessor<Array<POIBasic>>
-  bbox: Accessor<{
-    west: number
-    south: number
-    east: number
-    north: number
-  }>
-  zoom: Accessor<number>
-  options?: Supercluster.Options<POIBasic, Supercluster.AnyProps>
-}) {
-  const supercluster = createMemo(() => {
-    return new Supercluster<POIBasic, Supercluster.AnyProps>(
-      props.options,
-    ).load(
-      props.points().map((poi) => ({
-        type: 'Feature',
-        properties: poi,
-        geometry: {
-          type: 'Point',
-          coordinates: [poi.longitude, poi.latitude],
-        },
-      })),
-    )
+export function useSupercluster<T extends GeoJsonProperties>(
+  geojson: Accessor<FeatureCollection<Point, T> | null>,
+  bounds: Accessor<[number, number, number, number]>,
+  zoom: Accessor<number>,
+  superclusterOptions: Accessor<Supercluster.Options<T, ClusterProperties>>,
+) {
+  // create the clusterer and keep it
+  const clusterer = createMemo(() => {
+    return new Supercluster(superclusterOptions())
   })
 
+  // version-number for the data loaded into the clusterer
+  // (this is needed to trigger updating the clusters when data was changed)
+  const [version, setVersion] = createSignal(0)
+  const dataWasUpdated = () => setVersion((v) => v + 1)
+
+  // when data changes, load it into the clusterer
+  createEffect(() => {
+    if (!geojson()) return
+
+    clusterer().load(geojson()!.features)
+    dataWasUpdated()
+  })
+
+  // retrieve the clusters within the current viewport
   const clusters = createMemo(() => {
-    return supercluster().getClusters(
-      [
-        props.bbox().west,
-        props.bbox().south,
-        props.bbox().east,
-        props.bbox().north,
-      ],
-      Math.round(props.zoom()),
-    )
+    // don't try to read clusters before data was loaded into the clusterer (version===0),
+    // otherwise getClusters will crash
+    if (version() === 0) return []
+
+    // Cast to appropriate T properties type instead of GeoJsonProperties
+    return clusterer().getClusters(bounds(), zoom())
   })
 
-  function getLeaves(clusterId: number, limit?: number, offset?: number) {
-    return supercluster().getLeaves(clusterId, limit, offset)
-  }
+  // create callbacks to expose supercluster functionality outside of this hook
+  const getChildren = (clusterId: number) => clusterer().getChildren(clusterId)
+
+  // note: here, the paging that would be possible is disabled; we found this
+  // has no significant performance impact when it's just used in a click event handler.
+  const getLeaves = (clusterId: number) =>
+    clusterer().getLeaves(clusterId, Infinity)
+
+  const getClusterExpansionZoom = (clusterId: number) =>
+    clusterer().getClusterExpansionZoom(clusterId)
 
   return {
-    supercluster,
     clusters,
+    getChildren,
     getLeaves,
+    getClusterExpansionZoom,
   }
 }
