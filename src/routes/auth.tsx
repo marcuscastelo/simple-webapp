@@ -157,11 +157,11 @@ const Auth = () => {
 
         <p class="text-center text-sm text-muted-foreground mt-6">
           Ao continuar, concorda com os nossos{' '}
-          <A href="/termos" class="text-primary hover:underline">
+          <A href="/terms" class="text-primary hover:underline">
             Termos de Uso
           </A>{' '}
           e{' '}
-          <A href="/privacidade" class="text-primary hover:underline">
+          <A href="/privacy" class="text-primary hover:underline">
             Política de Privacidade
           </A>
         </p>
