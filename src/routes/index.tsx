@@ -66,13 +66,13 @@ const Home = () => {
     <div class="min-h-screen">
       {/* Hero Section */}
       <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
+        <div class="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-accent/10" />
         <div class="container mx-auto px-4 py-20 relative">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
               <h1 class="text-5xl md:text-6xl font-bold leading-tight">
                 Recicle e receba{' '}
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span class="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
                   recompensas!
                 </span>
               </h1>
@@ -95,7 +95,7 @@ const Home = () => {
               </div>
             </div>
             <div class="relative">
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
+              <div class="absolute inset-0 bg-linear-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
               <img
                 src={heroImage}
                 alt="Pessoas reciclando felizes"
@@ -147,7 +147,7 @@ const Home = () => {
                 return (
                   <Card class="border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                     <CardContent class="p-8 space-y-4">
-                      <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+                      <div class="h-16 w-16 rounded-2xl bg-linear-to-br from-primary to-accent flex items-center justify-center shadow-lg">
                         <Icon class="h-8 w-8 text-primary-foreground" />
                       </div>
                       <h3 class="text-2xl font-bold">{feature.title}</h3>
@@ -165,9 +165,9 @@ const Home = () => {
 
       {/* CTA Section */}
       <section class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-10" />
+        <div class="absolute inset-0 bg-linear-to-r from-primary to-accent opacity-10" />
         <div class="container mx-auto px-4 relative">
-          <Card class="border-none shadow-2xl bg-gradient-to-r from-primary to-accent text-primary-foreground">
+          <Card class="border-none shadow-2xl bg-linear-to-r from-primary to-accent text-primary-foreground">
             <CardContent class="p-12 text-center space-y-6">
               <h2 class="text-4xl font-bold">Pronto para Começar?</h2>
               <p class="text-xl opacity-90 max-w-2xl mx-auto">
