@@ -9,7 +9,9 @@ export function Navbar() {
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />
-          <SearchPill />
+          <div class="max-w-1/2 flex-1">
+            <SearchPill />
+          </div>
           <GoogleLoginButton />
         </div>
       </div>
