@@ -34,7 +34,10 @@ export function Navbar() {
                 placeholder="Pesquisar pontos de recolha"
                 class="flex-1 outline-none bg-transparent text-sm"
               />
-              <button class="ml-3 bg-primary text-white rounded-full p-2 hover:opacity-95">
+              <button
+                class="ml-3 bg-primary text-white rounded-full p-2 hover:opacity-95"
+                aria-label="search"
+              >
                 <Search class="h-4 w-4" />
               </button>
             </div>
