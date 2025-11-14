@@ -8,7 +8,7 @@ import plasticImage from '~/assets/plastic-waste.jpg'
 import { Badge } from '~/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
 
-const RecyclingGuide = () => {
+function RecyclingGuide() {
   const wasteTypes = [
     {
       name: 'Plástico',
