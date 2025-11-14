@@ -23,7 +23,7 @@ export function Navbar() {
             <div class="flex items-center bg-white border border-gray-200 rounded-full px-3 py-2 shadow-sm">
               <button
                 class="p-1 rounded-full hover:bg-gray-100 text-muted-foreground mr-2"
-                aria-label="use my location"
+                aria-label="Use my location"
                 title="Usar minha localização"
               >
                 <Crosshair class="h-4 w-4" />
