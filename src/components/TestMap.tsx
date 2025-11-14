@@ -6,7 +6,7 @@ import { ClusterProperties } from 'supercluster'
 import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
 import * as POI from '~/poi.json'
-import { API_KEY, MAP_ID } from '~/utils/env'
+import { env } from '~/utils/env'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 async function loadTreeDataset(): Promise<POIBasic[]> {
@@ -117,10 +117,10 @@ export function TestMap() {
   })
 
   return (
-    <APIProvider apiKey={API_KEY}>
+    <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY}>
       <Map
         style={{ height: '100vh', width: '100vw' }}
-        mapId={MAP_ID}
+        mapId={env.VITE_GOOGLE_MAPS_MAP_ID}
         defaultCenter={DEFAULT_MAP_PROPS.center}
         defaultZoom={DEFAULT_MAP_PROPS.zoom}
         gestureHandling={'greedy'}
