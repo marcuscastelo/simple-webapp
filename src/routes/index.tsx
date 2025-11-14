@@ -87,7 +87,7 @@ const Home = () => {
                     Começar Agora
                   </Button>
                 </A>
-                <A href="/pontos">
+                <A href="/collection-points">
                   <Button variant="outline" size="lg">
                     Ver Pontos de Recolha
                   </Button>
