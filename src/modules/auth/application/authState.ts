@@ -19,42 +19,19 @@ const authStateObj = createRoot(() => {
   })
 
   onMount(() => {
-    console.log('Checking initial auth session...')
-    supabase.auth
-      .getSession()
-      .then(({ data, error }) => {
-        console.log('Initial session data:', data)
-        if (error === null && data && data.session) {
-          setAuthState({
-            isAuthenticated: true,
-            session: data.session,
-          })
-        } else {
-          if (error) {
-            console.error('Error retrieving session:', error)
-          }
-          setAuthState({
-            isAuthenticated: false,
-          })
-        }
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_, session) => {
+        setAuthState(
+          session
+            ? { isAuthenticated: true, session }
+            : { isAuthenticated: false },
+        )
+      },
+    )
 
-        supabase.auth.onAuthStateChange((event, session) => {
-          console.debug('Auth state changed:', { event, session })
-          if (session) {
-            setAuthState({
-              isAuthenticated: true,
-              session: session,
-            })
-          } else {
-            setAuthState({
-              isAuthenticated: false,
-            })
-          }
-        })
-      })
-      .catch((error) => {
-        console.error('Error getting session:', error)
-      })
+    return () => {
+      authListener.subscription.unsubscribe()
+    }
   })
 
   return { authState }
