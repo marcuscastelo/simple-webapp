@@ -13,6 +13,7 @@ import { For } from 'solid-js'
 import heroImage from '~/assets/hero-recycling.jpg'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent } from '~/components/ui/card'
+import { Navbar } from '~/components/ui/Navbar'
 
 const Home = () => {
   const stats = [
@@ -64,6 +65,7 @@ const Home = () => {
 
   return (
     <div class="min-h-screen">
+      <Navbar />
       {/* Hero Section */}
       <section class="relative overflow-hidden">
         <div class="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-accent/10" />
