@@ -1,8 +1,8 @@
 import { Key } from '@solid-primitives/keyed'
 import { FeatureCollection, Point } from 'geojson'
-import { Leaf, Recycle } from 'lucide-solid'
-import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
-import { createEffect, createSignal } from 'solid-js'
+import { Info, Leaf, Recycle } from 'lucide-solid'
+import { AdvancedMarker, APIProvider, InfoWindow, Map } from 'solid-google-maps'
+import { createEffect, createSignal, Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
 import { POIBasic } from '~/hooks/usePOI'
@@ -66,8 +66,11 @@ export function TestMap() {
   const [center, setCenter] = createSignal<google.maps.LatLngLiteral>(
     DEFAULT_MAP_PROPS.center,
   )
+  const [selectedFeature, setSelectedFeature] = createSignal<string | null>(
+    null,
+  )
 
-  const { clusters, getLeaves } = useSupercluster(
+  const { clusters, getClusterExpansionZoom } = useSupercluster(
     features,
     bounds,
     zoom,
@@ -145,22 +148,51 @@ export function TestMap() {
               unknown
             >
 
-            if (properties.cluster) {
-              return (
-                <ClusterMarker
-                  cluster={
-                    featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
-                  }
-                />
-              )
-            }
-
             return (
-              <FeatureMarker
-                feature={
-                  featureOrCluster_ as Supercluster.PointFeature<POIBasic>
-                }
-              />
+              <>
+                <Show when={properties.cluster}>
+                  <ClusterMarker
+                    cluster={
+                      featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+                    }
+                    onClick={() => {
+                      const id = (
+                        featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+                      ).id
+                      setSelectedFeature(id?.toString() ?? null)
+                      alert(
+                        `Cluster ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
+                      )
+                      // Zoom map to cluster
+                      const expansionZoom = getClusterExpansionZoom(
+                        id as number,
+                      )
+                      mapRef()?.setZoom(expansionZoom + 1)
+                      mapRef()?.panTo({
+                        lat: featureOrCluster_.geometry.coordinates[1],
+                        lng: featureOrCluster_.geometry.coordinates[0],
+                      })
+                    }}
+                  />
+                </Show>
+
+                <Show when={!properties.cluster}>
+                  <FeatureMarker
+                    feature={
+                      featureOrCluster_ as Supercluster.PointFeature<POIBasic>
+                    }
+                    onClick={() => {
+                      const id = (
+                        featureOrCluster_ as Supercluster.PointFeature<POIBasic>
+                      ).id
+                      setSelectedFeature(id?.toString() ?? null)
+                      alert(
+                        `Feature ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
+                      )
+                    }}
+                  />
+                </Show>
+              </>
             )
           }}
         </Key>
@@ -179,6 +211,7 @@ export function TestMap() {
 
 function ClusterMarker(props: {
   cluster: Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+  onClick?: () => void
 }) {
   const position = () => {
     const [lng, lat] = props.cluster.geometry.coordinates
@@ -188,6 +221,7 @@ function ClusterMarker(props: {
     <AdvancedMarker
       position={position()}
       zIndex={props.cluster.properties.point_count}
+      onClick={props.onClick}
       // anchorPoint={AdvancedMarkerAnchorPoint.CENTER}
       // style={{
       //   width: `${markerSize()}px`,
@@ -217,24 +251,39 @@ function ClusterMarker(props: {
 
 function FeatureMarker(props: {
   feature: Supercluster.PointFeature<POIBasic>
+  onClick?: () => void
 }) {
   const position = () => {
     const [lng, lat] = props.feature.geometry.coordinates
     return { lat, lng }
   }
   return (
-    <AdvancedMarker position={position()}>
+    <AdvancedMarker position={position()} onClick={props.onClick}>
       <div class="flex items-center justify-center">
         <div
           class="relative rounded-full shadow-md flex items-center justify-center"
           style="width:40px;height:40px"
         >
-          <div class="absolute inset-0 rounded-full bg-green-950" />
-          <div class="relative z-10 text-green-500 flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-green-900" />
+          <div class="relative z-10 text-green-400 flex items-center justify-center">
             <Leaf class="w-5 h-5" />
           </div>
         </div>
       </div>
+      {/* <InfoWindow
+        open={open()}
+        onOpenChange={setOpen}
+        maxWidth={220}
+        headerContent={
+          <span class="font-semibold">
+            {props.feature.properties.slug ?? props.feature.id}
+          </span>
+        }
+      >
+        <div class="text-sm">
+          {props.feature.properties.slug ?? props.feature.id}
+        </div>
+      </InfoWindow> */}
     </AdvancedMarker>
   )
 }
