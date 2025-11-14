@@ -1,6 +1,7 @@
 import { Clock, MapPin, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For } from 'solid-js'
 
+import { TestMap } from '~/components/TestMap'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import {
@@ -106,15 +107,9 @@ const CollectionPoints = () => {
 
         {/* Map Placeholder */}
         <Card class="mb-8 shadow-lg overflow-hidden">
-          <div class="relative h-[400px] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="relative h-[400px] bg-linear-to-br from-primary/10 to-accent/10 flex items-center justify-center">
             <div class="text-center space-y-4">
-              <MapPin class="h-16 w-16 mx-auto text-primary" />
-              <div>
-                <p class="text-xl font-semibold">Mapa Interativo</p>
-                <p class="text-muted-foreground">
-                  Em breve: visualização interativa com geolocalização
-                </p>
-              </div>
+              <TestMap />
             </div>
           </div>
         </Card>
@@ -157,17 +152,17 @@ const CollectionPoints = () => {
                 </CardHeader>
                 <CardContent class="space-y-4">
                   <div class="flex items-start gap-2 text-sm">
-                    <MapPin class="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    <MapPin class="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                     <span class="text-muted-foreground">{point.address}</span>
                   </div>
 
                   <div class="flex items-center gap-2 text-sm">
-                    <Clock class="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                    <Clock class="h-4 w-4 text-muted-foreground shrink-0" />
                     <span class="text-muted-foreground">{point.schedule}</span>
                   </div>
 
                   <div class="flex items-center gap-2 text-sm">
-                    <Phone class="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                    <Phone class="h-4 w-4 text-muted-foreground shrink-0" />
                     <span class="text-muted-foreground">{point.phone}</span>
                   </div>
 
