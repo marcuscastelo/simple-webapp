@@ -18,7 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
 const Auth = () => {
   const [isLoading, setIsLoading] = createSignal(false)
 
-  const handleLogin = async (e: Event) => {
+  const handleLogin = (e: Event) => {
     e.preventDefault()
     setIsLoading(true)
     // Simulate login
@@ -28,7 +28,7 @@ const Auth = () => {
     }, 1500)
   }
 
-  const handleRegister = async (e: Event) => {
+  const handleRegister = (e: Event) => {
     e.preventDefault()
     setIsLoading(true)
     // Simulate registration
