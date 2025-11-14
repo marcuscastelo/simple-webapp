@@ -1,9 +1,7 @@
-import { TestMap } from '~/components/TestMap'
-
 export default function Home() {
   return (
     <main class="">
-      <TestMap />
+      <h1>Welcome to ReciclaMais</h1>
     </main>
   )
 }
