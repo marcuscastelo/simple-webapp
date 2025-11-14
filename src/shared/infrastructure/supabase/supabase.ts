@@ -6,4 +6,10 @@ import { env } from '~/utils/env'
 export const supabase = createClient<Database>(
   env.VITE_PUBLIC_SUPABASE_URL,
   env.VITE_PUBLIC_SUPABASE_ANON_KEY,
+  {
+    auth: {
+      persistSession: true,
+      detectSessionInUrl: true,
+    },
+  },
 )
