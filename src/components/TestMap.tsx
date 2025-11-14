@@ -54,25 +54,25 @@ export function TestMap(props: { search?: string | null }) {
     if (props.search) {
       console.log('Searching for:', props.search)
       // Implement search logic here
-      new google.maps.Geocoder()
-        .geocode({ address: props.search }, (results, status) => {
-          if (
-            status === google.maps.GeocoderStatus.OK &&
-            results &&
-            results[0]
-          ) {
-            const location = results[0].geometry.location
-            console.log('Found location:', location.toJSON())
-            // You can center the map to this location if needed
-            // mapRef.setCenter(location);
-          } else {
-            console.error(
-              'Geocode was not successful for the following reason:',
-              status,
-            )
-          }
-        })
-        .catch(console.error)
+      // new google.maps.Geocoder()
+      //   .geocode({ address: props.search }, (results, status) => {
+      //     if (
+      //       status === google.maps.GeocoderStatus.OK &&
+      //       results &&
+      //       results[0]
+      //     ) {
+      //       const location = results[0].geometry.location
+      //       console.log('Found location:', location.toJSON())
+      //       // You can center the map to this location if needed
+      //       // mapRef.setCenter(location);
+      //     } else {
+      //       console.error(
+      //         'Geocode was not successful for the following reason:',
+      //         status,
+      //       )
+      //     }
+      //   })
+      //   .catch(console.error)
     }
   })
 

@@ -2,6 +2,7 @@ import { A } from '@solidjs/router'
 
 import logo from '~/assets/logo.png'
 import { SearchPill } from '~/components/SearchPill'
+import { mapActions } from '~/modules/map/application/mapActions'
 
 export function Navbar() {
   return (
@@ -10,7 +11,7 @@ export function Navbar() {
         <div class="flex items-center justify-between gap-4">
           <Logo />
           <div class="max-w-1/2 flex-1">
-            <SearchPill />
+            <SearchPill onSearch={mapActions.openMapsPageWithSearch} />
           </div>
           <GoogleLoginButton />
         </div>
