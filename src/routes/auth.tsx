@@ -1,16 +1,10 @@
 import { Show } from 'solid-js'
 
+import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
-import { supabase } from '~/shared/infrastructure/supabase/supabase'
 
 export default function Auth() {
   const { authState } = useAuthState()
-  async function handleClick() {
-    alert('Redirecionando para o Google OAuth...')
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-    })
-  }
 
   return (
     <div>
@@ -19,18 +13,14 @@ export default function Auth() {
         {(session) => (
           <>
             <pre>{JSON.stringify(session, null, 2)}</pre>
-            <button
-              onClick={() => {
-                void supabase.auth.signOut()
-              }}
-            >
-              Logout
-            </button>
+            <button onClick={() => void authActions.logout()}>Logout</button>
           </>
         )}
       </Show>
       <Show when={!authState().session}>
-        <button onClick={() => void handleClick()}>Login with Google</button>
+        <button onClick={() => void authActions.loginWithGoogle()}>
+          Login with Google
+        </button>
       </Show>
     </div>
   )
