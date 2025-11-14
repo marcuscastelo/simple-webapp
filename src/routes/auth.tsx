@@ -1,19 +1,12 @@
-import { Session } from '@supabase/supabase-js'
-import { createSignal, Show } from 'solid-js'
+import { Show } from 'solid-js'
 
+import { useAuthState } from '~/modules/auth/application/authState'
 import { supabase } from '~/shared/infrastructure/supabase/supabase'
 
 export default function Auth() {
-  const [session, setSession] = createSignal<Session>()
+  const { authState } = useAuthState()
   async function handleClick() {
     alert('Redirecionando para o Google OAuth...')
-    const { data, error } = await supabase.auth.getSession()
-    console.log('Sessão atual:', session)
-    if (error === null && data.session) {
-      alert('Já está autenticado!')
-      setSession(data.session)
-      return
-    }
     await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
@@ -22,10 +15,23 @@ export default function Auth() {
   return (
     <div>
       <h1>Auth Page</h1>
-      <Show when={session()}>
-        {(session) => <pre>{JSON.stringify(session(), null, 2)}</pre>}
+      <Show when={authState().session}>
+        {(session) => (
+          <>
+            <pre>{JSON.stringify(session, null, 2)}</pre>
+            <button
+              onClick={() => {
+                void supabase.auth.signOut()
+              }}
+            >
+              Logout
+            </button>
+          </>
+        )}
       </Show>
-      <button onClick={() => void handleClick()}>Clique aqui</button>
+      <Show when={!authState().session}>
+        <button onClick={() => void handleClick()}>Login with Google</button>
+      </Show>
     </div>
   )
 }
