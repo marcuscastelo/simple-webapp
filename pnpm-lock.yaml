@@ -29,6 +29,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      lucide-solid:
+        specifier: ^0.553.0
+        version: 0.553.0(solid-js@1.9.10)
       solid-google-maps:
         specifier: ^0.0.2
         version: 0.0.2(solid-js@1.9.10)
@@ -2833,6 +2836,11 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lucide-solid@0.553.0:
+    resolution: {integrity: sha512-FAvWslAqD/HmCfcvFpbYAjPFf80F60aBlvn7M7Ea/FzYChqpkUiUkJEvG0K1bYHadf7dnkK0DSI992VT26sQdg==}
+    peerDependencies:
+      solid-js: ^1.4.7
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -7063,6 +7071,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-solid@0.553.0(solid-js@1.9.10):
+    dependencies:
+      solid-js: 1.9.10
 
   magic-string@0.30.21:
     dependencies:
