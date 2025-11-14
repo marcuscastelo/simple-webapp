@@ -1,6 +1,8 @@
 import { A } from '@solidjs/router'
-import { Crosshair, MapPin, Search } from 'lucide-solid'
+import { Crosshair, Search } from 'lucide-solid'
 import { createSignal } from 'solid-js'
+
+import logo from '~/assets/logo.png'
 
 export function Navbar() {
   const [query, setQuery] = createSignal('')
@@ -10,18 +12,22 @@ export function Navbar() {
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           {/* Logo */}
-          <A href="/" class="flex items-center gap-3 select-none">
-            <div class="text-lg md:text-xl font-bold text-primary">
-              Onde
-              <span class="text-accent"> Reciclar</span>
-              <span class="text-primary">.pt</span>
-            </div>
-          </A>
+          <div class="rounded-full bg-gray-100 overflow-clip ">
+            <A href="/" class="flex items-center gap-3 select-none">
+              <img src={logo} alt="Recicla+" class="h-10" />
+            </A>
+          </div>
 
           {/* Center search pill - compact */}
           <div class="flex-1 max-w-2xl mx-4">
             <div class="flex items-center bg-white border border-gray-200 rounded-full px-3 py-2 shadow-sm">
-              <MapPin class="h-5 w-5 text-primary mr-3" />
+              <button
+                class="p-1 rounded-full hover:bg-gray-100 text-muted-foreground mr-2"
+                aria-label="use my location"
+                title="Usar minha localização"
+              >
+                <Crosshair class="h-4 w-4" />
+              </button>
               <input
                 value={query()}
                 onInput={(e) => setQuery(e.currentTarget.value)}
@@ -36,12 +42,6 @@ export function Navbar() {
 
           {/* Right actions: location and Google login (G) */}
           <div class="flex items-center gap-3">
-            <button
-              class="p-2 rounded-md text-muted-foreground hover:text-primary"
-              aria-label="use my location"
-            >
-              <Crosshair class="h-5 w-5" />
-            </button>
             <A href="/auth" class="flex items-center">
               <div class="h-10 w-10 rounded-full flex items-center justify-center bg-white border border-gray-200 shadow-sm text-sm font-semibold text-[#4285F4]">
                 G
