@@ -1,6 +1,7 @@
-import { Clock, MapPin, Phone, Star } from 'lucide-solid'
+import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For } from 'solid-js'
 
+import { TestMap } from '~/components/TestMap'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import {
@@ -11,9 +12,11 @@ import {
   CardTitle,
 } from '~/components/ui/card'
 import { Select, SelectItem } from '~/components/ui/select'
+import { cn } from '~/utils/cn'
 
 const CollectionPoints = () => {
   const [selectedType, setSelectedType] = createSignal<string>('all')
+  const [isFullscreen, setIsFullscreen] = createSignal<boolean>(true)
 
   const wasteTypes = [
     { value: 'all', label: 'Todos os Tipos' },
@@ -105,18 +108,35 @@ const CollectionPoints = () => {
         </div>
 
         {/* Map Placeholder */}
-        <Card class="mb-8 shadow-lg overflow-hidden">
-          <div class="relative h-[400px] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-            <div class="text-center space-y-4">
-              <MapPin class="h-16 w-16 mx-auto text-primary" />
-              <div>
-                <p class="text-xl font-semibold">Mapa Interativo</p>
-                <p class="text-muted-foreground">
-                  Em breve: visualização interativa com geolocalização
-                </p>
-              </div>
-            </div>
+        <Card
+          class={cn(
+            'mb-8 shadow-lg overflow-hidden h-[400px] transition-all duration-300 ease-in-out relative',
+            {
+              'h-screen w-screen fixed inset-0': isFullscreen(),
+            },
+          )}
+        >
+          {/* Toggle fullscreen button (overlay) */}
+          <div class="absolute top-3 right-3 z-40">
+            <button
+              class="inline-flex items-center gap-2 rounded-md bg-white/80  px-2 py-1 text-sm shadow hover:brightness-95 transition"
+              onClick={() => setIsFullscreen((v) => !v)}
+              aria-pressed={isFullscreen()}
+              aria-label={
+                isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'
+              }
+            >
+              {isFullscreen() ? (
+                <Minimize class="h-4 w-4" />
+              ) : (
+                <Maximize class="h-4 w-4" />
+              )}
+              <span class="hidden sm:inline">
+                {isFullscreen() ? 'Close' : 'Fullscreen'}
+              </span>
+            </button>
           </div>
+          <TestMap />
         </Card>
 
         {/* Filter */}
@@ -157,17 +177,17 @@ const CollectionPoints = () => {
                 </CardHeader>
                 <CardContent class="space-y-4">
                   <div class="flex items-start gap-2 text-sm">
-                    <MapPin class="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    <MapPin class="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                     <span class="text-muted-foreground">{point.address}</span>
                   </div>
 
                   <div class="flex items-center gap-2 text-sm">
-                    <Clock class="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                    <Clock class="h-4 w-4 text-muted-foreground shrink-0" />
                     <span class="text-muted-foreground">{point.schedule}</span>
                   </div>
 
                   <div class="flex items-center gap-2 text-sm">
-                    <Phone class="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                    <Phone class="h-4 w-4 text-muted-foreground shrink-0" />
                     <span class="text-muted-foreground">{point.phone}</span>
                   </div>
 
