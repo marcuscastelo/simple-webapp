@@ -1,128 +1,289 @@
-import { Marker } from '@googlemaps/markerclusterer'
+import { Key } from '@solid-primitives/keyed'
+import { FeatureCollection, Point } from 'geojson'
+import { Info, Leaf, Recycle } from 'lucide-solid'
 import { AdvancedMarker, APIProvider, InfoWindow, Map } from 'solid-google-maps'
-import {
-  createEffect,
-  createMemo,
-  createSignal,
-  For,
-  onMount,
-  Show,
-} from 'solid-js'
+import { createEffect, createSignal, Show } from 'solid-js'
+import Supercluster from 'supercluster'
 
-import { ClusteredMarkers } from '~/components/ClusteredMarkers'
+import { POIBasic } from '~/hooks/usePOI'
+import { useSupercluster } from '~/hooks/useSupercluster'
+import * as POI from '~/poi.json'
 import { env } from '~/utils/env'
 
-function loadTreeDataset(): Promise<Tree[]> {
-  return Promise.resolve([])
+// eslint-disable-next-line @typescript-eslint/require-await
+async function loadFeaturesDataset(): Promise<
+  FeatureCollection<Point, POIBasic>
+> {
+  const features = POI.data.publicGetMapInformation.points
+    .map(
+      (poi) =>
+        ({
+          id: poi.id,
+          latitude: parseFloat(poi.latitude),
+          longitude: parseFloat(poi.longitude),
+          slug: poi.slug,
+          type: poi.type,
+          families_pope: poi.families_pope,
+          location_types_pope: poi.location_types_pope,
+          plainWastes: poi.plainWastes,
+          plainTypes: poi.plainTypes,
+          plainFilters: poi.plainFilters,
+        }) satisfies POIBasic,
+    )
+    .filter((poi) => !isNaN(poi.latitude) && !isNaN(poi.longitude))
+
+  return {
+    type: 'FeatureCollection',
+    features: features.map((poi) => ({
+      type: 'Feature',
+      id: poi.id,
+      properties: poi,
+      geometry: {
+        type: 'Point',
+        coordinates: [poi.longitude, poi.latitude],
+      },
+    })),
+  }
 }
 
-type Tree = {
-  key: string
-  name: string
-  category: string
-  position: google.maps.LatLngLiteral
+const DEFAULT_MAP_PROPS = {
+  center: { lat: 41.544581, lng: -8.427375 },
+  zoom: 14,
 }
 
-export function TestMap() {
-  const [trees, setTrees] = createSignal<Tree[]>()
-  const [selectedCategory] = createSignal<string | null>(null)
-
-  const [lastUserLocation] = createSignal<google.maps.LatLngLiteral | null>({
-    lat: 41.544581,
-    lng: -8.427375,
+export function TestMap(props: { search?: string }) {
+  const [features, setFeatures] = createSignal<
+    FeatureCollection<Point, POIBasic>
+  >({
+    type: 'FeatureCollection',
+    features: [],
   })
 
-  const [userLocation, setUserLocation] =
-    // eslint-disable-next-line solid/reactivity
-    createSignal<google.maps.LatLngLiteral | null>(lastUserLocation())
+  const [bounds, setBounds] = createSignal<[number, number, number, number]>([
+    -180, -90, 180, 90,
+  ])
+  const [zoom, setZoom] = createSignal<number>(DEFAULT_MAP_PROPS.zoom)
+  const [center, setCenter] = createSignal<google.maps.LatLngLiteral>(
+    DEFAULT_MAP_PROPS.center,
+  )
+  const [selectedFeature, setSelectedFeature] = createSignal<string | null>(
+    null,
+  )
 
-  let mapRef: google.maps.Map | null = null
+  const { clusters, getClusterExpansionZoom } = useSupercluster(
+    features,
+    bounds,
+    zoom,
+    () => ({
+      extent: 256,
+      radius: 60,
+      maxZoom: 12,
+    }),
+  )
 
-  onMount(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          })
-          if (mapRef) {
-            mapRef.setCenter({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            })
-          }
-        },
-        (error) => {
-          console.error('Error getting user location:', error)
-        },
-      )
-    } else {
-      console.error('Geolocation is not supported by this browser.')
+  const [mapRef, setMapRef] = createSignal<google.maps.Map | null>(null)
+
+  const handleBoundsChanged = () => {
+    try {
+      // const bounds = new google.maps.LatLngBounds(input.detail.bounds)
+      const bounds = mapRef()!.getBounds()!
+      const zoom = mapRef()!.getZoom()!
+      const center = mapRef()!.getCenter()!
+
+      const sw = bounds.getSouthWest()
+      const ne = bounds.getNorthEast()
+
+      const paddingDegrees = 0
+
+      const n = Math.min(90, ne.lat() + paddingDegrees)
+      const s = Math.max(-90, sw.lat() - paddingDegrees)
+
+      const w = sw.lng() - paddingDegrees
+      const e = ne.lng() + paddingDegrees
+
+      setBounds([w, s, e, n])
+      setZoom(zoom)
+      setCenter({ lat: center.lat(), lng: center.lng() })
+    } catch {
+      // ignore errors from bounds being invalid during map initialization
+    }
+  }
+
+  createEffect(() => {
+    const map = mapRef()
+    if (!map) return
+
+    const listener = map.addListener('idle', () => {
+      handleBoundsChanged()
+    })
+
+    return () => {
+      google.maps.event.removeListener(listener)
     }
   })
 
   // load data asynchronously
   createEffect(() => {
-    loadTreeDataset()
-      .then((data) => setTrees(data))
+    loadFeaturesDataset()
+      .then((data) => setFeatures(data))
       .catch(console.error)
   })
-
-  // get category information for the filter-dropdown
-  const filteredTrees = createMemo(() => {
-    return (
-      trees()?.filter(
-        (t) => !selectedCategory() || t.category === selectedCategory(),
-      ) || []
-    )
-  })
-
-  const [selectedTreeKey, setSelectedTreeKey] = createSignal<string | null>(
-    null,
-  )
-  const selectedTree = createMemo(() =>
-    selectedTreeKey()
-      ? filteredTrees().find((t) => t.key === selectedTreeKey())!
-      : null,
-  )
-  const [markers, setMarkers] = createSignal<{ [key: string]: Marker }>({})
 
   return (
     <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY}>
       <Map
         style={{ height: '100vh', width: '100vw' }}
         mapId={env.VITE_GOOGLE_MAPS_MAP_ID}
-        defaultCenter={userLocation() || { lat: 22.54992, lng: 0 }}
-        defaultZoom={14}
+        defaultCenter={DEFAULT_MAP_PROPS.center}
+        defaultZoom={DEFAULT_MAP_PROPS.zoom}
         gestureHandling={'greedy'}
         disableDefaultUI
-        ref={(map) => (mapRef = map)}
+        ref={setMapRef}
       >
-        <ClusteredMarkers ref={setMarkers}>
-          {(addToCluster) => (
-            <For each={filteredTrees()}>
-              {(tree) => (
-                <AdvancedMarker
-                  position={tree.position}
-                  ref={(ref) => addToCluster(ref, tree.key)}
-                  onClick={() => setSelectedTreeKey(tree.key)}
-                >
-                  <span class="text-lg">🌳</span>
-                </AdvancedMarker>
-              )}
-            </For>
-          )}
-        </ClusteredMarkers>
-        <Show when={selectedTreeKey() && markers()[selectedTreeKey()!]}>
+        <Key each={clusters()} by={(item) => item.id}>
+          {(featureOrCluster) => {
+            const featureOrCluster_ = featureOrCluster()
+            const properties = featureOrCluster_.properties as Record<
+              string,
+              unknown
+            >
+
+            return (
+              <>
+                <Show when={properties.cluster}>
+                  <ClusterMarker
+                    cluster={
+                      featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+                    }
+                    onClick={() => {
+                      const id = (
+                        featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+                      ).id
+                      setSelectedFeature(id?.toString() ?? null)
+                      alert(
+                        `Cluster ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
+                      )
+                      // Zoom map to cluster
+                      const expansionZoom = getClusterExpansionZoom(
+                        id as number,
+                      )
+                      mapRef()?.setZoom(expansionZoom + 1)
+                      mapRef()?.panTo({
+                        lat: featureOrCluster_.geometry.coordinates[1],
+                        lng: featureOrCluster_.geometry.coordinates[0],
+                      })
+                    }}
+                  />
+                </Show>
+
+                <Show when={!properties.cluster}>
+                  <FeatureMarker
+                    feature={
+                      featureOrCluster_ as Supercluster.PointFeature<POIBasic>
+                    }
+                    onClick={() => {
+                      const id = (
+                        featureOrCluster_ as Supercluster.PointFeature<POIBasic>
+                      ).id
+                      setSelectedFeature(id?.toString() ?? null)
+                      alert(
+                        `Feature ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
+                      )
+                    }}
+                  />
+                </Show>
+              </>
+            )
+          }}
+        </Key>
+        {/* <Show when={selectedTreeKey() && markers()[selectedTreeKey()!]}>
           <InfoWindow
             anchor={markers()[selectedTreeKey()!]}
             onCloseClick={() => setSelectedTreeKey(null)}
           >
-            {selectedTree()?.name}
+            {selectedTree()?.slug}
           </InfoWindow>
-        </Show>
+        </Show> */}
       </Map>
     </APIProvider>
+  )
+}
+
+function ClusterMarker(props: {
+  cluster: Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+  onClick?: () => void
+}) {
+  const position = () => {
+    const [lng, lat] = props.cluster.geometry.coordinates
+    return { lat, lng }
+  }
+  return (
+    <AdvancedMarker
+      position={position()}
+      zIndex={props.cluster.properties.point_count}
+      onClick={props.onClick}
+      // anchorPoint={AdvancedMarkerAnchorPoint.CENTER}
+      // style={{
+      //   width: `${markerSize()}px`,
+      //   height: `${markerSize()}px`,
+      // }}
+      // class="marker cluster"
+    >
+      <div class="flex items-center justify-center">
+        <div
+          class="relative flex items-center justify-center rounded-full shadow-lg"
+          style="width:64px;height:64px"
+        >
+          {/* gradient background matching app colors */}
+          <div class="absolute inset-0 rounded-full bg-green-950 " />
+          <div class="relative z-10 text-green-500 flex items-center justify-center">
+            <Recycle class="w-7 h-7" />
+          </div>
+          {/* count badge */}
+          <div class="absolute -bottom-2 right-0 bg-white text-sm font-semibold text-primary px-2 py-0.5 rounded-full shadow-md">
+            {props.cluster.properties.point_count_abbreviated}
+          </div>
+        </div>
+      </div>
+    </AdvancedMarker>
+  )
+}
+
+function FeatureMarker(props: {
+  feature: Supercluster.PointFeature<POIBasic>
+  onClick?: () => void
+}) {
+  const position = () => {
+    const [lng, lat] = props.feature.geometry.coordinates
+    return { lat, lng }
+  }
+  return (
+    <AdvancedMarker position={position()} onClick={props.onClick}>
+      <div class="flex items-center justify-center">
+        <div
+          class="relative rounded-full shadow-md flex items-center justify-center"
+          style="width:40px;height:40px"
+        >
+          <div class="absolute inset-0 rounded-full bg-green-900" />
+          <div class="relative z-10 text-green-400 flex items-center justify-center">
+            <Leaf class="w-5 h-5" />
+          </div>
+        </div>
+      </div>
+      {/* <InfoWindow
+        open={open()}
+        onOpenChange={setOpen}
+        maxWidth={220}
+        headerContent={
+          <span class="font-semibold">
+            {props.feature.properties.slug ?? props.feature.id}
+          </span>
+        }
+      >
+        <div class="text-sm">
+          {props.feature.properties.slug ?? props.feature.id}
+        </div>
+      </InfoWindow> */}
+    </AdvancedMarker>
   )
 }
