@@ -1,6 +1,7 @@
 import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
-import { createMemo, createSignal, For } from 'solid-js'
+import { createMemo, createSignal, For, Show } from 'solid-js'
 
+import { SearchPill } from '~/components/SearchPill'
 import { TestMap } from '~/components/TestMap'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
@@ -112,11 +113,11 @@ const CollectionPoints = () => {
           class={cn(
             'mb-8 shadow-lg overflow-hidden h-[400px] transition-all duration-300 ease-in-out relative',
             {
-              'h-screen w-screen fixed inset-0': isFullscreen(),
+              'h-screen w-screen fixed inset-0 rounded-none': isFullscreen(),
             },
           )}
         >
-          {/* Toggle fullscreen button (overlay) */}
+          {/* Toggle fullscreen button (overlay on right) */}
           <div class="absolute top-3 right-3 z-40">
             <button
               class="inline-flex items-center gap-2 rounded-md bg-white/80  px-2 py-1 text-sm shadow hover:brightness-95 transition"
@@ -136,6 +137,14 @@ const CollectionPoints = () => {
               </span>
             </button>
           </div>
+
+          <Show when={isFullscreen()}>
+            {/* Search bar (overlay on left) */}
+            <div class="absolute top-3 left-3 z-40">
+              <SearchPill />
+            </div>
+          </Show>
+
           <TestMap />
         </Card>
 
