@@ -1,49 +1,21 @@
 import { Key } from '@solid-primitives/keyed'
 import { FeatureCollection, Point } from 'geojson'
-import { Info, Leaf, Recycle } from 'lucide-solid'
-import { AdvancedMarker, APIProvider, InfoWindow, Map } from 'solid-google-maps'
+import { Leaf, Recycle } from 'lucide-solid'
+import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
 import { createEffect, createSignal, Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
 import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
-import * as POI from '~/poi.json'
 import { env } from '~/utils/env'
 
-// eslint-disable-next-line @typescript-eslint/require-await
 async function loadFeaturesDataset(): Promise<
   FeatureCollection<Point, POIBasic>
 > {
-  const features = POI.data.publicGetMapInformation.points
-    .map(
-      (poi) =>
-        ({
-          id: poi.id,
-          latitude: parseFloat(poi.latitude),
-          longitude: parseFloat(poi.longitude),
-          slug: poi.slug,
-          type: poi.type,
-          families_pope: poi.families_pope,
-          location_types_pope: poi.location_types_pope,
-          plainWastes: poi.plainWastes,
-          plainTypes: poi.plainTypes,
-          plainFilters: poi.plainFilters,
-        }) satisfies POIBasic,
-    )
-    .filter((poi) => !isNaN(poi.latitude) && !isNaN(poi.longitude))
-
-  return {
-    type: 'FeatureCollection',
-    features: features.map((poi) => ({
-      type: 'Feature',
-      id: poi.id,
-      properties: poi,
-      geometry: {
-        type: 'Point',
-        coordinates: [poi.longitude, poi.latitude],
-      },
-    })),
-  }
+  const res = await fetch('/api/location')
+  if (!res.ok) throw new Error(`Failed to fetch locations: ${res.status}`)
+  const data = (await res.json()) as FeatureCollection<Point, POIBasic>
+  return data
 }
 
 const DEFAULT_MAP_PROPS = {
@@ -51,7 +23,7 @@ const DEFAULT_MAP_PROPS = {
   zoom: 14,
 }
 
-export function TestMap(props: { search?: string }) {
+export function TestMap(props: { search?: string | null }) {
   const [features, setFeatures] = createSignal<
     FeatureCollection<Point, POIBasic>
   >({
