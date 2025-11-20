@@ -51,7 +51,7 @@ const DEFAULT_MAP_PROPS = {
   zoom: 14,
 }
 
-export function TestMap() {
+export function TestMap(props: { search?: string }) {
   const [features, setFeatures] = createSignal<
     FeatureCollection<Point, POIBasic>
   >({
