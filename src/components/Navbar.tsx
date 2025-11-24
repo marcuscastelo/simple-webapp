@@ -1,7 +1,7 @@
 import { A } from '@solidjs/router'
 
 import logo from '~/assets/logo.png'
-import { SearchPill } from '~/components/SearchPill'
+import { SearchPill } from '~/components/SearchPill/SearchPill'
 import { mapActions } from '~/modules/map/application/mapActions'
 
 export function Navbar() {

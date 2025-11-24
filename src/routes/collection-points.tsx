@@ -1,7 +1,7 @@
 import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For, Show } from 'solid-js'
 
-import { SearchPill } from '~/components/SearchPill'
+import { SearchPill } from '~/components/SearchPill/SearchPill'
 import { TestMap } from '~/components/TestMap'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'

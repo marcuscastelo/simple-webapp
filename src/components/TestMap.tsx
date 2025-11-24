@@ -4,13 +4,10 @@ import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
 import { Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
+import { useFeatures } from '~/hooks/useFeatures'
+import { DEFAULT_MAP_PROPS, useMapRefSignals } from '~/hooks/useMapRefSignals'
 import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
-import { useFeatures } from '~/modules/map/application/useFeatures'
-import {
-  DEFAULT_MAP_PROPS,
-  useMapRefSignals,
-} from '~/modules/map/application/useMapRefSignals'
 import { env } from '~/utils/env'
 
 export function TestMap(props: { search?: string | null }) {
