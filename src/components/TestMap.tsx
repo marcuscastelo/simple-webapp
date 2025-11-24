@@ -111,24 +111,16 @@ function ClusterMarker(props: {
       position={position()}
       zIndex={props.cluster.properties.point_count}
       onClick={props.onClick}
-      // anchorPoint={AdvancedMarkerAnchorPoint.CENTER}
-      // style={{
-      //   width: `${markerSize()}px`,
-      //   height: `${markerSize()}px`,
-      // }}
-      // class="marker cluster"
     >
       <div class="flex items-center justify-center">
         <div
           class="relative flex items-center justify-center rounded-full shadow-lg"
           style="width:64px;height:64px"
         >
-          {/* gradient background matching app colors */}
           <div class="absolute inset-0 rounded-full bg-green-950 " />
           <div class="relative z-10 text-green-500 flex items-center justify-center">
             <Recycle class="w-7 h-7" />
           </div>
-          {/* count badge */}
           <div class="absolute -bottom-2 right-0 bg-white text-sm font-semibold text-primary px-2 py-0.5 rounded-full shadow-md">
             {props.cluster.properties.point_count_abbreviated}
           </div>
