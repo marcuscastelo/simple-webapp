@@ -3,7 +3,7 @@ import { createSignal, For } from 'solid-js'
 import collectionPoints from '~/collectionPoints.json'
 import { Select, SelectItem } from '~/components/ui/select'
 import { useCollectionPointsFilter } from '~/modules/collection-points/hooks/useCollectionPointsFilter'
-import { useCoordinatesFromUrl } from '~/modules/collection-points/hooks/useCoordinatesFromUrl'
+import { useMapUrlParams } from '~/modules/collection-points/hooks/useMapUrlParams'
 import { CollectionPointsList } from '~/modules/collection-points/sections/CollectionPointsList'
 import { MapContainer } from '~/modules/collection-points/sections/MapContainer'
 import wasteTypes from '~/wasteTypes.json'
@@ -22,7 +22,7 @@ export default function CollectionPoints() {
     setPlaceId,
     isFullscreen,
     setIsFullscreen,
-  } = useCoordinatesFromUrl()
+  } = useMapUrlParams()
 
   const filteredPoints = useCollectionPointsFilter(
     collectionPoints,
