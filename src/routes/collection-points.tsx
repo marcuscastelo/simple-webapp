@@ -1,6 +1,7 @@
 import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For, Show } from 'solid-js'
 
+import * as collectionPoints from '~/collectionPoints.json'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import {
@@ -15,8 +16,9 @@ import { useStringSearchParam } from '~/modules/common/hooks/useStringSearchPara
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
 import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
 import { cn } from '~/utils/cn'
+import * as wasteTypes from '~/wasteTypes.json'
 
-const CollectionPoints = () => {
+export const CollectionPoints = () => {
   const [selectedType, setSelectedType] = createSignal<string>('all')
   const [isFullscreen, setIsFullscreen] = createSignal<boolean>(true)
 
@@ -35,57 +37,6 @@ const CollectionPoints = () => {
     setUserLat(parseFloat(latFromUrl))
     setUserLng(parseFloat(lngFromUrl))
   }
-
-  const wasteTypes = [
-    { value: 'all', label: 'Todos os Tipos' },
-    { value: 'plastic', label: 'Plástico' },
-    { value: 'glass', label: 'Vidro' },
-    { value: 'paper', label: 'Papel' },
-    { value: 'metal', label: 'Metal' },
-  ]
-
-  const collectionPoints = [
-    {
-      id: 1,
-      name: 'EcoPonto Braga Centro',
-      address: 'Praça da República, 25, Braga',
-      phone: '+351 253 123 456',
-      schedule: 'Seg-Sex: 8h-20h | Sáb: 9h-18h',
-      rating: 4.8,
-      types: ['plastic', 'glass', 'paper', 'metal'],
-      company: 'EcoRecicla Braga',
-    },
-    {
-      id: 2,
-      name: 'Ponto Verde Gualtar',
-      address: 'Rua de Gualtar, 150, Braga',
-      phone: '+351 253 987 654',
-      schedule: 'Seg-Dom: 9h-19h',
-      rating: 4.7,
-      types: ['plastic', 'glass', 'paper'],
-      company: 'Verde Minho',
-    },
-    {
-      id: 3,
-      name: 'ReciclaPoint Maximinos',
-      address: 'Avenida da Liberdade, 320, Braga',
-      phone: '+351 253 456 789',
-      schedule: 'Seg-Sex: 9h-19h | Sáb: 10h-17h',
-      rating: 4.9,
-      types: ['plastic', 'metal', 'paper', 'glass'],
-      company: 'Braga Recicla',
-    },
-    {
-      id: 4,
-      name: 'EcoPonto São Victor',
-      address: 'Rua de São Victor, 89, Braga',
-      phone: '+351 253 234 567',
-      schedule: 'Seg-Sex: 8h-19h | Sáb: 9h-17h',
-      rating: 4.6,
-      types: ['plastic', 'glass', 'paper', 'metal'],
-      company: 'EcoRecicla Braga',
-    },
-  ]
 
   const filteredPoints = createMemo(() =>
     selectedType() === 'all'
@@ -253,5 +204,3 @@ const CollectionPoints = () => {
     </div>
   )
 }
-
-export default CollectionPoints
