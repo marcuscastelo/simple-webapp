@@ -1,5 +1,5 @@
-import { CollectionPointsMap } from '~/components/CollectionPointsMap'
 import { useStringSearchParam } from '~/hooks/useStringSearchParam'
+import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
 
 export default function Map() {
   const [search] = useStringSearchParam('search')

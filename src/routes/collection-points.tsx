@@ -1,8 +1,6 @@
 import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For, Show } from 'solid-js'
 
-import { CollectionPointsMap } from '~/components/CollectionPointsMap'
-import { SearchPill } from '~/components/SearchPill/SearchPill'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import {
@@ -14,6 +12,8 @@ import {
 } from '~/components/ui/card'
 import { Select, SelectItem } from '~/components/ui/select'
 import { useStringSearchParam } from '~/hooks/useStringSearchParam'
+import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
+import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
 import { cn } from '~/utils/cn'
 
 const CollectionPoints = () => {
