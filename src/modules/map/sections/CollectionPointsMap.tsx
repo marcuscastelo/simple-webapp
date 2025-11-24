@@ -4,11 +4,14 @@ import { AdvancedMarker, Map } from 'solid-google-maps'
 import { createEffect, Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
-import { useFeatures } from '~/hooks/useFeatures'
-import { useGooglePlacesService } from '~/hooks/useGooglePlacesService'
-import { DEFAULT_MAP_PROPS, useMapRefSignals } from '~/hooks/useMapRefSignals'
-import { POIBasic } from '~/hooks/usePOI'
-import { useSupercluster } from '~/hooks/useSupercluster'
+import { useFeatures } from '~/modules/map/hooks/useFeatures'
+import { useGooglePlacesService } from '~/modules/map/hooks/useGooglePlacesService'
+import {
+  DEFAULT_MAP_PROPS,
+  useMapRefSignals,
+} from '~/modules/map/hooks/useMapRefSignals'
+import { POIBasic } from '~/modules/map/hooks/usePOI'
+import { useSupercluster } from '~/modules/map/hooks/useSupercluster'
 import { env } from '~/utils/env'
 
 export function CollectionPointsMap(props: {

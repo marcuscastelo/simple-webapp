@@ -1,7 +1,7 @@
 import { FeatureCollection, Point } from 'geojson'
 import { createEffect, createSignal } from 'solid-js'
 
-import { POIBasic } from '~/hooks/usePOI'
+import { POIBasic } from '~/modules/map/hooks/usePOI'
 
 async function loadFeaturesDataset(): Promise<
   FeatureCollection<Point, POIBasic>

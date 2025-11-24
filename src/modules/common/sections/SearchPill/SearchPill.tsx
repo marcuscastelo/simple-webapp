@@ -1,9 +1,9 @@
 import { createEffect, createResource, createSignal, Suspense } from 'solid-js'
 
-import { useDebouncedValue } from '~/hooks/useDebouncedValue'
-import { useGeolocation } from '~/hooks/useGeolocation'
-import { useGooglePlacesAutocomplete } from '~/hooks/useGooglePlacesAutocomplete'
-import { useGooglePlacesService } from '~/hooks/useGooglePlacesService'
+import { useDebouncedValue } from '~/modules/common/hooks/useDebouncedValue'
+import { useGeolocation } from '~/modules/map/hooks/useGeolocation'
+import { useGooglePlacesAutocomplete } from '~/modules/map/hooks/useGooglePlacesAutocomplete'
+import { useGooglePlacesService } from '~/modules/map/hooks/useGooglePlacesService'
 
 import { AutocompleteDropdown } from './AutocompleteDropdown'
 import { SearchInput } from './SearchInput'

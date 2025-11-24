@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from '~/components/ui/card'
 import { Select, SelectItem } from '~/components/ui/select'
-import { useStringSearchParam } from '~/hooks/useStringSearchParam'
+import { useStringSearchParam } from '~/modules/common/hooks/useStringSearchParam'
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
 import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
 import { cn } from '~/utils/cn'

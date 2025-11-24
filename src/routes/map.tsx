@@ -1,4 +1,4 @@
-import { useStringSearchParam } from '~/hooks/useStringSearchParam'
+import { useStringSearchParam } from '~/modules/common/hooks/useStringSearchParam'
 import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
 
 export default function Map() {
