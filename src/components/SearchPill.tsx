@@ -8,12 +8,12 @@ import {
   onCleanup,
   Show,
 } from 'solid-js'
+import { onMount } from 'solid-js'
 
 export type SearchPillProps = {
   onUseLocationClick?: () => void
   onSearch?: (query: string) => void
   onPlaceSelected?: (place: google.maps.places.PlaceResult) => void
-  map?: google.maps.Map | null
 }
 
 export function SearchPill(props: SearchPillProps) {
@@ -31,13 +31,97 @@ export function SearchPill(props: SearchPillProps) {
     createSignal<google.maps.places.AutocompletePrediction | null>(null)
 
   let inputRef: HTMLInputElement | undefined
+  // Hidden container used to initialize PlacesService without a visible map
+  const hiddenContainer = document.createElement('div')
+  const [mapsScriptLoaded, setMapsScriptLoaded] = createSignal(false)
+
+  // Helper: dynamically inject Google Maps JS with places library if needed
+  function loadMapsScript(apiKey?: string) {
+    return new Promise<void>((resolve, reject) => {
+      const globalWithGoogle = globalThis as unknown as {
+        google?: {
+          maps?: object
+        }
+      }
+      if (globalWithGoogle.google && globalWithGoogle.google.maps) {
+        resolve()
+        return
+      }
+      if (!apiKey) {
+        reject(new Error('No Google Maps API key available'))
+        return
+      }
+      const existing = document.querySelector(
+        `script[src*="maps.googleapis.com/maps/api/js"]`,
+      )
+      if (existing) {
+        existing.addEventListener('load', () => resolve())
+        existing.addEventListener('error', () =>
+          reject(new Error('Failed to load Google Maps script')),
+        )
+        return
+      }
+
+      const script = document.createElement('script')
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`
+      script.async = true
+      script.defer = true
+      script.addEventListener('load', () => resolve())
+      script.addEventListener('error', () =>
+        reject(new Error('Failed to load Google Maps script')),
+      )
+      document.head.appendChild(script)
+    })
+  }
+
+  // If the host app doesn't provide APIProvider / useMapsLibrary, fall back to
+  // loading the script directly. This makes the component more robust in apps
+  // that forgot to wrap with APIProvider.
+  onMount(() => {
+    // If useMapsLibrary reported ready already, nothing to do
+    if (placesLibrary && placesLibrary()) {
+      setMapsScriptLoaded(true)
+      return
+    }
+
+    // Try to load from env var used in this project
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+    if (!apiKey) {
+      console.warn('Google Maps API key not found in VITE_GOOGLE_MAPS_API_KEY')
+      return
+    }
+
+    loadMapsScript(apiKey)
+      .then(() => {
+        setMapsScriptLoaded(true)
+        console.debug('Google Maps script loaded by SearchPill fallback')
+      })
+      .catch((err) => {
+        console.warn('Could not load Google Maps script')
+        console.debug(err)
+      })
+  })
 
   createEffect(() => {
-    if (!props.map || !placesLibrary()) return
+    // Wait until either the project's useMapsLibrary reports ready, or our
+    // fallback script has loaded
+    if (!placesLibrary() && !mapsScriptLoaded()) return
+
+    const globalWithGoogle = globalThis as unknown as {
+      google?: {
+        maps?: object
+      }
+    }
+    if (!globalWithGoogle.google || !globalWithGoogle.google.maps) {
+      console.warn('google.maps not available after load; aborting Places init')
+      return
+    }
 
     setSessionToken(new google.maps.places.AutocompleteSessionToken())
     setAutocompleteService(new google.maps.places.AutocompleteService())
-    setPlacesService(new google.maps.places.PlacesService(props.map))
+    // You can create a PlacesService with a hidden div when you don't have a Map
+    // This avoids requiring a visible google.maps.Map instance
+    setPlacesService(new google.maps.places.PlacesService(hiddenContainer))
 
     onCleanup(() => {
       setAutocompleteService(null)
