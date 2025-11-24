@@ -14,6 +14,8 @@ import { env } from '~/utils/env'
 export function TestMap(props: {
   search?: string | null
   placeId?: string | null
+  lat?: number | null
+  lng?: number | null
 }) {
   const [features] = useFeatures()
   const { mapRef, setMapRef, bounds, zoom } = useMapRefSignals()
@@ -82,6 +84,24 @@ export function TestMap(props: {
       setTimeout(() => {
         zoomToPlaceId(id)
       }, 500)
+    }
+  })
+
+  createEffect(() => {
+    const lat = props.lat
+    const lng = props.lng
+    const map = mapRef()
+
+    if (
+      lat !== null &&
+      lng !== null &&
+      lat !== undefined &&
+      lng !== undefined &&
+      map
+    ) {
+      console.log('[TestMap] Zooming to user location:', { lat, lng })
+      map.panTo({ lat, lng })
+      map.setZoom(16)
     }
   })
 

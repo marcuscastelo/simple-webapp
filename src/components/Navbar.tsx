@@ -14,6 +14,7 @@ export function Navbar() {
             <SearchPill
               onSearch={mapActions.openMapsPageWithSearch}
               onPlaceSelected={mapActions.openMapPageWithPlaceId}
+              onUseLocationClick={mapActions.openMapPageWithCoordinates}
             />
           </div>
           <GoogleLoginButton />
