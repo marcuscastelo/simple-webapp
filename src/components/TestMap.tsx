@@ -28,6 +28,15 @@ export function TestMap(props: { search?: string | null }) {
     }),
   )
 
+  const zoomToCluster = (
+    cluster: Supercluster.ClusterFeature<Supercluster.ClusterProperties>,
+  ) => {
+    const expansionZoom = getClusterExpansionZoom(cluster.id as number)
+    const [lng, lat] = cluster.geometry.coordinates
+    mapRef()?.setZoom(expansionZoom + 1)
+    mapRef()?.panTo({ lat, lng })
+  }
+
   return (
     <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY}>
       <Map
@@ -40,61 +49,52 @@ export function TestMap(props: { search?: string | null }) {
         ref={setMapRef}
       >
         <Key each={clusters()} by={(item) => item.id}>
-          {(featureOrCluster) => {
-            const featureOrCluster_ = featureOrCluster()
-            const properties = featureOrCluster_.properties as Record<
-              string,
-              unknown
-            >
-
-            return (
-              <>
-                <Show when={properties.cluster}>
-                  <ClusterMarker
-                    cluster={
-                      featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
-                    }
-                    onClick={() => {
-                      const id = (
-                        featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
-                      ).id
-                      alert(
-                        `Cluster ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
-                      )
-                      // Zoom map to cluster
-                      const expansionZoom = getClusterExpansionZoom(
-                        id as number,
-                      )
-                      mapRef()?.setZoom(expansionZoom + 1)
-                      mapRef()?.panTo({
-                        lat: featureOrCluster_.geometry.coordinates[1],
-                        lng: featureOrCluster_.geometry.coordinates[0],
-                      })
-                    }}
-                  />
-                </Show>
-
-                <Show when={!properties.cluster}>
-                  <FeatureMarker
-                    feature={
-                      featureOrCluster_ as Supercluster.PointFeature<POIBasic>
-                    }
-                    onClick={() => {
-                      const id = (
-                        featureOrCluster_ as Supercluster.PointFeature<POIBasic>
-                      ).id
-                      alert(
-                        `Feature ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
-                      )
-                    }}
-                  />
-                </Show>
-              </>
-            )
-          }}
+          {(featureOrCluster) => (
+            <DynamicFeatureClusterMarker
+              featureOrCluster={featureOrCluster()}
+              zoomToCluster={zoomToCluster}
+            />
+          )}
         </Key>
       </Map>
     </APIProvider>
+  )
+}
+
+function DynamicFeatureClusterMarker(props: {
+  featureOrCluster:
+    | Supercluster.PointFeature<POIBasic>
+    | Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+  zoomToCluster?: (
+    featureOrCluster: Supercluster.ClusterFeature<Supercluster.ClusterProperties>,
+  ) => void
+}) {
+  const isCluster = () =>
+    (props.featureOrCluster.properties as Record<string, unknown>).cluster
+  return (
+    <>
+      <Show when={isCluster()}>
+        <ClusterMarker
+          cluster={
+            props.featureOrCluster as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
+          }
+          onClick={() => {
+            if (isCluster()) {
+              props.zoomToCluster?.(
+                props.featureOrCluster as Supercluster.ClusterFeature<Supercluster.ClusterProperties>,
+              )
+            }
+          }}
+        />
+      </Show>
+      <Show when={!isCluster()}>
+        <FeatureMarker
+          feature={
+            props.featureOrCluster as Supercluster.PointFeature<POIBasic>
+          }
+        />
+      </Show>
+    </>
   )
 }
 
