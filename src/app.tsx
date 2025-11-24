@@ -2,9 +2,10 @@ import './app.css'
 
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
+import { APIProvider } from 'solid-google-maps'
 import { onMount, Suspense } from 'solid-js'
 
-import { validateEnvVars } from '~/utils/env'
+import { env, validateEnvVars } from '~/utils/env'
 
 export default function App() {
   onMount(() => {
@@ -15,7 +16,12 @@ export default function App() {
     <Router
       root={(props) => (
         <>
-          <Suspense>{props.children}</Suspense>
+          <APIProvider
+            apiKey={env.VITE_GOOGLE_MAPS_API_KEY}
+            libraries={['places']}
+          >
+            <Suspense>{props.children}</Suspense>
+          </APIProvider>
         </>
       )}
     >

@@ -86,26 +86,24 @@ export function TestMap(props: {
   })
 
   return (
-    <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY} libraries={['places']}>
-      <Map
-        style={{ height: '100vh', width: '100vw' }}
-        mapId={env.VITE_GOOGLE_MAPS_MAP_ID}
-        defaultCenter={DEFAULT_MAP_PROPS.center}
-        defaultZoom={DEFAULT_MAP_PROPS.zoom}
-        gestureHandling={'greedy'}
-        disableDefaultUI
-        ref={setMapRef}
-      >
-        <Key each={clusters()} by={(item) => item.id}>
-          {(featureOrCluster) => (
-            <DynamicFeatureClusterMarker
-              featureOrCluster={featureOrCluster()}
-              zoomToCluster={zoomToCluster}
-            />
-          )}
-        </Key>
-      </Map>
-    </APIProvider>
+    <Map
+      style={{ height: '100vh', width: '100vw' }}
+      mapId={env.VITE_GOOGLE_MAPS_MAP_ID}
+      defaultCenter={DEFAULT_MAP_PROPS.center}
+      defaultZoom={DEFAULT_MAP_PROPS.zoom}
+      gestureHandling={'greedy'}
+      disableDefaultUI
+      ref={setMapRef}
+    >
+      <Key each={clusters()} by={(item) => item.id}>
+        {(featureOrCluster) => (
+          <DynamicFeatureClusterMarker
+            featureOrCluster={featureOrCluster()}
+            zoomToCluster={zoomToCluster}
+          />
+        )}
+      </Key>
+    </Map>
   )
 }
 
