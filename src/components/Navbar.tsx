@@ -11,7 +11,10 @@ export function Navbar() {
         <div class="flex items-center justify-between gap-4">
           <Logo />
           <div class="max-w-1/2 flex-1">
-            <SearchPill onSearch={mapActions.openMapsPageWithSearch} />
+            <SearchPill
+              onSearch={mapActions.openMapsPageWithSearch}
+              onPlaceSelected={mapActions.openMapPageWithPlaceId}
+            />
           </div>
           <GoogleLoginButton />
         </div>

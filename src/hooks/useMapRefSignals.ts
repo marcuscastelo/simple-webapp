@@ -5,6 +5,14 @@ export const DEFAULT_MAP_PROPS = {
   zoom: 14,
 }
 
+/**
+ * Hook for managing map reference and reactive bounds/zoom signals.
+ *
+ * @returns Map reference, bounds, and zoom signals
+ *
+ * @example
+ * const { mapRef, setMapRef, bounds, zoom } = useMapRefSignals()
+ */
 export function useMapRefSignals() {
   const [mapRef, setMapRef] = createSignal<google.maps.Map | null>(null)
 
@@ -41,6 +49,7 @@ export function useMapRefSignals() {
     const map = mapRef()
     if (!map) return
 
+    // eslint-disable-next-line solid/reactivity
     const listener = map.addListener('idle', () => {
       handleBoundsChanged()
     })

@@ -1,18 +1,28 @@
 import { Key } from '@solid-primitives/keyed'
 import { Leaf, Recycle } from 'lucide-solid'
 import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
-import { Show } from 'solid-js'
+import { createEffect, Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
 import { useFeatures } from '~/hooks/useFeatures'
+import { useGooglePlacesService } from '~/hooks/useGooglePlacesService'
 import { DEFAULT_MAP_PROPS, useMapRefSignals } from '~/hooks/useMapRefSignals'
 import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
 import { env } from '~/utils/env'
 
-export function TestMap(props: { search?: string | null }) {
+export function TestMap(props: {
+  search?: string | null
+  placeId?: string | null
+}) {
   const [features] = useFeatures()
   const { mapRef, setMapRef, bounds, zoom } = useMapRefSignals()
+
+  createEffect(() => {
+    console.log('[TestMap] mapRef changed:', mapRef())
+  })
+
+  const { service: placesService } = useGooglePlacesService({ mapRef })
 
   const { clusters, getClusterExpansionZoom } = useSupercluster(
     features,
@@ -25,6 +35,32 @@ export function TestMap(props: { search?: string | null }) {
     }),
   )
 
+  const zoomToPlaceId = (placeId: string) => {
+    const service = placesService()
+    if (!service) {
+      alert('PlacesService not initialized')
+      return
+    }
+    service.getDetails(
+      {
+        placeId,
+        fields: ['geometry'],
+      },
+      (place, status) => {
+        if (
+          status === google.maps.places.PlacesServiceStatus.OK &&
+          place?.geometry?.location
+        ) {
+          const location = place.geometry.location
+          mapRef()?.panTo(location)
+          mapRef()?.setZoom(16)
+        } else {
+          alert(`Failed to get place details: ${status}`)
+        }
+      },
+    )
+  }
+
   const zoomToCluster = (
     cluster: Supercluster.ClusterFeature<Supercluster.ClusterProperties>,
   ) => {
@@ -34,8 +70,23 @@ export function TestMap(props: { search?: string | null }) {
     mapRef()?.panTo({ lat, lng })
   }
 
+  createEffect(() => {
+    if (!placesService()) {
+      alert('PlacesService not initialized yet')
+      return
+    }
+    alert('PlacesService initialized')
+
+    const id = props.placeId
+    if (id) {
+      setTimeout(() => {
+        zoomToPlaceId(id)
+      }, 500)
+    }
+  })
+
   return (
-    <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY}>
+    <APIProvider apiKey={env.VITE_GOOGLE_MAPS_API_KEY} libraries={['places']}>
       <Map
         style={{ height: '100vh', width: '100vw' }}
         mapId={env.VITE_GOOGLE_MAPS_MAP_ID}

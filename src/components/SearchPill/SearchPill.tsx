@@ -1,9 +1,8 @@
-import { useMapsLibrary } from 'solid-google-maps'
 import { createEffect, createResource, createSignal, Suspense } from 'solid-js'
 
 import { useDebouncedValue } from '~/hooks/useDebouncedValue'
-import { useGoogleMapsScript } from '~/hooks/useGoogleMapsScript'
 import { useGooglePlacesAutocomplete } from '~/hooks/useGooglePlacesAutocomplete'
+import { useGooglePlacesService } from '~/hooks/useGooglePlacesService'
 
 import { AutocompleteDropdown } from './AutocompleteDropdown'
 import { SearchInput } from './SearchInput'
@@ -11,7 +10,7 @@ import { SearchInput } from './SearchInput'
 export type SearchPillProps = {
   onUseLocationClick?: () => void
   onSearch?: (query: string) => void
-  onPlaceSelected?: (place: google.maps.places.PlaceResult) => void
+  onPlaceSelected?: (place: google.maps.places.PlaceResult['place_id']) => void
 }
 /**
  * Search pill component with Google Places autocomplete.
@@ -20,21 +19,19 @@ export type SearchPillProps = {
  * @returns Search pill UI with autocomplete functionality
  */
 export function SearchPill(props: SearchPillProps) {
-  const placesLibrary = useMapsLibrary('places')
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-  const fallbackScriptLoaded = useGoogleMapsScript(apiKey)
 
   const [query, setQuery] = createSignal('')
   const [debouncedQuery, setDebouncedQuery] = useDebouncedValue('', 300)
   const [isOpen, setIsOpen] = createSignal(false)
   const [selectedPrediction, setSelectedPrediction] =
     createSignal<google.maps.places.AutocompletePrediction | null>(null)
-  const [placesService, setPlacesService] =
-    createSignal<google.maps.places.PlacesService | null>(null)
 
   const [inputRef, setInputRef] = createSignal<HTMLInputElement | null>(null)
 
-  const isReady = () => Boolean(placesLibrary()) || fallbackScriptLoaded()
+  const { service: placesService, isReady } = useGooglePlacesService({
+    apiKey,
+  })
 
   const { predictions, loading } = useGooglePlacesAutocomplete({
     isReady,
@@ -48,37 +45,12 @@ export function SearchPill(props: SearchPillProps) {
     }
   })
 
-  createEffect(() => {
-    if (!isReady()) return
-
-    const globalWithGoogle = globalThis as unknown as {
-      google?: {
-        maps?: {
-          places?: {
-            PlacesService: new (
-              container: HTMLDivElement,
-            ) => google.maps.places.PlacesService
-          }
-        }
-      }
-    }
-
-    if (!globalWithGoogle.google?.maps?.places) {
-      console.warn('Google Maps Places API not available')
-      return
-    }
-
-    const hiddenContainer = document.createElement('div')
-    setPlacesService(new google.maps.places.PlacesService(hiddenContainer))
-  })
-
   const [placeDetails] = createResource(
     () => ({
       service: placesService(),
       placeId: selectedPrediction()?.place_id,
     }),
-    async (params) => {
-      const { service, placeId } = params
+    async ({ service, placeId }) => {
       if (!placeId || !service) return null
 
       try {
@@ -107,7 +79,7 @@ export function SearchPill(props: SearchPillProps) {
   createEffect(() => {
     const details = placeDetails()
     if (details) {
-      props.onPlaceSelected?.(details)
+      props.onPlaceSelected?.(details.place_id)
     }
   })
 
@@ -116,6 +88,7 @@ export function SearchPill(props: SearchPillProps) {
   ) => {
     setQuery(prediction.structured_formatting.main_text)
     setSelectedPrediction(prediction)
+    props.onPlaceSelected?.(prediction.place_id)
     setIsOpen(false)
     setTimeout(() => {
       inputRef()?.blur()

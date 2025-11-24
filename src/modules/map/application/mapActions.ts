@@ -8,4 +8,15 @@ export const mapActions = {
     // TODO: use router navigation instead of full page reload
     window.location.href = url.toString()
   },
+
+  openMapPageWithPlaceId: (placeId: string | undefined) => {
+    // Opens /map route with placeId query param
+    const url = new URL(window.location.origin + '/map')
+    if (placeId) {
+      url.searchParams.set('placeId', placeId)
+    }
+
+    // TODO: use router navigation instead of full page reload
+    window.location.href = url.toString()
+  },
 }
