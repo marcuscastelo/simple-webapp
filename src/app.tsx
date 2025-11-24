@@ -5,6 +5,7 @@ import { FileRoutes } from '@solidjs/start/router'
 import { APIProvider } from 'solid-google-maps'
 import { onMount, Suspense } from 'solid-js'
 
+import { Navbar } from '~/modules/common/sections/Navbar'
 import { env, validateEnvVars } from '~/utils/env'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             apiKey={env.VITE_GOOGLE_MAPS_API_KEY}
             libraries={['places']}
           >
+            <Navbar />
             <Suspense>{props.children}</Suspense>
           </APIProvider>
         </>
