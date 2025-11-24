@@ -1,8 +1,8 @@
 import { Clock, MapPin, Maximize, Minimize, Phone, Star } from 'lucide-solid'
 import { createMemo, createSignal, For, Show } from 'solid-js'
 
+import { CollectionPointsMap } from '~/components/CollectionPointsMap'
 import { SearchPill } from '~/components/SearchPill/SearchPill'
-import { TestMap } from '~/components/TestMap'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import {
@@ -169,7 +169,7 @@ const CollectionPoints = () => {
             </div>
           </Show>
 
-          <TestMap
+          <CollectionPointsMap
             placeId={placeId()}
             search={search()}
             lat={userLat()}

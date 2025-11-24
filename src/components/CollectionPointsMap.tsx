@@ -11,7 +11,7 @@ import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
 import { env } from '~/utils/env'
 
-export function TestMap(props: {
+export function CollectionPointsMap(props: {
   search?: string | null
   placeId?: string | null
   lat?: number | null

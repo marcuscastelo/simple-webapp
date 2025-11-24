@@ -1,4 +1,4 @@
-import { TestMap } from '~/components/TestMap'
+import { CollectionPointsMap } from '~/components/CollectionPointsMap'
 import { useStringSearchParam } from '~/hooks/useStringSearchParam'
 
 export default function Map() {
@@ -12,7 +12,12 @@ export default function Map() {
 
   return (
     <main class="">
-      <TestMap search={search()} placeId={placeId()} lat={lat} lng={lng} />
+      <CollectionPointsMap
+        search={search()}
+        placeId={placeId()}
+        lat={lat}
+        lng={lng}
+      />
     </main>
   )
 }
