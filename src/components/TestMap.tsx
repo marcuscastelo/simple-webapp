@@ -1,5 +1,4 @@
 import { Key } from '@solid-primitives/keyed'
-import { FeatureCollection, Point } from 'geojson'
 import { Leaf, Recycle } from 'lucide-solid'
 import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
 import { createEffect, createSignal, Show } from 'solid-js'
@@ -7,16 +6,8 @@ import Supercluster from 'supercluster'
 
 import { POIBasic } from '~/hooks/usePOI'
 import { useSupercluster } from '~/hooks/useSupercluster'
+import { useFeatures } from '~/modules/map/application/useFeatures'
 import { env } from '~/utils/env'
-
-async function loadFeaturesDataset(): Promise<
-  FeatureCollection<Point, POIBasic>
-> {
-  const res = await fetch('/api/location')
-  if (!res.ok) throw new Error(`Failed to fetch locations: ${res.status}`)
-  const data = (await res.json()) as FeatureCollection<Point, POIBasic>
-  return data
-}
 
 const DEFAULT_MAP_PROPS = {
   center: { lat: 41.544581, lng: -8.427375 },
@@ -24,23 +15,12 @@ const DEFAULT_MAP_PROPS = {
 }
 
 export function TestMap(props: { search?: string | null }) {
-  const [features, setFeatures] = createSignal<
-    FeatureCollection<Point, POIBasic>
-  >({
-    type: 'FeatureCollection',
-    features: [],
-  })
+  const [features] = useFeatures()
 
   const [bounds, setBounds] = createSignal<[number, number, number, number]>([
     -180, -90, 180, 90,
   ])
   const [zoom, setZoom] = createSignal<number>(DEFAULT_MAP_PROPS.zoom)
-  const [center, setCenter] = createSignal<google.maps.LatLngLiteral>(
-    DEFAULT_MAP_PROPS.center,
-  )
-  const [selectedFeature, setSelectedFeature] = createSignal<string | null>(
-    null,
-  )
 
   const { clusters, getClusterExpansionZoom } = useSupercluster(
     features,
@@ -60,7 +40,6 @@ export function TestMap(props: { search?: string | null }) {
       // const bounds = new google.maps.LatLngBounds(input.detail.bounds)
       const bounds = mapRef()!.getBounds()!
       const zoom = mapRef()!.getZoom()!
-      const center = mapRef()!.getCenter()!
 
       const sw = bounds.getSouthWest()
       const ne = bounds.getNorthEast()
@@ -75,7 +54,6 @@ export function TestMap(props: { search?: string | null }) {
 
       setBounds([w, s, e, n])
       setZoom(zoom)
-      setCenter({ lat: center.lat(), lng: center.lng() })
     } catch {
       // ignore errors from bounds being invalid during map initialization
     }
@@ -92,13 +70,6 @@ export function TestMap(props: { search?: string | null }) {
     return () => {
       google.maps.event.removeListener(listener)
     }
-  })
-
-  // load data asynchronously
-  createEffect(() => {
-    loadFeaturesDataset()
-      .then((data) => setFeatures(data))
-      .catch(console.error)
   })
 
   return (
@@ -131,7 +102,6 @@ export function TestMap(props: { search?: string | null }) {
                       const id = (
                         featureOrCluster_ as Supercluster.ClusterFeature<Supercluster.ClusterProperties>
                       ).id
-                      setSelectedFeature(id?.toString() ?? null)
                       alert(
                         `Cluster ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
                       )
@@ -157,7 +127,6 @@ export function TestMap(props: { search?: string | null }) {
                       const id = (
                         featureOrCluster_ as Supercluster.PointFeature<POIBasic>
                       ).id
-                      setSelectedFeature(id?.toString() ?? null)
                       alert(
                         `Feature ${id} clicked\nDetails: ${JSON.stringify(properties, null, 2)}`,
                       )
