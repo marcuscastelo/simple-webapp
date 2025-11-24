@@ -1,6 +1,7 @@
 import { createEffect, createResource, createSignal, Suspense } from 'solid-js'
 
 import { useDebouncedValue } from '~/hooks/useDebouncedValue'
+import { useGeolocation } from '~/hooks/useGeolocation'
 import { useGooglePlacesAutocomplete } from '~/hooks/useGooglePlacesAutocomplete'
 import { useGooglePlacesService } from '~/hooks/useGooglePlacesService'
 
@@ -8,7 +9,7 @@ import { AutocompleteDropdown } from './AutocompleteDropdown'
 import { SearchInput } from './SearchInput'
 
 export type SearchPillProps = {
-  onUseLocationClick?: () => void
+  onUseLocationClick?: (lat: number, lng: number) => void
   onSearch?: (query: string) => void
   onPlaceSelected?: (place: google.maps.places.PlaceResult['place_id']) => void
 }
@@ -31,6 +32,17 @@ export function SearchPill(props: SearchPillProps) {
 
   const { service: placesService, isReady } = useGooglePlacesService({
     apiKey,
+  })
+
+  const { getCurrentPosition, loading: geoLoading } = useGeolocation({
+    onSuccess: (position) => {
+      console.log('[SearchPill] Got user location:', position)
+      props.onUseLocationClick?.(position.lat, position.lng)
+    },
+    onError: (error) => {
+      console.error('[SearchPill] Geolocation error:', error)
+      alert(`Erro ao obter localização: ${error.message}`)
+    },
   })
 
   const { predictions, loading } = useGooglePlacesAutocomplete({
@@ -105,6 +117,11 @@ export function SearchPill(props: SearchPillProps) {
     setIsOpen(true)
   }
 
+  const handleUseLocationClick = () => {
+    if (geoLoading()) return
+    getCurrentPosition()
+  }
+
   return (
     <div class="flex-1 mx-4 min-w-0 relative">
       <SearchInput
@@ -112,7 +129,9 @@ export function SearchPill(props: SearchPillProps) {
         onInput={setQuery}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onUseLocationClick={props.onUseLocationClick}
+        onUseLocationClick={
+          props.onUseLocationClick ? handleUseLocationClick : undefined
+        }
         onSearch={props.onSearch}
         ref={setInputRef}
       />

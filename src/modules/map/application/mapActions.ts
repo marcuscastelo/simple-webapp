@@ -19,4 +19,14 @@ export const mapActions = {
     // TODO: use router navigation instead of full page reload
     window.location.href = url.toString()
   },
+
+  openMapPageWithCoordinates: (lat: number, lng: number) => {
+    // Opens /map route with coordinates query params
+    const url = new URL(window.location.origin + '/map')
+    url.searchParams.set('lat', lat.toString())
+    url.searchParams.set('lng', lng.toString())
+
+    // TODO: use router navigation instead of full page reload
+    window.location.href = url.toString()
+  },
 }

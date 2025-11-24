@@ -1,6 +1,6 @@
 import { Key } from '@solid-primitives/keyed'
 import { Leaf, Recycle } from 'lucide-solid'
-import { AdvancedMarker, APIProvider, Map } from 'solid-google-maps'
+import { AdvancedMarker, Map } from 'solid-google-maps'
 import { createEffect, Show } from 'solid-js'
 import Supercluster from 'supercluster'
 
@@ -14,6 +14,8 @@ import { env } from '~/utils/env'
 export function TestMap(props: {
   search?: string | null
   placeId?: string | null
+  lat?: number | null
+  lng?: number | null
 }) {
   const [features] = useFeatures()
   const { mapRef, setMapRef, bounds, zoom } = useMapRefSignals()
@@ -38,7 +40,7 @@ export function TestMap(props: {
   const zoomToPlaceId = (placeId: string) => {
     const service = placesService()
     if (!service) {
-      alert('PlacesService not initialized')
+      console.warn('PlacesService not initialized')
       return
     }
     service.getDetails(
@@ -55,7 +57,7 @@ export function TestMap(props: {
           mapRef()?.panTo(location)
           mapRef()?.setZoom(16)
         } else {
-          alert(`Failed to get place details: ${status}`)
+          console.warn(`Failed to get place details: ${status}`)
         }
       },
     )
@@ -72,16 +74,34 @@ export function TestMap(props: {
 
   createEffect(() => {
     if (!placesService()) {
-      alert('PlacesService not initialized yet')
+      console.warn('PlacesService not initialized yet')
       return
     }
-    alert('PlacesService initialized')
+    console.log('PlacesService initialized')
 
     const id = props.placeId
     if (id) {
       setTimeout(() => {
         zoomToPlaceId(id)
       }, 500)
+    }
+  })
+
+  createEffect(() => {
+    const lat = props.lat
+    const lng = props.lng
+    const map = mapRef()
+
+    if (
+      lat !== null &&
+      lng !== null &&
+      lat !== undefined &&
+      lng !== undefined &&
+      map
+    ) {
+      console.log('[TestMap] Zooming to user location:', { lat, lng })
+      map.panTo({ lat, lng })
+      map.setZoom(16)
     }
   })
 

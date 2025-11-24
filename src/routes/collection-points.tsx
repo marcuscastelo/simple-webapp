@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '~/components/ui/card'
 import { Select, SelectItem } from '~/components/ui/select'
+import { useStringSearchParam } from '~/hooks/useStringSearchParam'
 import { cn } from '~/utils/cn'
 
 const CollectionPoints = () => {
@@ -21,6 +22,19 @@ const CollectionPoints = () => {
 
   const [search, setSearch] = createSignal<string | null>(null)
   const [placeId, setPlaceId] = createSignal<string | null>(null)
+  const [userLat, setUserLat] = createSignal<number | null>(null)
+  const [userLng, setUserLng] = createSignal<number | null>(null)
+
+  const [getLatParam] = useStringSearchParam('lat')
+  const [getLngParam] = useStringSearchParam('lng')
+
+  // Read coordinates from URL on mount
+  const latFromUrl = getLatParam()
+  const lngFromUrl = getLngParam()
+  if (latFromUrl && lngFromUrl) {
+    setUserLat(parseFloat(latFromUrl))
+    setUserLng(parseFloat(lngFromUrl))
+  }
 
   const wasteTypes = [
     { value: 'all', label: 'Todos os Tipos' },
@@ -144,11 +158,23 @@ const CollectionPoints = () => {
           <Show when={isFullscreen()}>
             {/* Search bar (overlay on left) */}
             <div class="absolute top-3 left-3 z-40">
-              <SearchPill onSearch={setSearch} onPlaceSelected={setPlaceId} />
+              <SearchPill
+                onSearch={setSearch}
+                onPlaceSelected={setPlaceId}
+                onUseLocationClick={(lat, lng) => {
+                  setUserLat(lat)
+                  setUserLng(lng)
+                }}
+              />
             </div>
           </Show>
 
-          <TestMap placeId={placeId()} search={search()} />
+          <TestMap
+            placeId={placeId()}
+            search={search()}
+            lat={userLat()}
+            lng={userLng()}
+          />
         </Card>
 
         {/* Filter */}
