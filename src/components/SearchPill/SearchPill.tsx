@@ -1,5 +1,5 @@
 import { useMapsLibrary } from 'solid-google-maps'
-import { createEffect, createResource, createSignal } from 'solid-js'
+import { createEffect, createResource, createSignal, Suspense } from 'solid-js'
 
 import { useDebouncedValue } from '~/hooks/useDebouncedValue'
 import { useGoogleMapsScript } from '~/hooks/useGoogleMapsScript'
@@ -32,7 +32,7 @@ export function SearchPill(props: SearchPillProps) {
   const [placesService, setPlacesService] =
     createSignal<google.maps.places.PlacesService | null>(null)
 
-  let inputRef: HTMLInputElement | null = null
+  const [inputRef, setInputRef] = createSignal<HTMLInputElement | null>(null)
 
   const isReady = () => Boolean(placesLibrary()) || fallbackScriptLoaded()
 
@@ -118,7 +118,7 @@ export function SearchPill(props: SearchPillProps) {
     setSelectedPrediction(prediction)
     setIsOpen(false)
     setTimeout(() => {
-      inputRef?.blur()
+      inputRef()?.blur()
     }, 0)
   }
 
@@ -141,16 +141,18 @@ export function SearchPill(props: SearchPillProps) {
         onBlur={handleBlur}
         onUseLocationClick={props.onUseLocationClick}
         onSearch={props.onSearch}
-        ref={(r) => (inputRef = r)}
+        ref={setInputRef}
       />
 
-      <AutocompleteDropdown
-        isOpen={isOpen}
-        query={query}
-        predictions={predictions}
-        loading={loading}
-        onSelectPrediction={handleSelectPrediction}
-      />
+      <Suspense fallback={null}>
+        <AutocompleteDropdown
+          isOpen={isOpen}
+          query={query}
+          predictions={predictions}
+          loading={loading}
+          onSelectPrediction={handleSelectPrediction}
+        />
+      </Suspense>
     </div>
   )
 }
