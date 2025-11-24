@@ -11,10 +11,18 @@ import wasteTypes from '~/wasteTypes.json'
 export default function CollectionPoints() {
   const [selectedType, setSelectedType] = createSignal<string>('all')
 
-  const [search, setSearch] = createSignal<string | null>(null)
-  const [placeId, setPlaceId] = createSignal<string | null>(null)
-
-  const { userLat, setUserLat, userLng, setUserLng } = useCoordinatesFromUrl()
+  const {
+    userLat,
+    setUserLat,
+    userLng,
+    setUserLng,
+    search,
+    setSearch,
+    placeId,
+    setPlaceId,
+    isFullscreen,
+    setIsFullscreen,
+  } = useCoordinatesFromUrl()
 
   const filteredPoints = useCollectionPointsFilter(
     collectionPoints,
@@ -41,9 +49,11 @@ export default function CollectionPoints() {
           search={search}
           userLat={userLat}
           userLng={userLng}
+          isFullscreen={isFullscreen}
           onSearchChange={setSearch}
           onPlaceSelected={setPlaceId}
           onLocationSelect={handleLocationSelect}
+          onFullscreenToggle={setIsFullscreen}
         />
 
         {/* Filter */}

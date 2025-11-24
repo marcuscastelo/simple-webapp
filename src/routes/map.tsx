@@ -1,23 +1,12 @@
-import { useStringSearchParam } from '~/modules/common/hooks/useStringSearchParam'
-import { CollectionPointsMap } from '~/modules/map/sections/CollectionPointsMap'
+import { Navigate, useSearchParams } from '@solidjs/router'
 
 export default function Map() {
-  const [search] = useStringSearchParam('search')
-  const [placeId] = useStringSearchParam('placeId')
-  const [latParam] = useStringSearchParam('lat')
-  const [lngParam] = useStringSearchParam('lng')
+  const [searchParams] = useSearchParams()
 
-  const lat = latParam() ? parseFloat(latParam()!) : null
-  const lng = lngParam() ? parseFloat(lngParam()!) : null
+  const newSearchParams = new URLSearchParams({
+    ...searchParams,
+    fullscreen: 'true',
+  })
 
-  return (
-    <main class="">
-      <CollectionPointsMap
-        search={search()}
-        placeId={placeId()}
-        lat={lat}
-        lng={lng}
-      />
-    </main>
-  )
+  return <Navigate href={`/collection-points?${newSearchParams.toString()}`} />
 }

@@ -1,5 +1,5 @@
 import { Maximize, Minimize } from 'lucide-solid'
-import { Accessor, createSignal, Setter, Show } from 'solid-js'
+import { Accessor, Setter, Show } from 'solid-js'
 
 import { Card } from '~/components/ui/card'
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
@@ -11,9 +11,11 @@ interface MapContainerProps {
   search: Accessor<string | null>
   userLat: Accessor<number | null>
   userLng: Accessor<number | null>
+  isFullscreen: Accessor<boolean>
   onSearchChange: Setter<string | null>
   onPlaceSelected: Setter<string | null>
   onLocationSelect: (lat: number, lng: number) => void
+  onFullscreenToggle: Setter<boolean>
 }
 
 /**
@@ -21,7 +23,7 @@ interface MapContainerProps {
  * Includes fullscreen toggle and search overlay functionality.
  */
 export function MapContainer(props: MapContainerProps) {
-  const [isFullscreen, setIsFullscreen] = createSignal<boolean>(true)
+  const isFullscreen = () => props.isFullscreen()
 
   return (
     <Card
@@ -36,7 +38,7 @@ export function MapContainer(props: MapContainerProps) {
       <div class="absolute top-3 right-3 z-40">
         <button
           class="inline-flex items-center gap-2 rounded-md bg-white/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
-          onClick={() => setIsFullscreen((v) => !v)}
+          onClick={() => props.onFullscreenToggle((v) => !v)}
           aria-pressed={isFullscreen()}
           aria-label={isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'}
         >
