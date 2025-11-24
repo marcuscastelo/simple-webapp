@@ -30,12 +30,12 @@ export function MapContainer(props: MapContainerProps) {
       class={cn(
         'mb-8 shadow-lg overflow-hidden h-[400px] transition-all duration-300 ease-in-out relative',
         {
-          'h-screen w-screen fixed inset-0 rounded-none': isFullscreen(),
+          'h-screen w-screen fixed inset-0 rounded-none z-50': isFullscreen(),
         },
       )}
     >
       {/* Toggle fullscreen button (overlay on right) */}
-      <div class="absolute top-3 right-3 z-40">
+      <div class="absolute top-3 right-3 z-60">
         <button
           class="inline-flex items-center gap-2 rounded-md bg-white/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
           onClick={() => props.onFullscreenToggle((v) => !v)}
@@ -55,7 +55,7 @@ export function MapContainer(props: MapContainerProps) {
 
       <Show when={isFullscreen()}>
         {/* Search bar (overlay on left) */}
-        <div class="absolute top-3 left-3 z-40">
+        <div class="absolute top-3 left-3 z-60">
           <SearchPill
             onSearch={props.onSearchChange}
             onPlaceSelected={props.onPlaceSelected}
