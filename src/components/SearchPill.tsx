@@ -20,6 +20,8 @@ export function SearchPill(props: SearchPillProps) {
   const placesLibrary = useMapsLibrary('places')
 
   const [query, setQuery] = createSignal('')
+  const [debouncedQuery, setDebouncedQuery] = createSignal('')
+  let debounceTimer: number | undefined
   const [sessionToken, setSessionToken] =
     createSignal<google.maps.places.AutocompleteSessionToken>()
   const [autocompleteService, setAutocompleteService] =
@@ -30,9 +32,10 @@ export function SearchPill(props: SearchPillProps) {
   const [selectedPrediction, setSelectedPrediction] =
     createSignal<google.maps.places.AutocompletePrediction | null>(null)
 
-  let inputRef: HTMLInputElement | undefined
+  let inputRef: HTMLInputElement | null = null
   // Hidden container used to initialize PlacesService without a visible map
-  const hiddenContainer = document.createElement('div')
+  // created lazily inside the browser (avoids SSR issues)
+  let hiddenContainer: HTMLDivElement | null = null
   const [mapsScriptLoaded, setMapsScriptLoaded] = createSignal(false)
 
   // Helper: dynamically inject Google Maps JS with places library if needed
@@ -119,6 +122,8 @@ export function SearchPill(props: SearchPillProps) {
 
     setSessionToken(new google.maps.places.AutocompleteSessionToken())
     setAutocompleteService(new google.maps.places.AutocompleteService())
+    // lazily create the hidden container in the browser
+    if (!hiddenContainer) hiddenContainer = document.createElement('div')
     // You can create a PlacesService with a hidden div when you don't have a Map
     // This avoids requiring a visible google.maps.Map instance
     setPlacesService(new google.maps.places.PlacesService(hiddenContainer))
@@ -131,10 +136,11 @@ export function SearchPill(props: SearchPillProps) {
   const [predictions] = createResource(
     () => ({
       service: autocompleteService(),
-      value: query(),
+      value: debouncedQuery(),
+      token: sessionToken(),
     }),
     async (params) => {
-      const { service, value } = params
+      const { service, value, token } = params
       if (!value || !service) {
         return []
       }
@@ -142,11 +148,11 @@ export function SearchPill(props: SearchPillProps) {
       try {
         const response = await service.getPlacePredictions({
           input: value,
-          sessionToken: sessionToken(),
+          sessionToken: token,
         })
         return response.predictions
       } catch (error) {
-        alert(`Error fetching predictions: ${error as string}`)
+        console.warn('Error fetching predictions', error)
         return []
       }
     },
@@ -154,22 +160,20 @@ export function SearchPill(props: SearchPillProps) {
   )
 
   const [placeDetails] = createResource(
-    () =>
-      placesService() && selectedPrediction()
+    () => ({
+      service: placesService(),
+      placeId: selectedPrediction()
         ? selectedPrediction()!.place_id
         : undefined,
-    async (placeId) => {
-      if (!placeId) return null
+    }),
+    async (params) => {
+      const { service, placeId } = params
+      if (!placeId || !service) return null
 
       try {
         const response =
           await new Promise<google.maps.places.PlaceResult | null>(
             (resolve, reject) => {
-              const service = placesService()
-              if (!service) {
-                reject(new Error('Places service not available'))
-                return
-              }
               service.getDetails({ placeId }, (result, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                   resolve(result)
@@ -181,7 +185,8 @@ export function SearchPill(props: SearchPillProps) {
           )
 
         return response
-      } catch {
+      } catch (err) {
+        console.warn('Error fetching place details', err)
         return null
       }
     },
@@ -230,9 +235,17 @@ export function SearchPill(props: SearchPillProps) {
           <CrosshairIcon class="h-4 w-4" />
         </button>
         <input
-          ref={inputRef}
+          ref={(r) => (inputRef = r)}
           value={query()}
-          onInput={(e) => setQuery(e.currentTarget.value)}
+          onInput={(e) => {
+            const v = e.currentTarget.value
+            setQuery(v)
+            // debounce updating the resource to avoid heavy updates on every keystroke
+            if (debounceTimer) window.clearTimeout(debounceTimer)
+            debounceTimer = window.setTimeout(() => {
+              setDebouncedQuery(v)
+            }, 300)
+          }}
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder="Pesquisar pontos de recolha"
