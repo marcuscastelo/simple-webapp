@@ -151,20 +151,6 @@ function FeatureMarker(props: {
           </div>
         </div>
       </div>
-      {/* <InfoWindow
-        open={open()}
-        onOpenChange={setOpen}
-        maxWidth={220}
-        headerContent={
-          <span class="font-semibold">
-            {props.feature.properties.slug ?? props.feature.id}
-          </span>
-        }
-      >
-        <div class="text-sm">
-          {props.feature.properties.slug ?? props.feature.id}
-        </div>
-      </InfoWindow> */}
     </AdvancedMarker>
   )
 }
