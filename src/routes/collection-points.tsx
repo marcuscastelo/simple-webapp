@@ -19,6 +19,9 @@ const CollectionPoints = () => {
   const [selectedType, setSelectedType] = createSignal<string>('all')
   const [isFullscreen, setIsFullscreen] = createSignal<boolean>(true)
 
+  const [search, setSearch] = createSignal<string | null>(null)
+  const [placeId, setPlaceId] = createSignal<string | null>(null)
+
   const wasteTypes = [
     { value: 'all', label: 'Todos os Tipos' },
     { value: 'plastic', label: 'Plástico' },
@@ -141,11 +144,11 @@ const CollectionPoints = () => {
           <Show when={isFullscreen()}>
             {/* Search bar (overlay on left) */}
             <div class="absolute top-3 left-3 z-40">
-              <SearchPill />
+              <SearchPill onSearch={setSearch} onPlaceSelected={setPlaceId} />
             </div>
           </Show>
 
-          <TestMap />
+          <TestMap placeId={placeId()} search={search()} />
         </Card>
 
         {/* Filter */}
