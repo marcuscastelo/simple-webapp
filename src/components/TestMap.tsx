@@ -93,14 +93,6 @@ export function TestMap(props: { search?: string | null }) {
             )
           }}
         </Key>
-        {/* <Show when={selectedTreeKey() && markers()[selectedTreeKey()!]}>
-          <InfoWindow
-            anchor={markers()[selectedTreeKey()!]}
-            onCloseClick={() => setSelectedTreeKey(null)}
-          >
-            {selectedTree()?.slug}
-          </InfoWindow>
-        </Show> */}
       </Map>
     </APIProvider>
   )
