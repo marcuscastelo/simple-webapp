@@ -12,6 +12,7 @@ import {
 } from '~/modules/map/hooks/useMapRefSignals'
 import { POIBasic } from '~/modules/map/hooks/usePOI'
 import { useSupercluster } from '~/modules/map/hooks/useSupercluster'
+import { themeUseCases } from '~/modules/theme/application/usecases/themeUseCases'
 import { env } from '~/utils/env'
 
 export function CollectionPointsMap(props: {
@@ -116,6 +117,7 @@ export function CollectionPointsMap(props: {
       defaultZoom={DEFAULT_MAP_PROPS.zoom}
       gestureHandling={'greedy'}
       disableDefaultUI
+      colorScheme={themeUseCases.currentTheme() === 'dark' ? 'DARK' : 'LIGHT'}
       ref={setMapRef}
     >
       <Key each={clusters()} by={(item) => item.id}>
