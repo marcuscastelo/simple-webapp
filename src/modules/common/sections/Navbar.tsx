@@ -1,5 +1,5 @@
 import { A } from '@solidjs/router'
-import { Show } from 'solid-js'
+import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
 
 import logo from '~/assets/logo.png'
 import { authActions } from '~/modules/auth/application/authActions'
@@ -55,8 +55,29 @@ function GoogleLoginButton() {
     )
   }
 
+  const [open, setOpen] = createSignal(false)
+  let menuRef: HTMLDivElement | undefined
+
+  const toggleMenu = (e: MouseEvent) => {
+    e.preventDefault()
+    setOpen((p) => !p)
+  }
+
+  createEffect(() => {
+    if (!open()) return
+    const onDocClick = (ev: MouseEvent) => {
+      const target = ev.target as Node | null
+      if (menuRef && target && !menuRef.contains(target)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('click', onDocClick)
+    onCleanup(() => document.removeEventListener('click', onDocClick))
+  })
+
   const handleLogout = (e: MouseEvent) => {
     e.preventDefault()
+    setOpen(false)
     void authActions.logout()
   }
 
@@ -99,42 +120,65 @@ function GoogleLoginButton() {
           </A>
         }
       >
-        <button
-          onClick={handleLogout}
-          class="h-10 w-10 rounded-full overflow-hidden bg-white border border-gray-200 shadow-sm"
-          title="Sair"
-        >
-          {avatarUrl() ? (
-            <img
-              src={avatarUrl()}
-              alt="User avatar"
-              class="h-full w-full object-cover"
-            />
-          ) : (
-            <svg
-              class="h-5 w-5 m-auto text-gray-400"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+        <div class="relative">
+          <button
+            onClick={toggleMenu}
+            aria-expanded={open()}
+            class="h-10 w-10 rounded-full overflow-hidden bg-white border border-gray-200 shadow-sm"
+            title="Conta"
+          >
+            {avatarUrl() ? (
+              <img
+                src={avatarUrl()}
+                alt="User avatar"
+                class="h-full w-full object-cover"
+              />
+            ) : (
+              <svg
+                class="h-5 w-5 m-auto text-gray-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
+                  stroke="#9CA3AF"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20 21v-1c0-2.761-4.03-5-8-5s-8 2.239-8 5v1"
+                  stroke="#9CA3AF"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+            <span class="sr-only">Conta</span>
+          </button>
+
+          {open() && (
+            <div
+              ref={(el) => (menuRef = el)}
+              class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50"
             >
-              <path
-                d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
-                stroke="#9CA3AF"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M20 21v-1c0-2.761-4.03-5-8-5s-8 2.239-8 5v1"
-                stroke="#9CA3AF"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+              <A
+                href="/dashboard"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >
+                Perfil
+              </A>
+              <button
+                onClick={handleLogout}
+                class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >
+                Sair
+              </button>
+            </div>
           )}
-          <span class="sr-only">Sair</span>
-        </button>
+        </div>
       </Show>
     </div>
   )
