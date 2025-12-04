@@ -1,6 +1,6 @@
 import { A } from '@solidjs/router'
 import { Recycle } from 'lucide-solid'
-import { createSignal } from 'solid-js'
+import { createSignal, onMount } from 'solid-js'
 import { toast } from 'solid-toast'
 
 import { Button } from '~/components/ui/button'
@@ -14,6 +14,7 @@ import {
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
+import { authActions } from '~/modules/auth/application/authActions'
 
 const Auth = () => {
   const [isLoading, setIsLoading] = createSignal(false)
@@ -37,6 +38,14 @@ const Auth = () => {
       toast.success('Conta criada com sucesso! Bem-vindo!')
     }, 1500)
   }
+
+  onMount(() => {
+    void authActions.loginWithGoogle().catch((error) => {
+      toast.error(
+        `Erro ao autenticar com Google: ${error instanceof Error ? error.message : String(error)}`,
+      )
+    })
+  })
 
   return (
     <div class="min-h-screen flex items-center justify-center py-12 px-4">
