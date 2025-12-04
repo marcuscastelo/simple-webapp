@@ -1,107 +1,63 @@
-## Quick context
-<language>English</language>
-DO NOT WRITE ANY MARKDOWN OR CODE IN PORTUGUESE OR ANY LANGUAGE OTHER THAN ENGLISH
+<!-- .github/copilot-instructions.md -->
+# Repo-specific instructions for Copilot / AI assistants
 
-This repository is a small two-tier web app: a Python FastAPI backend (backend/) that accepts Excel uploads and a SolidStart-based frontend (`frontend/`) built with Vinxi/solid-start. The backend uses a `src/` layout and the project includes Docker Compose for local orchestration.
+This file contains concise, actionable guidance for AI coding agents working in this SolidJS + Supabase web app. Use these rules when generating or editing code for the repository.
 
-Canonical entry points:
-- Backend app: `backend/src/spreadsheet-analysis/main.py` (FastAPI `app`).
-- Backend routes: `backend/src/spreadsheet-analysis/api/routes.py` (POST `/upload`).
-- Backend settings: `backend/src/spreadsheet-analysis/core/config.py` (pydantic settings).
-- Frontend app: `frontend/` (see `frontend/package.json`).
-- Orchestration: `docker-compose.yml` and `backend/Dockerfile`.
+Key facts
+- Tech stack: SolidJS (TSX/TypeScript), TailwindCSS, Vinxi dev tooling, Supabase (browser client), Google Maps JS API
+- Package manager: pnpm. Node >= 22 is expected (see `package.json` engines)
 
-## High-level architecture
+How to run & verify locally
+- Install deps: `pnpm install`
+- Run dev server: `pnpm dev` (runs `vinxi dev`)
+- Build: `pnpm build` (runs `vinxi build`)
+- Start prod server: `pnpm start` (runs `vinxi start`)
+- Typecheck: `pnpm run type-check`
+- Lint + fix: `pnpm run fix` and `pnpm run lint`
+- Full CI-style check: `pnpm run check` (runs lint + type-check)
+- Quick health script for bots: `pnpm run copilot:check` (prints pass/fail)
 
-- Backend runs as a small REST service that accepts Excel uploads and uses pandas (openpyxl) to parse sheets and return columns/row counts.
-- Frontend is a Vinxi/SolidStart app that runs separately; in dev both services are commonly started together via Docker Compose or the frontend dev server is proxied to the backend.
+Environment variables & local dev notes
+- The app expects the following VITE_ env vars (see `src/utils/env.ts`):
+  - `VITE_GOOGLE_MAPS_API_KEY`
+  - `VITE_GOOGLE_MAPS_MAP_ID`
+  - `VITE_PUBLIC_SUPABASE_ANON_KEY`
+  - `VITE_PUBLIC_SUPABASE_URL`
+- If a `.env` is not present, create one locally with those keys. The code calls `validateEnvVars()` and will throw if they are missing.
 
-## Repo philosophies & rules (from past projects)
+Project layout & important files to reference
+- `src/` — application source. Key subtrees:
+  - `src/modules/collection-points/` — domain logic, types and UI for collection points (see `types.ts`, `hooks/`, `sections/`)
+  - `src/modules/map/` — Google Maps integration and hooks (e.g. `useGoogleMapsScript.ts`, `useGooglePlacesService.ts`, `CollectionPointsMap.tsx`)
+  - `src/shared/infrastructure/supabase/` — Supabase client + generated types. Generated types are written to `src/shared/infrastructure/supabase/database.types.ts` by the `supabase:gen-types` script
+  - `src/components/ui/` — small design-system primitives used across the app (Button, Input, Card, etc.)
+  - `src/routes/` — route components used by the router
+  - top-level data fixtures: `src/collectionPoints.json`, `src/poi.json`, `src/wasteTypes.json` used for local dev and examples
 
-- Barrel-file ban (frontend TS/JS): do not create or use barrel index files that re-export modules. Import directly from the file path.
+Coding patterns & conventions (concrete, enforceable)
+- SolidJS idioms: components use signals, memos and effects. Do NOT destructure signals — call them as functions (e.g. `count()`), prefer `createSignal`, `createMemo`, `createEffect`. See `src/modules/collection-points/hooks/useCollectionPointsFilter.ts` for an example.
+- Use `<For>` and `<Show>` instead of `.map` and `&&` in JSX. Keep components small and pure; move logic to hooks or utils.
+- File & component naming: PascalCase for components (e.g. `CollectionPointsMap.tsx`), hooks in `hooks/` folder (e.g. `useGoogleMapsScript.ts`).
+- Imports: follow repository ESLint and import sorting rules (see `.github/instructions/eslint.instructions.md`). Keep imports grouped and alphabetized (simple-import-sort is configured).
+- No barrel/index re-exports for ease of refactoring and clarity (project pattern uses direct imports).
 
-## Docker / compose guidance (practical rule)
+Integration details & gotchas
+- Google Maps: the app dynamically loads the Maps JS API via `useGoogleMapsScript(apiKey)`. If the API key or `maps` global is missing, map components will no-op or warn.
+- Supabase: browser client lives under `src/shared/infrastructure/supabase/supabase.ts`. When regenerating types use `pnpm run supabase:gen-types` — it will append to `database.types.ts` and run `pnpm run fix`.
+- Tailwind: styles live in `src/app.css`. There is a `tw:build` script for debugging Tailwind output.
 
-- Use the repository root `docker compose` (or `docker-compose`) workflow. When building or running a single service, prefer:
+What to avoid / conservative defaults for AI edits
+- Do not change global architecture (moving modules between `src/modules/*` and other top-level folders) without an explicit PR description.
+- Avoid introducing new runtime dependencies without updating `package.json` and `pnpm-lock.yaml` and explaining why.
+- When modifying map/supabase code, preserve fallback behavior: dynamic script loading, feature-detection for `globalThis.google`, and defensively checking env vars.
 
-  docker compose build <service-name> (e.g. spreadsheet-analysis-backend)
-  docker compose up -d --build --force-recreate --remove-orphans <service-name> (e.g. spreadsheet-analysis-backend)
+When adding or modifying code, run these checks locally
+1. `pnpm run type-check`
+2. `pnpm run lint` (and `pnpm run fix` to autofix when appropriate)
+3. `pnpm dev` and exercise affected pages (maps, collection points) to verify UI and console for runtime errors
 
-  IMPORTANT: ALWAYS USE THESE FLAGS WHEN STARTING SERVICES:
-  `docker compose up -d --build --force-recreate --remove-orphans`
+References
+- ESLint / style hints: `.github/instructions/eslint.instructions.md`
+- SolidJS-specific guidance: `.github/instructions/solidjs.instructions.md`
 
-  Avoid using `-f` to point at a service-specific compose file because service compose files may rely on includes, shared networks, or root-level configuration. Building with the root compose preserves expected networks and healthcheck wiring.
-
-CSS Policy (Tailwind-only)
-
-- THIS REPO USES TAILWIND FOR ALL STYLING. Do NOT create new custom CSS classes or add component-scoped stylesheet files.
-- Use Tailwind utility classes in markup (JSX/TSX) for all styling and responsive behavior. If you need a small reusable value, prefer design tokens or Tailwind config extensions rather than custom CSS classes.
-
-## Developer workflows (concrete)
-
-- Quick dev with Docker Compose (starts frontend and backend):
-  - docker compose up --build
-
-- Backend locally:
-  - cd backend
-  - poetry install
-  - poetry run uvicorn ${APP_MODULE:-myapp.main:app} --host 0.0.0.0 --port 8000
-
-- Frontend locally:
-  - cd frontend
-  - pnpm install  # or npm install
-  - pnpm run dev
-
-- Tests (backend):
-  - cd backend
-  - poetry run pytest
-
-## Patterns & conventions to follow
-
-- Small, single-responsibility modules: backend keeps routes in `api/`, settings in `core/`.
-- Use Pydantic models for request/response shapes (see `UploadResponse` in `api/routes.py`).
-- File uploads use `UploadFile`; handlers call `file.file` and attempt `seek(0)` prior to passing to pandas.
-- Keep pandas processing synchronous (CPU-bound); for large jobs prefer background workers.
-
-## Integration & safety notes
-
-- The upload handler uses `pd.read_excel(..., engine="openpyxl")` — ensure `openpyxl` is present in the environment when running tests or CI.
-- Dockerfile sets `PYTHONPATH=/app/src:/app`. Mirror that locally (for example `export PYTHONPATH=backend/src:backend`) if not using Poetry's environment.
-- Check `frontend/tsconfig.json` for `vinxi` types if you change frontend typings.
-
-## Small actionable examples
-
-- Example curl to exercise `/upload` locally (replace port/path as needed):
-
-  curl -v -F "file=@example.xlsx;type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" http://localhost:8000/upload
-
-## Files worth opening first
-
-- `backend/src/spreadsheet-analysis/main.py` — FastAPI app setup
-- `backend/src/spreadsheet-analysis/api/routes.py` — upload endpoint and pydantic model examples
-- `backend/Dockerfile`, `docker-compose.yml` — service run and build rules
-- `frontend/package.json` and `frontend/README.md` — frontend scripts and dev tips
-
-## Solid reactivity rule (project-specific)
-
-- Do NOT destructure component props in Solid components (for example `const { x } = props` or `function Comp({ x })`) because destructuring breaks Solid's fine-grained reactivity and can prevent updates from propagating. Always access props via `props.x` or assign local consts that reference `props.x` (e.g. `const x = props.x`) when necessary.
-
-Files changed to follow this rule:
-
-- `frontend/src/components/selectable-table/Header.tsx`
-- `frontend/src/components/selectable-table/Cell.tsx`
-- `frontend/src/components/selectable-table/SelectionOverlay.tsx`
-
-Follow-up: If you need automated linting for this pattern, consider adding an ESLint rule or codemod to enforce non-destructuring of props in Solid components.
-
-Additional guidance (derived accessors):
-
-- Prefer using arrow-derived accessors for prop values that are read by components, for example:
-
-  const count = () => props.count;
-
-  This creates a tiny derived accessor that Solid can track when used in JSX or computations. For event handlers or functions passed in props, you can keep direct references (e.g. `const onClick = props.onClick`).
-
-- Recent changes were applied to enforce this pattern in these files: `Header.tsx`, `Cell.tsx`, `SelectionOverlay.tsx`.
-
-DO NOT WRITE ANY MARKDOWN OR CODE IN PORTUGUESE OR ANY LANGUAGE OTHER THAN ENGLISH
+If something is unclear, ask for: the exact route or component to change, expected user-visible behavior, and whether the change should be backward compatible with existing fixtures in `src/*.json`.
