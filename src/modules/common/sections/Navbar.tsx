@@ -7,6 +7,7 @@ import { useAuthState } from '~/modules/auth/application/authState'
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
 import { mapActions } from '~/modules/map/application/mapActions'
 import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
+import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
 
 export function Navbar() {
   return (
@@ -21,7 +22,10 @@ export function Navbar() {
               onUseLocationClick={mapActions.openMapPageWithCoordinates}
             />
           </div>
-          <GoogleLoginButton />
+          <div class="flex gap-10">
+            <ThemeSwapButton />
+            <GoogleLoginButton />
+          </div>
         </div>
       </div>
     </header>
@@ -132,7 +136,7 @@ function GoogleLoginButton() {
         }
       >
         <div class="relative">
-            <button
+          <button
             onClick={toggleMenu}
             aria-expanded={open()}
             class="h-10 w-10 rounded-full overflow-hidden bg-base-100 border border-base-300 shadow-sm"
