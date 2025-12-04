@@ -8,16 +8,16 @@ const { themeStore } = createRoot(() => {
   const themeStore = createThemeStore()
   const themeLocalStorage = createThemeLocalStorage()
 
-  createEffect(() => {
-    themeLocalStorage.saveTheme(themeStore.theme())
-    document.documentElement.setAttribute('data-theme', themeStore.theme())
-  })
-
   onMount(() => {
     const savedTheme = themeLocalStorage.getTheme({
       defaultTheme: DEFAULT_THEME,
     })
     themeStore.setTheme(savedTheme)
+  })
+
+  createEffect(() => {
+    themeLocalStorage.saveTheme(themeStore.theme())
+    document.documentElement.setAttribute('data-theme', themeStore.theme())
   })
 
   return { themeStore, themeLocalStorage }
