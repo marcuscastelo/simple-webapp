@@ -6,6 +6,7 @@ import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
 import { mapActions } from '~/modules/map/application/mapActions'
+import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 
 export function Navbar() {
   return (
@@ -78,7 +79,17 @@ function GoogleLoginButton() {
   const handleLogout = (e: MouseEvent) => {
     e.preventDefault()
     setOpen(false)
-    void authActions.logout()
+    openConfirmModal('Tem a certeza que pretende sair da sua conta?', {
+      title: 'Confirmação de Logout',
+      onConfirm: () =>
+        void authActions.logout().catch((error) => {
+          alert(
+            `Erro ao sair: ${
+              error instanceof Error ? error.message : String(error)
+            }`,
+          )
+        }),
+    })
   }
 
   return (

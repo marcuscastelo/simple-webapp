@@ -4,8 +4,10 @@ import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
 import { APIProvider } from 'solid-google-maps'
 import { onMount, Suspense } from 'solid-js'
+import { Toaster } from 'solid-toast'
 
 import { Navbar } from '~/modules/common/sections/Navbar'
+import UnifiedModalContainer from '~/modules/modal/components/UnifiedModalContainer'
 import { env, validateEnvVars } from '~/utils/env'
 
 export default function App() {
@@ -21,6 +23,8 @@ export default function App() {
             apiKey={env.VITE_GOOGLE_MAPS_API_KEY}
             libraries={['places']}
           >
+            <Toaster />
+            <UnifiedModalContainer />
             <Navbar />
             <Suspense>{props.children}</Suspense>
           </APIProvider>
