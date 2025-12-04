@@ -192,7 +192,7 @@ function ClusterMarker(props: {
           <div class="relative z-10 text-success flex items-center justify-center">
             <Recycle class="w-7 h-7" />
           </div>
-          <div class="absolute -bottom-2 right-0 bg-base-100 text-sm font-semibold text-primary px-2 py-0.5 rounded-full shadow-md">
+          <div class="absolute -bottom-2 right-0 bg-base-500 text-sm font-semibold text-primary px-2 py-0.5 rounded-full shadow-md">
             {props.cluster.properties.point_count_abbreviated}
           </div>
         </div>

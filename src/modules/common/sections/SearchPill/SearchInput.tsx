@@ -50,9 +50,9 @@ export type SearchInputProps = {
  */
 export function SearchInput(props: SearchInputProps) {
   return (
-    <div class="flex items-center bg-base-100 border border-base-300 rounded-full px-3 py-2 shadow-sm">
+    <div class="flex items-center bg-base-500 border border-base-300 rounded-full px-3 py-2 shadow-sm">
       <button
-        class="p-1 rounded-full hover:bg-base-200 text-muted-foreground mr-2"
+        class="p-1 rounded-full hover:bg-base-400 text-muted-foreground mr-2"
         onClick={() => props.onUseLocationClick?.()}
         aria-label="Use my location"
         title="Usar minha localização"

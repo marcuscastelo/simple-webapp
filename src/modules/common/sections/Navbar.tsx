@@ -11,7 +11,7 @@ import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
 
 export function Navbar() {
   return (
-    <header class="bg-base-100/60 backdrop-blur-sm sticky top-0 z-40">
+    <header class="bg-base-500/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />
@@ -34,7 +34,7 @@ export function Navbar() {
 
 function Logo() {
   return (
-    <div class="rounded-full bg-base-200 overflow-clip ">
+    <div class="rounded-full bg-base-400 overflow-clip ">
       <A href="/" class="flex items-center gap-3 select-none">
         <img src={logo} alt="Recicla+" class="h-10" />
       </A>
@@ -103,7 +103,7 @@ function GoogleLoginButton() {
         fallback={
           <A href="/auth" class="flex items-center">
             <div
-              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-100 border border-base-300 shadow-sm"
+              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-500 border border-base-300 shadow-sm"
               aria-hidden="false"
               role="img"
             >
@@ -139,7 +139,7 @@ function GoogleLoginButton() {
           <button
             onClick={toggleMenu}
             aria-expanded={open()}
-            class="h-10 w-10 rounded-full overflow-hidden bg-base-100 border border-base-300 shadow-sm"
+            class="h-10 w-10 rounded-full overflow-hidden bg-base-500 border border-base-300 shadow-sm"
             title="Conta"
           >
             {avatarUrl() ? (
@@ -177,17 +177,17 @@ function GoogleLoginButton() {
           {open() && (
             <div
               ref={(el) => (menuRef = el)}
-              class="absolute right-0 mt-2 w-40 bg-base-100 border border-base-300 rounded-md shadow-lg overflow-hidden z-50"
+              class="absolute right-0 mt-2 w-40 bg-base-500 border border-base-300 rounded-md shadow-lg overflow-hidden z-50"
             >
               <A
                 href="/dashboard"
-                class="block px-4 py-2 text-sm text-base-content hover:bg-base-100"
+                class="block px-4 py-2 text-sm text-base-content hover:bg-base-500"
               >
                 Perfil
               </A>
               <button
                 onClick={handleLogout}
-                class="w-full text-left block px-4 py-2 text-sm text-base-content hover:bg-base-100"
+                class="w-full text-left block px-4 py-2 text-sm text-base-content hover:bg-base-500"
               >
                 Sair
               </button>

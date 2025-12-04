@@ -66,7 +66,7 @@ const Home = () => {
     <div class="min-h-screen">
       {/* Hero Section */}
       <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-accent/10" />
+        <div class="absolute inset-0 bg-base-100" />
         <div class="container mx-auto px-4 py-20 relative">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
@@ -82,7 +82,7 @@ const Home = () => {
                 ganha benefícios.
               </p>
               <div class="flex flex-wrap gap-4">
-                <A href="/auth">
+                <A href="/dashboard">
                   <Button variant="hero" size="lg" class="shadow-lg">
                     Começar Agora
                   </Button>
@@ -114,7 +114,7 @@ const Home = () => {
               {(stat) => {
                 const Icon = stat.icon
                 return (
-                  <Card class="border-none shadow-md hover:shadow-lg transition-all duration-300">
+                  <Card class="border-none bg-base-100 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardContent class="p-6 text-center space-y-2">
                       <Icon class={`h-10 w-10 mx-auto ${stat.color}`} />
                       <div class="text-3xl font-bold">{stat.value}</div>

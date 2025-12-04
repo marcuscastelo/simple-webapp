@@ -71,10 +71,10 @@ function ModalRenderer(props: ModalState) {
               </div>
               <Show when={props.type === 'error' && props.errorDetails.stack}>
                 <details class="mt-2">
-                  <summary class="cursor-pointer text-sm text-muted-foreground hover:text-white">
+                  <summary class="cursor-pointer text-sm">
                     Show technical details
                   </summary>
-                  <pre class="mt-2 text-xs bg-base-100 p-3 rounded border border-base-300 overflow-auto max-h-40">
+                  <pre class="mt-2 text-xs bg-base-500 p-3 rounded border border-base-300 overflow-auto max-h-40">
                     {props.type === 'error' ? props.errorDetails.stack : ''}
                   </pre>
                 </details>

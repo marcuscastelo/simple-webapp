@@ -4,7 +4,7 @@
 /* daisyUI plugin + explicit semantic variables for ReciclaMAIS app */
 
 @plugin "daisyui" {
-  themes: dark --default --prefers-dark;
+  themes: light --default, dark--prefers-dark;
 }
 
 /* Legacy fallback (light theme compatible) */
@@ -53,27 +53,49 @@
   --color-error: oklch(58% 0.22 25);
   --color-error-content: oklch(98% 0 0);
 
-  /* Radii */
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.75rem;
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 
-  /* Sizes */
-  --size-selector: 2.5rem;
-  --size-field: 2.5rem;
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
 
-  /* Border thickness */
+  /* border size */
   --border: 1px;
 
-  /* Depth / Noise toggles */
-  --depth: 0;
+  /* effects */
+  --depth: 1;
   --noise: 0;
 
-  /* RGB helpers (mantidos, mas ideal atualizar no futuro) */
-  --color-primary-rgb: 164 172 134;
-  --color-success-rgb: 130 150 110;
-  --color-info-rgb: 59 130 246;
-  --color-accent-rgb: 118 180 120;
+    /* Plastic - Blue */
+  --color-plastic: oklch(58% 0.2 235);
+  --color-plastic-light: oklch(65% 0.15 235);
+  --color-plastic-bg: oklch(58% 0.2 235 / 0.1);
+  --color-plastic-border: oklch(58% 0.2 235 / 0.3);
+
+  /* Glass - Green */
+  --color-glass: oklch(62% 0.19 150);
+  --color-glass-light: oklch(70% 0.16 150);
+  --color-glass-bg: oklch(62% 0.19 150 / 0.1);
+  --color-glass-border: oklch(62% 0.19 150 / 0.3);
+
+  /* Paper - Amber */
+  --color-paper: oklch(72% 0.16 70);
+  --color-paper-light: oklch(78% 0.14 70);
+  --color-paper-bg: oklch(72% 0.16 70 / 0.1);
+  --color-paper-border: oklch(72% 0.16 70 / 0.3);
+
+  /* Metal - Gray */
+  --color-metal: oklch(55% 0.02 220);
+  --color-metal-light: oklch(65% 0.02 220);
+  --color-metal-bg: oklch(55% 0.02 220 / 0.1);
+  --color-metal-border: oklch(55% 0.02 220 / 0.3);
+
+  /* Map marker colors */
+  --color-marker-user: oklch(65% 0.2 175);
+  --color-marker-cluster: oklch(62% 0.2 155);
 }
 
 @plugin "daisyui/theme" {
@@ -125,27 +147,69 @@
   --color-error: oklch(58% 0.22 25);
   --color-error-content: oklch(98% 0 0);
 
-  /* Radii */
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.75rem;
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 
-  /* Sizes */
-  --size-selector: 2.5rem;
-  --size-field: 2.5rem;
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
 
-  /* Border thickness */
+  /* border size */
   --border: 1px;
 
-  /* Depth / Noise toggles */
-  --depth: 0;
+  /* effects */
+  --depth: 1;
   --noise: 0;
 
-  /* RGB helpers (mantidos, mas ideal atualizar no futuro) */
-  --color-primary-rgb: 164 172 134;
-  --color-success-rgb: 130 150 110;
-  --color-info-rgb: 59 130 246;
-  --color-accent-rgb: 118 180 120;
+  /* Shadows inspired by Tailwind defaults */
+
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.05);
+  --shadow: 0 1px 3px oklch(0% 0 0 / 0.1),
+            0 1px 2px oklch(0% 0 0 / 0.06);
+  --shadow-md: 0 4px 6px oklch(0% 0 0 / 0.1),
+               0 2px 4px oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px oklch(0% 0 0 / 0.1),
+               0 4px 6px oklch(0% 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px oklch(0% 0 0 / 0.1),
+               0 10px 10px oklch(0% 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px oklch(0% 0 0 / 0.25);
+
+  --shadow-inner: inset 0 2px 4px oklch(0% 0 0 / 0.06);
+
+  /* Modern shadows */
+  --shadow-elevate: 0 8px 24px oklch(0% 0 0 / 0.12);
+  --shadow-float: 0 12px 32px oklch(0% 0 0 / 0.16);
+  --shadow-border: 0 0 0 1px oklch(0% 0 0 / 0.08);
+
+  /* Plastic - Blue */
+  --color-plastic: oklch(58% 0.2 235);
+  --color-plastic-light: oklch(65% 0.15 235);
+  --color-plastic-bg: oklch(58% 0.2 235 / 0.1);
+  --color-plastic-border: oklch(58% 0.2 235 / 0.3);
+
+  /* Glass - Green */
+  --color-glass: oklch(62% 0.19 150);
+  --color-glass-light: oklch(70% 0.16 150);
+  --color-glass-bg: oklch(62% 0.19 150 / 0.1);
+  --color-glass-border: oklch(62% 0.19 150 / 0.3);
+
+  /* Paper - Amber */
+  --color-paper: oklch(72% 0.16 70);
+  --color-paper-light: oklch(78% 0.14 70);
+  --color-paper-bg: oklch(72% 0.16 70 / 0.1);
+  --color-paper-border: oklch(72% 0.16 70 / 0.3);
+
+  /* Metal - Gray */
+  --color-metal: oklch(55% 0.02 220);
+  --color-metal-light: oklch(65% 0.02 220);
+  --color-metal-bg: oklch(55% 0.02 220 / 0.1);
+  --color-metal-border: oklch(55% 0.02 220 / 0.3);
+
+  /* Map marker colors */
+  --color-marker-user: oklch(65% 0.2 175);
+  --color-marker-cluster: oklch(62% 0.2 155);
 }
 
 @plugin "daisyui/theme" {
@@ -153,104 +217,115 @@
   default: true;
   prefersdark: true;
   color-scheme: dark;
+  /* Base surfaces (dark slate / stone with subtle olive undertone) */
+  --color-base-50:  oklch(0 0 none);
+  --color-base-100: oklch(20% 0.02 150);
+  --color-base-200: oklch(30% 0.02 150);
+  --color-base-300: oklch(40% 0.02 150);
+  --color-base-400: oklch(55% 0.015 130);
+  --color-base-500: oklch(70% 0.01 110);
+  --color-base-content: oklch(92% 0.005 110);
 
-  /* Base surfaces (backgrounds / surfaces) */
-  --color-base-50: oklch(15% 0.01 220);
-  --color-base-100: oklch(18% 0.01 220);
-  --color-base-200: oklch(22% 0.015 220);
-  --color-base-300: oklch(28% 0.02 220);
-  --color-base-400: oklch(42% 0.02 220);
-  --color-base-500: oklch(55% 0.015 220);
-  --color-base-content: oklch(92% 0.01 220);
+  /* Primary (deep eco sage) */
+  --color-primary: oklch(62% 0.09 120);
+  --color-primary-content: oklch(15% 0.02 150);
 
-  /* Primary (brand - vibrant green for recycling theme) */
-  --color-primary: oklch(62% 0.2 155);
-  --color-primary-content: oklch(98% 0 0);
+  /* Secondary (muted deep olive) */
+  --color-secondary: oklch(48% 0.06 130);
+  --color-secondary-content: oklch(15% 0.02 150);
 
-  /* Secondary (muted green) */
-  --color-secondary: oklch(52% 0.16 165);
-  --color-secondary-content: oklch(98% 0 0);
+  /* Accent (eco green for CTAs) */
+  --color-accent: oklch(70% 0.14 135);
+  --color-accent-content: oklch(15% 0.02 150);
 
-  /* Accent (teal/cyan for rewards and CTAs) */
-  --color-accent: oklch(68% 0.18 180);
-  --color-accent-content: oklch(15% 0.01 220);
+  /* Neutral (olive-charcoal) */
+  --color-neutral: oklch(30% 0.04 130);
+  --color-neutral-content: oklch(86% 0.02 110);
 
-  /* Neutral / muted */
-  --color-neutral: oklch(32% 0.015 220);
-  --color-neutral-content: oklch(88% 0.01 220);
+  /* Info (blue) */
+  --color-info: oklch(65% 0.18 240);
+  --color-info-content: oklch(15% 0 0);
 
-  /* Info (blue for plastic waste) */
-  --color-info: oklch(58% 0.2 235);
-  --color-info-content: oklch(98% 0 0);
+  /* Success (green, separate from brand) */
+  --color-success: oklch(60% 0.12 135);
+  --color-success-content: oklch(15% 0 0);
 
-  /* Success (eco-friendly green for glass/environmental) */
-  --color-success: oklch(62% 0.19 150);
-  --color-success-content: oklch(98% 0 0);
+  /* Warning (amber) */
+  --color-warning: oklch(75% 0.14 85);
+  --color-warning-content: oklch(15% 0 0);
 
-  /* Warning (amber for paper waste) */
-  --color-warning: oklch(72% 0.16 70);
-  --color-warning-content: oklch(20% 0 0);
+  /* Error (red) */
+  --color-error: oklch(62% 0.18 25);
+  --color-error-content: oklch(15% 0 0);
 
-  /* Error (red for errors and rejected items) */
-  --color-error: oklch(60% 0.24 28);
-  --color-error-content: oklch(98% 0 0);
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 
-  /* Radii */
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.75rem;
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
 
-  /* Sizes */
-  --size-selector: 2.5rem;
-  --size-field: 2.5rem;
-
-  /* Border thickness */
+  /* border size */
   --border: 1px;
 
-  /* Depth / Noise toggles */
-  --depth: 0;
+  /* effects */
+  --depth: 1;
   --noise: 0;
+    /* Dark mode shadows – diffuse and bright */
 
-  /* RGB helpers for rgba usage */
-  --color-primary-rgb: 64 188 130;
-  --color-success-rgb: 64 188 122;
-  --color-info-rgb: 59 130 246;
-  --color-accent-rgb: 102 214 196;
-}
+  --shadow-sm: 0 1px 2px oklch(100% 0 0 / 0.04);
+  --shadow: 0 1px 3px oklch(100% 0 0 / 0.06),
+            0 1px 2px oklch(100% 0 0 / 0.04);
+  --shadow-md: 0 4px 6px oklch(100% 0 0 / 0.07),
+               0 2px 4px oklch(100% 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px oklch(100% 0 0 / 0.08),
+               0 4px 6px oklch(100% 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px oklch(100% 0 0 / 0.09),
+               0 10px 10px oklch(100% 0 0 / 0.05);
+  --shadow-2xl: 0 25px 50px oklch(100% 0 0 / 0.16);
 
-/* Waste type semantic colors (extend Tailwind palette) */
-@theme {
+  --shadow-inner: inset 0 2px 4px oklch(100% 0 0 / 0.04);
+
+  /* Modern elevated shadows */
+  --shadow-elevate: 0 8px 24px oklch(100% 0 0 / 0.10);
+  --shadow-float: 0 12px 32px oklch(100% 0 0 / 0.14);
+
+  /* Light-glow border (dark mode substitute for border) */
+  --shadow-border: 0 0 0 1px oklch(95% 0 0 / 0.12);
+
   /* Plastic - Blue */
-  --color-plastic: oklch(58% 0.2 235);
-  --color-plastic-light: oklch(65% 0.15 235);
-  --color-plastic-dark: oklch(45% 0.18 235);
-  --color-plastic-bg: oklch(58% 0.2 235 / 0.1);
-  --color-plastic-border: oklch(58% 0.2 235 / 0.3);
+  --color-plastic: oklch(60% 0.18 240);
+  --color-plastic-light: oklch(68% 0.15 240);
+  --color-plastic-dark: oklch(48% 0.18 240);
+  --color-plastic-bg: oklch(60% 0.18 240 / 0.12);
+  --color-plastic-border: oklch(60% 0.18 240 / 0.28);
 
   /* Glass - Green */
-  --color-glass: oklch(62% 0.19 150);
-  --color-glass-light: oklch(70% 0.16 150);
-  --color-glass-dark: oklch(48% 0.18 150);
-  --color-glass-bg: oklch(62% 0.19 150 / 0.1);
-  --color-glass-border: oklch(62% 0.19 150 / 0.3);
+  --color-glass: oklch(62% 0.16 140);
+  --color-glass-light: oklch(70% 0.13 140);
+  --color-glass-dark: oklch(48% 0.16 140);
+  --color-glass-bg: oklch(62% 0.16 140 / 0.12);
+  --color-glass-border: oklch(62% 0.16 140 / 0.28);
 
   /* Paper - Amber */
-  --color-paper: oklch(72% 0.16 70);
-  --color-paper-light: oklch(78% 0.14 70);
-  --color-paper-dark: oklch(60% 0.16 70);
-  --color-paper-bg: oklch(72% 0.16 70 / 0.1);
-  --color-paper-border: oklch(72% 0.16 70 / 0.3);
+  --color-paper: oklch(72% 0.14 80);
+  --color-paper-light: oklch(78% 0.12 80);
+  --color-paper-dark: oklch(60% 0.14 80);
+  --color-paper-bg: oklch(72% 0.14 80 / 0.12);
+  --color-paper-border: oklch(72% 0.14 80 / 0.28);
 
   /* Metal - Gray */
-  --color-metal: oklch(55% 0.02 220);
-  --color-metal-light: oklch(65% 0.02 220);
-  --color-metal-dark: oklch(42% 0.02 220);
-  --color-metal-bg: oklch(55% 0.02 220 / 0.1);
-  --color-metal-border: oklch(55% 0.02 220 / 0.3);
+  --color-metal: oklch(55% 0.015 230);
+  --color-metal-light: oklch(65% 0.015 230);
+  --color-metal-dark: oklch(42% 0.015 230);
+  --color-metal-bg: oklch(55% 0.015 230 / 0.12);
+  --color-metal-border: oklch(55% 0.015 230 / 0.28);
 
   /* Map marker colors */
-  --color-marker-user: oklch(65% 0.2 175);
-  --color-marker-cluster: oklch(62% 0.2 155);
+  --color-marker-user: oklch(58% 0.10 135);
+  --color-marker-cluster: oklch(55% 0.09 125);
 }
 
 /* Keep global helper styles minimal; project components should use semantic classes only */
