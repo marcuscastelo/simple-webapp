@@ -1,3 +1,181 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* daisyUI plugin + explicit semantic variables for ReciclaMAIS app */
+
+@plugin "daisyui" {
+  themes: dark --default --prefers-dark;
+}
+
+/* Legacy fallback (light theme compatible) */
+@theme {
+  /* Base surfaces (backgrounds / surfaces) */
+  --color-base-50: oklch(98% 0 0);
+  --color-base-100: oklch(96% 0 0);
+  --color-base-200: oklch(92% 0 0);
+  --color-base-300: oklch(86% 0 0);
+  --color-base-400: oklch(75% 0 0);
+  --color-base-500: oklch(65% 0 0);
+  --color-base-content: oklch(20% 0 0);
+
+  /* Primary (brand - green for recycling) */
+  --color-primary: oklch(58% 0.18 155);
+  --color-primary-content: oklch(98% 0 0);
+
+  /* Secondary (supporting green) */
+  --color-secondary: oklch(48% 0.15 165);
+  --color-secondary-content: oklch(98% 0 0);
+
+  /* Accent (vibrant green/teal for CTAs and rewards) */
+  --color-accent: oklch(65% 0.2 175);
+  --color-accent-content: oklch(98% 0 0);
+
+  /* Neutral / muted */
+  --color-neutral: oklch(40% 0.01 220);
+  --color-neutral-content: oklch(95% 0 0);
+
+  /* Info (blue for information) */
+  --color-info: oklch(55% 0.2 230);
+  --color-info-content: oklch(98% 0 0);
+
+  /* Success (eco-friendly green, separate from primary) */
+  --color-success: oklch(60% 0.18 145);
+  --color-success-content: oklch(98% 0 0);
+
+  /* Warning (amber for cautions) */
+  --color-warning: oklch(70% 0.15 75);
+  --color-warning-content: oklch(20% 0 0);
+
+  /* Error (red for errors) */
+  --color-error: oklch(58% 0.22 25);
+  --color-error-content: oklch(98% 0 0);
+
+  /* Radii */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  /* Sizes */
+  --size-selector: 2.5rem;
+  --size-field: 2.5rem;
+
+  /* Border thickness */
+  --border: 1px;
+
+  /* Depth / Noise toggles */
+  --depth: 0;
+  --noise: 0;
+
+  /* RGB helpers for rgba usage */
+  --color-primary-rgb: 52 166 114;
+  --color-success-rgb: 52 176 104;
+  --color-info-rgb: 59 130 246;
+  --color-accent-rgb: 94 199 178;
+}
+
+@plugin "daisyui/theme" {
+  name: dark;
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Base surfaces (backgrounds / surfaces) */
+  --color-base-50: oklch(15% 0.01 220);
+  --color-base-100: oklch(18% 0.01 220);
+  --color-base-200: oklch(22% 0.015 220);
+  --color-base-300: oklch(28% 0.02 220);
+  --color-base-400: oklch(42% 0.02 220);
+  --color-base-500: oklch(55% 0.015 220);
+  --color-base-content: oklch(92% 0.01 220);
+
+  /* Primary (brand - vibrant green for recycling theme) */
+  --color-primary: oklch(62% 0.2 155);
+  --color-primary-content: oklch(98% 0 0);
+
+  /* Secondary (muted green) */
+  --color-secondary: oklch(52% 0.16 165);
+  --color-secondary-content: oklch(98% 0 0);
+
+  /* Accent (teal/cyan for rewards and CTAs) */
+  --color-accent: oklch(68% 0.18 180);
+  --color-accent-content: oklch(15% 0.01 220);
+
+  /* Neutral / muted */
+  --color-neutral: oklch(32% 0.015 220);
+  --color-neutral-content: oklch(88% 0.01 220);
+
+  /* Info (blue for plastic waste) */
+  --color-info: oklch(58% 0.2 235);
+  --color-info-content: oklch(98% 0 0);
+
+  /* Success (eco-friendly green for glass/environmental) */
+  --color-success: oklch(62% 0.19 150);
+  --color-success-content: oklch(98% 0 0);
+
+  /* Warning (amber for paper waste) */
+  --color-warning: oklch(72% 0.16 70);
+  --color-warning-content: oklch(20% 0 0);
+
+  /* Error (red for errors and rejected items) */
+  --color-error: oklch(60% 0.24 28);
+  --color-error-content: oklch(98% 0 0);
+
+  /* Radii */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  /* Sizes */
+  --size-selector: 2.5rem;
+  --size-field: 2.5rem;
+
+  /* Border thickness */
+  --border: 1px;
+
+  /* Depth / Noise toggles */
+  --depth: 0;
+  --noise: 0;
+
+  /* RGB helpers for rgba usage */
+  --color-primary-rgb: 64 188 130;
+  --color-success-rgb: 64 188 122;
+  --color-info-rgb: 59 130 246;
+  --color-accent-rgb: 102 214 196;
+}
+
+/* Waste type semantic colors (extend Tailwind palette) */
+@theme {
+  /* Plastic - Blue */
+  --color-plastic: oklch(58% 0.2 235);
+  --color-plastic-light: oklch(65% 0.15 235);
+  --color-plastic-dark: oklch(45% 0.18 235);
+  --color-plastic-bg: oklch(58% 0.2 235 / 0.1);
+  --color-plastic-border: oklch(58% 0.2 235 / 0.3);
+
+  /* Glass - Green */
+  --color-glass: oklch(62% 0.19 150);
+  --color-glass-light: oklch(70% 0.16 150);
+  --color-glass-dark: oklch(48% 0.18 150);
+  --color-glass-bg: oklch(62% 0.19 150 / 0.1);
+  --color-glass-border: oklch(62% 0.19 150 / 0.3);
+
+  /* Paper - Amber */
+  --color-paper: oklch(72% 0.16 70);
+  --color-paper-light: oklch(78% 0.14 70);
+  --color-paper-dark: oklch(60% 0.16 70);
+  --color-paper-bg: oklch(72% 0.16 70 / 0.1);
+  --color-paper-border: oklch(72% 0.16 70 / 0.3);
+
+  /* Metal - Gray */
+  --color-metal: oklch(55% 0.02 220);
+  --color-metal-light: oklch(65% 0.02 220);
+  --color-metal-dark: oklch(42% 0.02 220);
+  --color-metal-bg: oklch(55% 0.02 220 / 0.1);
+  --color-metal-border: oklch(55% 0.02 220 / 0.3);
+
+  /* Map marker colors */
+  --color-marker-user: oklch(65% 0.2 175);
+  --color-marker-cluster: oklch(62% 0.2 155);
+}
+
+/* Keep global helper styles minimal; project components should use semantic classes only */

@@ -101,7 +101,7 @@ const Dashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div class="text-3xl font-bold text-green-600">
+              <div class="text-3xl font-bold text-success">
                 {userStats.co2Saved}kg
               </div>
             </CardContent>

@@ -12,7 +12,7 @@ function RecyclingGuide() {
   const wasteTypes = [
     {
       name: 'Plástico',
-      color: 'bg-blue-500',
+      color: 'bg-info',
       image: plasticImage,
       accepted: [
         'Garrafas de água e refrigerantes',
@@ -31,7 +31,7 @@ function RecyclingGuide() {
     },
     {
       name: 'Vidro',
-      color: 'bg-green-500',
+      color: 'bg-success',
       image: glassImage,
       accepted: [
         'Garrafas de bebidas',
@@ -49,7 +49,7 @@ function RecyclingGuide() {
     },
     {
       name: 'Papel e Cartão',
-      color: 'bg-amber-500',
+      color: 'bg-warning',
       image: paperImage,
       accepted: [
         'Jornais e revistas',
@@ -69,7 +69,7 @@ function RecyclingGuide() {
     },
     {
       name: 'Metal',
-      color: 'bg-gray-500',
+      color: 'bg-neutral',
       image: metalImage,
       accepted: [
         'Latas de bebidas',
@@ -131,14 +131,14 @@ function RecyclingGuide() {
 
                   <div>
                     <h4 class="font-semibold mb-3 flex items-center gap-2">
-                      <CheckCircle2 class="h-5 w-5 text-green-600" />
+                      <CheckCircle2 class="h-5 w-5 text-success" />
                       Pode reciclar
                     </h4>
                     <ul class="space-y-2">
                       <For each={waste.accepted}>
                         {(item) => (
                           <li class="text-sm text-muted-foreground flex items-start gap-2">
-                            <span class="text-green-600 mt-0.5">✓</span>
+                            <span class="text-success mt-0.5">✓</span>
                             {item}
                           </li>
                         )}

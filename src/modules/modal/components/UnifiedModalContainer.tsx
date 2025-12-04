@@ -71,10 +71,10 @@ function ModalRenderer(props: ModalState) {
               </div>
               <Show when={props.type === 'error' && props.errorDetails.stack}>
                 <details class="mt-2">
-                  <summary class="cursor-pointer text-sm text-gray-400 hover:text-white">
+                  <summary class="cursor-pointer text-sm text-muted-foreground hover:text-white">
                     Show technical details
                   </summary>
-                  <pre class="mt-2 text-xs bg-gray-900 p-3 rounded border border-gray-700 overflow-auto max-h-40">
+                  <pre class="mt-2 text-xs bg-base-100 p-3 rounded border border-base-300 overflow-auto max-h-40">
                     {props.type === 'error' ? props.errorDetails.stack : ''}
                   </pre>
                 </details>
@@ -94,7 +94,7 @@ function ModalRenderer(props: ModalState) {
 
           <Show when={props.type === 'confirmation'}>
             <div class="confirmation-modal">
-              <p class="mb-6 text-gray-200">
+              <p class="mb-6 text-muted-foreground">
                 {props.type === 'confirmation'
                   ? resolveStringValue(props.message)
                   : ''}

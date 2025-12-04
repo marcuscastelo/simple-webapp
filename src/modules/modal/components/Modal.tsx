@@ -67,7 +67,9 @@ export const Modal = (props: ModalProps) => {
       class={modalClass()}
     >
       <Toaster />
-      <div class={cn('modal-box bg-gray-800 text-white')}>{props.children}</div>
+      <div class={cn('modal-box bg-base-300 text-base-content')}>
+        {props.children}
+      </div>
       <Show when={props.closeOnOutsideClick}>
         <div onClick={handleClose} class="modal-backdrop" />
       </Show>

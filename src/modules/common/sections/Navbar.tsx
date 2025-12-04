@@ -10,7 +10,7 @@ import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 
 export function Navbar() {
   return (
-    <header class="bg-white/60 backdrop-blur-sm sticky top-0 z-40">
+    <header class="bg-base-100/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />
@@ -30,7 +30,7 @@ export function Navbar() {
 
 function Logo() {
   return (
-    <div class="rounded-full bg-gray-100 overflow-clip ">
+    <div class="rounded-full bg-base-200 overflow-clip ">
       <A href="/" class="flex items-center gap-3 select-none">
         <img src={logo} alt="Recicla+" class="h-10" />
       </A>
@@ -99,7 +99,7 @@ function GoogleLoginButton() {
         fallback={
           <A href="/auth" class="flex items-center">
             <div
-              class="h-10 w-10 rounded-full flex items-center justify-center bg-white border border-gray-200 shadow-sm"
+              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-100 border border-base-300 shadow-sm"
               aria-hidden="false"
               role="img"
             >
@@ -132,10 +132,10 @@ function GoogleLoginButton() {
         }
       >
         <div class="relative">
-          <button
+            <button
             onClick={toggleMenu}
             aria-expanded={open()}
-            class="h-10 w-10 rounded-full overflow-hidden bg-white border border-gray-200 shadow-sm"
+            class="h-10 w-10 rounded-full overflow-hidden bg-base-100 border border-base-300 shadow-sm"
             title="Conta"
           >
             {avatarUrl() ? (
@@ -146,7 +146,7 @@ function GoogleLoginButton() {
               />
             ) : (
               <svg
-                class="h-5 w-5 m-auto text-gray-400"
+                class="h-5 w-5 m-auto text-muted-foreground"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,17 +173,17 @@ function GoogleLoginButton() {
           {open() && (
             <div
               ref={(el) => (menuRef = el)}
-              class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50"
+              class="absolute right-0 mt-2 w-40 bg-base-100 border border-base-300 rounded-md shadow-lg overflow-hidden z-50"
             >
               <A
                 href="/dashboard"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                class="block px-4 py-2 text-sm text-base-content hover:bg-base-100"
               >
                 Perfil
               </A>
               <button
                 onClick={handleLogout}
-                class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                class="w-full text-left block px-4 py-2 text-sm text-base-content hover:bg-base-100"
               >
                 Sair
               </button>

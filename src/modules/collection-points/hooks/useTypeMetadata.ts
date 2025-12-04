@@ -10,10 +10,10 @@ export function useTypeMetadata() {
    */
   const getTypeColor = (type: string): string => {
     const colors: Record<string, string> = {
-      plastic: 'bg-blue-500/10 text-blue-600 border-blue-200',
-      glass: 'bg-green-500/10 text-green-600 border-green-200',
-      paper: 'bg-amber-500/10 text-amber-600 border-amber-200',
-      metal: 'bg-gray-500/10 text-gray-600 border-gray-200',
+      plastic: 'bg-info/10 text-info border-info/30',
+      glass: 'bg-success/10 text-success border-success/30',
+      paper: 'bg-warning/10 text-warning border-warning/30',
+      metal: 'bg-neutral/10 text-neutral border-neutral/30',
     }
     return colors[type] || ''
   }

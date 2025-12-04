@@ -37,7 +37,7 @@ export function MapContainer(props: MapContainerProps) {
       {/* Toggle fullscreen button (overlay on right) */}
       <div class="absolute top-3 right-3 z-60">
         <button
-          class="inline-flex items-center gap-2 rounded-md bg-white/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
+          class="inline-flex items-center gap-2 rounded-md bg-base-100/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
           onClick={() => props.onFullscreenToggle((v) => !v)}
           aria-pressed={isFullscreen()}
           aria-label={isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'}
