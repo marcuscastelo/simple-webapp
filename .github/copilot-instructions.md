@@ -61,3 +61,20 @@ References
 - SolidJS-specific guidance: `.github/instructions/solidjs.instructions.md`
 
 If something is unclear, ask for: the exact route or component to change, expected user-visible behavior, and whether the change should be backward compatible with existing fixtures in `src/*.json`.
+
+## Additional non-conflicting best-practices (imported from other projects)
+
+The following practices were pulled from a related instruction set and adapted to avoid conflicts with this repository's established patterns.
+
+- Barrel files: reaffirmed — barrel/index re-exports are forbidden. Always import from the concrete file path (e.g. `src/components/ui/Button.tsx`).
+- JSDoc: update JSDoc for all exported TypeScript types and functions when you change their signatures. Keep JSDoc concise, in English, and document params/returns. Do NOT add JSDoc to non-exported/internal functions.
+- Terminal & scripts: check a script exists before invoking it. Prefer the repo's pnpm scripts (see `package.json`) and ensure zsh compatibility when suggesting shell snippets for the maintainer (the project's dev environment uses zsh).
+- Promises: use `void` for fire-and-forget only in UI event handlers or non-critical effects. Do not silence errors with `.catch(() => {})` — always handle or log errors.
+- Clean architecture: keep domain code pure (no side effects, no logging, no UI calls). Application/orchestration layers may call `showError` (UI toast) and structured `logging`/observability utilities.
+- Error handling: domain code should throw pure errors. Application code should catch domain errors and attach context (via `cause` or `context` properties) before calling `showError` and logging to `src/modules/observability` (if present).
+- Language: code, comments and commits should be written in English. UI text that is user-facing may be in pt-BR where required by the UX; flag non-English comments for conversion to English.
+- Imports: prefer static imports at the top of the file. Avoid introducing dynamic imports unless there's a documented runtime need (e.g., optional feature bundles).
+- Testing & CI: when making changes, update or add tests that cover the behavior. Run `pnpm run check` locally and resolve lint/type issues before finalizing changes.
+- Refactoring automation: for large, batch changes, prefer scripted edits and always run `pnpm run check` afterwards. If using shell scripts, ensure they exist in the repo and are executable.
+
+These are intentionally conservative guidelines — if you'd like any of the more prescriptive or agent-level rules (memory manipulation, multi-agent reporting fields, or forced import styles) included, tell me which ones and I'll highlight conflicts and prepare an explicit migration plan.
