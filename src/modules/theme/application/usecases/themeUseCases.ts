@@ -22,6 +22,7 @@ const { themeStore } = createRoot(() => {
 
   return { themeStore, themeLocalStorage }
 })
+
 export const themeUseCases = {
   toggleTheme: () => {
     themeStore.setTheme((prevTheme) =>
