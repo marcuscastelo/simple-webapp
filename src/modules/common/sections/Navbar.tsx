@@ -11,7 +11,7 @@ import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
 
 export function Navbar() {
   return (
-    <header class="bg-base-500/60 backdrop-blur-sm sticky top-0 z-40">
+    <header class="bg-base-50/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />

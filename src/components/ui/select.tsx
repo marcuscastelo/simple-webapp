@@ -82,7 +82,7 @@ function SelectItem(props: JSX.OptionHTMLAttributes<HTMLOptionElement>) {
 }
 
 function SelectSeparator() {
-  return <div class={cn('-mx-1 my-1 h-px bg-muted')} />
+  return <div class={cn('-mx-1 my-1 h-px bg-base-100')} />
 }
 
 function SelectScrollUpButton(

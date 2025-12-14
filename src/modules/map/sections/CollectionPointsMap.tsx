@@ -188,11 +188,11 @@ function ClusterMarker(props: {
           class="relative flex items-center justify-center rounded-full shadow-lg"
           style="width:64px;height:64px"
         >
-          <div class="absolute inset-0 rounded-full bg-success" />
-          <div class="relative z-10 text-success flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-marker-background-cluster" />
+          <div class="relative z-10 text-marker-icon-cluster flex items-center justify-center">
             <Recycle class="w-7 h-7" />
           </div>
-          <div class="absolute -bottom-2 right-0 bg-base-500 text-sm font-semibold text-primary px-2 py-0.5 rounded-full shadow-md">
+          <div class="absolute -bottom-2 right-0 bg-marker-badge-background text-sm font-semibold text-marker-text px-2 py-0.5 rounded-full shadow-md">
             {props.cluster.properties.point_count_abbreviated}
           </div>
         </div>
@@ -216,8 +216,8 @@ function FeatureMarker(props: {
           class="relative rounded-full shadow-md flex items-center justify-center"
           style="width:40px;height:40px"
         >
-          <div class="absolute inset-0 rounded-full bg-success" />
-          <div class="relative z-10 text-success flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-marker-background-single" />
+          <div class="relative z-10 text-marker-icon-single flex items-center justify-center">
             <Leaf class="w-5 h-5" />
           </div>
         </div>

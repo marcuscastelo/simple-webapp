@@ -89,7 +89,7 @@ function RecyclingGuide() {
   ]
 
   return (
-    <div class="min-h-screen py-12">
+    <div class="min-h-screen py-12 bg-base-150">
       <div class="container mx-auto px-4">
         <div class="mb-12 text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">
@@ -163,7 +163,7 @@ function RecyclingGuide() {
                     </ul>
                   </div>
 
-                  <div class="bg-muted/50 rounded-lg p-4">
+                  <div class="bg-base-50 rounded-lg p-4">
                     <h4 class="font-semibold mb-2 text-sm">💡 Dica</h4>
                     <p class="text-sm text-muted-foreground">{waste.tips}</p>
                   </div>

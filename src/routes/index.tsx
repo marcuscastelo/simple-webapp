@@ -63,10 +63,10 @@ const Home = () => {
   ]
 
   return (
-    <div class="min-h-screen">
+    <div class="min-h-screen bg-base-100">
       {/* Hero Section */}
       <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-base-100" />
+        <div class="absolute inset-0 bg-base-200" />
         <div class="container mx-auto px-4 py-20 relative">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
@@ -107,14 +107,14 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section class="py-16 bg-muted/30">
+      <section class="py-16 bg-base-100">
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
             <For each={stats}>
               {(stat) => {
                 const Icon = stat.icon
                 return (
-                  <Card class="border-none bg-base-100 shadow-md hover:shadow-lg transition-all duration-300">
+                  <Card class="border-none bg-base-50 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardContent class="p-6 text-center space-y-2">
                       <Icon class={`h-10 w-10 mx-auto ${stat.color}`} />
                       <div class="text-3xl font-bold">{stat.value}</div>
@@ -165,9 +165,9 @@ const Home = () => {
 
       {/* CTA Section */}
       <section class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-linear-to-r from-primary to-accent opacity-10" />
+        <div class="absolute inset-0 bg-base-200" />
         <div class="container mx-auto px-4 relative">
-          <Card class="border-none shadow-2xl bg-linear-to-r from-primary to-accent text-primary-foreground">
+          <Card class="border-none shadow-xl bg-base-100">
             <CardContent class="p-12 text-center space-y-6">
               <h2 class="text-4xl font-bold">Pronto para Começar?</h2>
               <p class="text-xl opacity-90 max-w-2xl mx-auto">
@@ -175,7 +175,7 @@ const Home = () => {
                 diferença. Comece hoje a reciclar e a ganhar recompensas!
               </p>
               <A href="/auth">
-                <Button size="lg" variant="secondary" class="shadow-xl">
+                <Button size="lg" class="shadow-xl">
                   Criar Conta Grátis
                 </Button>
               </A>
