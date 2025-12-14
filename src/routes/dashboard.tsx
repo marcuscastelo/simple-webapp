@@ -51,7 +51,7 @@ const Dashboard = () => {
         <div class="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div class="flex items-center gap-4">
             <Avatar class="h-16 w-16">
-              <AvatarFallback class="bg-gradient-to-br from-primary to-accent text-primary-foreground text-xl">
+              <AvatarFallback class="bg-linear-to-br from-primary to-accent text-primary-foreground text-xl">
                 JS
               </AvatarFallback>
             </Avatar>
@@ -60,7 +60,10 @@ const Dashboard = () => {
               <p class="text-muted-foreground">Membro desde Out 2024</p>
             </div>
           </div>
-          <Button variant="outline">Editar Perfil</Button>
+          <div class="flex gap-4">
+            <Button variant="outline">Adicionar Reciclagem</Button>
+            <Button variant="outline">Editar Perfil</Button>
+          </div>
         </div>
 
         {/* Stats Grid */}
