@@ -15,7 +15,54 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      materials: {
+        Row: {
+          name: string
+        }
+        Insert: {
+          name: string
+        }
+        Update: {
+          name?: string
+        }
+        Relationships: []
+      }
+      recycle_event: {
+        Row: {
+          created_at: string
+          id: number
+          recycled_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          recycled_at: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          recycled_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_data: {
+        Row: {
+          created_at: string
+          id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
