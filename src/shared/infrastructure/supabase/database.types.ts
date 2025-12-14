@@ -15,19 +15,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      materials: {
-        Row: {
-          name: string
-        }
-        Insert: {
-          name: string
-        }
-        Update: {
-          name?: string
-        }
-        Relationships: []
-      }
-      recycle_event: {
+      activities: {
         Row: {
           created_at: string
           id: number
@@ -45,6 +33,18 @@ export type Database = {
           id?: number
           recycled_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      materials: {
+        Row: {
+          name: string
+        }
+        Insert: {
+          name: string
+        }
+        Update: {
+          name?: string
         }
         Relationships: []
       }
