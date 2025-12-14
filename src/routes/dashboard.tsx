@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card'
+import { openActivityAddModal } from '~/modules/activity/ui/ActivityAddModal'
 
 const Dashboard = () => {
   const userStats = {
@@ -43,7 +44,6 @@ const Dashboard = () => {
       location: 'ReciclaPorto Centro',
     },
   ]
-
   return (
     <div class="min-h-screen py-12">
       <div class="container mx-auto px-4">
@@ -61,7 +61,9 @@ const Dashboard = () => {
             </div>
           </div>
           <div class="flex gap-4">
-            <Button variant="outline">Adicionar Reciclagem</Button>
+            <Button variant="outline" onClick={openActivityAddModal}>
+              Adicionar Reciclagem
+            </Button>
             <Button variant="outline">Editar Perfil</Button>
           </div>
         </div>
