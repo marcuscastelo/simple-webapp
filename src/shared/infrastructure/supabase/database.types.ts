@@ -18,21 +18,69 @@ export type Database = {
       activities: {
         Row: {
           created_at: string
+          date: string
+          grams: number
           id: number
-          recycled_at: string
+          location_id: string
+          material: string
+          reward: string | null
           user_id: string
         }
         Insert: {
           created_at?: string
+          date: string
+          grams: number
           id?: number
-          recycled_at: string
+          location_id: string
+          material: string
+          reward?: string | null
           user_id: string
         }
         Update: {
           created_at?: string
+          date?: string
+          grams?: number
           id?: number
-          recycled_at?: string
+          location_id?: string
+          material?: string
+          reward?: string | null
           user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'activities_location_id_fkey'
+            columns: ['location_id']
+            isOneToOne: false
+            referencedRelation: 'collectionpoints'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'activities_material_fkey'
+            columns: ['material']
+            isOneToOne: false
+            referencedRelation: 'materials'
+            referencedColumns: ['name']
+          },
+        ]
+      }
+      collectionpoints: {
+        Row: {
+          created_at: string
+          id: string
+          latitude: number | null
+          longitude: number | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
         }
         Relationships: []
       }
