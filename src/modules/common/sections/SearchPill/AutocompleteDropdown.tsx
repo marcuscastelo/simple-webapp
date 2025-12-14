@@ -42,7 +42,7 @@ export type AutocompleteDropdownProps = {
 export function AutocompleteDropdown(props: AutocompleteDropdownProps) {
   return (
     <Show when={props.isOpen() && props.query().length > 0}>
-      <div class="absolute top-full left-0 right-0 mt-2 bg-base-100 border border-base-300 rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
+      <div class="absolute top-full left-0 right-0 mt-2 bg-base-500 border border-base-300 rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
         <Show
           when={!props.loading() && props.predictions().length === 0}
           fallback={
@@ -65,7 +65,7 @@ export function AutocompleteDropdown(props: AutocompleteDropdownProps) {
                 <li>
                   <button
                     type="button"
-                    class="w-full px-4 py-3 text-left hover:bg-base-100 transition-colors"
+                    class="w-full px-4 py-3 text-left hover:bg-base-500 transition-colors"
                     onMouseDown={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
