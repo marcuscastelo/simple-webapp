@@ -59,6 +59,12 @@ export function GET() {
         const longitude = parseFloat(poi.longitude as unknown as string)
         if (Number.isNaN(latitude) || Number.isNaN(longitude)) return null
 
+        // Include enriched fields when available so the frontend can consume
+        // a single unified FeatureCollection. New fields were added to the
+        // bundled POI dataset (name, address, phone, schedule, rating,
+        // company, wasteTypes) — surface them on the properties object so
+        // consumers (map and list views) receive friendly data instead of
+        // raw slugs.
         const properties: Record<string, unknown> = {
           id: poi.id,
           latitude,
@@ -67,9 +73,18 @@ export function GET() {
           type: poi.type,
           families_pope: poi.families_pope,
           location_types_pope: poi.location_types_pope,
-          plainWastes: poi.plainWastes,
-          plainTypes: poi.plainTypes,
-          plainFilters: poi.plainFilters,
+          // legacy/raw fields (may be absent after migration)
+          plainWastes: (poi as any).plainWastes,
+          plainTypes: (poi as any).plainTypes,
+          plainFilters: (poi as any).plainFilters,
+          // enriched fields added by the migration scripts
+          name: (poi as any).name,
+          address: (poi as any).address,
+          phone: (poi as any).phone,
+          schedule: (poi as any).schedule,
+          rating: (poi as any).rating,
+          company: (poi as any).company,
+          wasteTypes: (poi as any).wasteTypes,
         }
 
         const feature: Feature<Point, Record<string, unknown>> = {

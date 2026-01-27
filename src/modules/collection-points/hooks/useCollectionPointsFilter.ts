@@ -9,15 +9,16 @@ import type { CollectionPoint } from '../types'
  * @returns Memoized filtered array of collection points
  */
 export function useCollectionPointsFilter(
-  points: CollectionPoint[],
+  points: Accessor<CollectionPoint[]>,
   selectedType: Accessor<string>,
 ) {
   const filteredPoints = createMemo(() => {
+    const pts = points() || []
     const type = selectedType()
     if (type === 'all') {
-      return points
+      return pts
     }
-    return points.filter((point) => point.types.includes(type))
+    return pts.filter((point) => point.types.includes(type))
   })
 
   return filteredPoints
