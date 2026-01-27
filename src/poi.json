@@ -24,7 +24,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Radio Popular Braga Retail Center",
@@ -32,7 +31,11 @@
                     "phone": "+351 252 137 197",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.2,
-                    "company": "Radio Popular"
+                    "company": "Radio Popular",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -56,7 +59,6 @@
                             "slug": "pr-publico"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-publico",
                     "plainFilters": "",
                     "name": "Nova Arcada",
@@ -64,7 +66,11 @@
                     "phone": "+351 291 174 294",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 5.0,
-                    "company": "Nova Arcada"
+                    "company": "Nova Arcada",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -85,7 +91,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "lampadas|pilhas-portateis|lampadas|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pret-loja",
                     "plainFilters": "",
                     "name": "Braga Retail Center",
@@ -93,7 +98,11 @@
                     "phone": "+351 917 211 391",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.2,
-                    "company": "Braga Retail"
+                    "company": "Braga Retail",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -114,7 +123,6 @@
                             "slug": "pr-publico"
                         }
                     ],
-                    "plainWastes": "lampadas|pilhas-portateis|lampadas|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-publico",
                     "plainFilters": "",
                     "name": "Centro Comercial Minho Center",
@@ -122,7 +130,11 @@
                     "phone": "+351 918 248 488",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.9,
-                    "company": "Centro Comercial"
+                    "company": "Centro Comercial",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -146,7 +158,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
                     "plainFilters": "",
                     "name": "Leroy Merlin Braga",
@@ -154,7 +165,11 @@
                     "phone": "+351 253 285 585",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.2,
-                    "company": "Leroy Merlin"
+                    "company": "Leroy Merlin",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -178,7 +193,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Bragadis Sociedade De Distribuicao S.A",
@@ -186,7 +200,11 @@
                     "phone": "+351 252 322 682",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.9,
-                    "company": "Bragadis Sociedade"
+                    "company": "Bragadis Sociedade",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -210,7 +228,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pret-loja",
                     "plainFilters": "",
                     "name": "Braga Parque",
@@ -218,7 +235,11 @@
                     "phone": "+351 291 359 779",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Braga Parque"
+                    "company": "Braga Parque",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -242,7 +263,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Palmeira",
@@ -250,7 +270,11 @@
                     "phone": "+351 917 396 876",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.8,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -274,7 +298,6 @@
                             "slug": "pr-privado"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-privado",
                     "plainFilters": "",
                     "name": "Gnr Povoa De Lanhoso",
@@ -282,7 +305,11 @@
                     "phone": "+351 918 433 973",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Gnr Povoa"
+                    "company": "Gnr Povoa",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -309,7 +336,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Manhente",
@@ -317,7 +343,11 @@
                     "phone": "+351 253 470 170",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.8,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -341,7 +371,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Profissional De Braga",
@@ -349,7 +378,11 @@
                     "phone": "+351 252 507 267",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.0,
-                    "company": "Escola Profissional"
+                    "company": "Escola Profissional",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -373,7 +406,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
                     "plainFilters": "",
                     "name": "Leroy Merlin Guimaraes",
@@ -381,7 +413,11 @@
                     "phone": "+351 291 544 364",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.8,
-                    "company": "Leroy Merlin"
+                    "company": "Leroy Merlin",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -405,7 +441,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Secundaria Padre Benjamim Salgado",
@@ -413,7 +448,11 @@
                     "phone": "+351 917 581 461",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.0,
-                    "company": "Escola Secundaria"
+                    "company": "Escola Secundaria",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -437,7 +476,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica Abel Salazar",
@@ -445,7 +483,11 @@
                     "phone": "+351 918 618 558",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.7,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -472,7 +514,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica Trigal De Santa Maria",
@@ -480,7 +521,11 @@
                     "phone": "+351 253 655 655",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.0,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -507,7 +552,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica Bernardino Machado",
@@ -515,7 +559,11 @@
                     "phone": "+351 252 692 752",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.7,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -533,7 +581,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
                     "plainFilters": "",
                     "name": "Onlybattery Guimaraes",
@@ -541,7 +588,10 @@
                     "phone": "+351 291 729 849",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.9,
-                    "company": "Collection Partner"
+                    "company": "Collection Partner",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -559,7 +609,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
                     "plainFilters": "",
                     "name": "Onlybattery Braga",
@@ -567,7 +616,10 @@
                     "phone": "+351 917 766 946",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.6,
-                    "company": "Collection Partner"
+                    "company": "Collection Partner",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -585,7 +637,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Famalicao",
@@ -593,7 +644,10 @@
                     "phone": "+351 918 803 143",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 3.9,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -611,7 +665,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Povoa De Lanhoso",
@@ -619,7 +672,10 @@
                     "phone": "+351 253 840 240",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.6,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -637,7 +693,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Braga",
@@ -645,7 +700,10 @@
                     "phone": "+351 252 877 337",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 3.8,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -663,7 +721,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Vila Verde",
@@ -671,7 +728,10 @@
                     "phone": "+351 291 914 434",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.6,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -689,7 +749,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Vila Verde",
@@ -697,7 +756,10 @@
                     "phone": "+351 917 951 531",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 3.8,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -715,7 +777,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Guimaraes",
@@ -723,7 +784,10 @@
                     "phone": "+351 918 988 628",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.5,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -741,7 +805,6 @@
                             "slug": "pret-loja"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
                     "plainFilters": "",
                     "name": "Lidl Braga",
@@ -749,7 +812,10 @@
                     "phone": "+351 253 125 725",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 3.8,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -773,7 +839,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Profissional Do Minho",
@@ -781,7 +846,11 @@
                     "phone": "+351 252 162 822",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.5,
-                    "company": "Escola Profissional"
+                    "company": "Escola Profissional",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -791,7 +860,6 @@
                     "id": "ckwdh9c9q02nc0a1886edql2h",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "guardas-chuva",
                     "plainTypes": "loja",
                     "plainFilters": "",
                     "name": "Ponto Vermelho",
@@ -799,7 +867,10 @@
                     "phone": "+351 291 199 919",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.7,
-                    "company": "Ponto Vermelho"
+                    "company": "Ponto Vermelho",
+                    "wasteTypes": [
+                        "plastic"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -809,7 +880,6 @@
                     "id": "ckwdh9cao02nn0a18eb60fgf6",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "guardas-chuva",
                     "plainTypes": "loja",
                     "plainFilters": "",
                     "name": "Cindinha Bulkstore E Guesthouse Loja A Granel",
@@ -817,7 +887,10 @@
                     "phone": "+351 917 236 116",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.4,
-                    "company": "Cindinha Bulkstore"
+                    "company": "Cindinha Bulkstore",
+                    "wasteTypes": [
+                        "plastic"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -827,7 +900,6 @@
                     "id": "ckwdh9der02yp0a18kzd7f33i",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "oleos-lubrificantes",
                     "plainTypes": "ecocentro",
                     "plainFilters": "",
                     "name": "Municipio De Braga",
@@ -835,7 +907,10 @@
                     "phone": "+351 918 273 213",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.7,
-                    "company": "Município"
+                    "company": "Município",
+                    "wasteTypes": [
+                        "all"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -845,7 +920,6 @@
                     "id": "ckwdh9jsv04z30a18vv9jxr7j",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "pneus",
                     "plainTypes": "ecocentro",
                     "plainFilters": "",
                     "name": "Braval Valorizacao E Tratamento De Residuos Solidos S.A.",
@@ -853,7 +927,10 @@
                     "phone": "+351 253 310 310",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.4,
-                    "company": "Braval"
+                    "company": "Braval",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -863,7 +940,6 @@
                     "id": "ckwdh9l3405ez0a181ltb8c2o",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Braguinox Industria De Reciclagem De Metais Lda",
@@ -871,7 +947,10 @@
                     "phone": "+351 252 347 407",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.6,
-                    "company": "Braguinox Industria"
+                    "company": "Braguinox Industria",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -881,7 +960,6 @@
                     "id": "ckwdh9l5e05fw0a18ley2kof2",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Geres Gestao De Residuos Lda",
@@ -889,7 +967,10 @@
                     "phone": "+351 291 384 504",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.4,
-                    "company": "Geres Gestao"
+                    "company": "Geres Gestao",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -899,7 +980,6 @@
                     "id": "ckwdh9l6605g70a188h7tpcln",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Goncalo And Simao Lda",
@@ -907,7 +987,10 @@
                     "phone": "+351 917 421 601",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.6,
-                    "company": "Goncalo And"
+                    "company": "Goncalo And",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -917,7 +1000,6 @@
                     "id": "ckwdh9l6x05gi0a1891cqayav",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Recife Desmontagem De Veiculos Lda",
@@ -925,7 +1007,10 @@
                     "phone": "+351 918 458 698",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.3,
-                    "company": "Recife Desmontagem"
+                    "company": "Recife Desmontagem",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -935,7 +1020,6 @@
                     "id": "ckwdh9l9f05hf0a18l667o293",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Steelnor Lda",
@@ -943,7 +1027,10 @@
                     "phone": "+351 253 495 795",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.5,
-                    "company": "Steelnor Lda"
+                    "company": "Steelnor Lda",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -953,7 +1040,6 @@
                     "id": "ckwdh9la505hq0a18w3ru2yp6",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Zenit Automoveis Unipessoal Lda",
@@ -961,7 +1047,10 @@
                     "phone": "+351 252 532 892",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.3,
-                    "company": "Zenit Automoveis"
+                    "company": "Zenit Automoveis",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -971,7 +1060,6 @@
                     "id": "cky0925n5jxcd0b184ebrv21t",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "oleos-alimentares-usados",
                     "plainTypes": "loja",
                     "plainFilters": "",
                     "name": "Caucau Bio",
@@ -979,7 +1067,10 @@
                     "phone": "+351 291 569 989",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.5,
-                    "company": "Caucau Bio"
+                    "company": "Caucau Bio",
+                    "wasteTypes": [
+                        "all"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -997,7 +1088,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Lidl Guimaraes",
@@ -1005,7 +1095,10 @@
                     "phone": "+351 917 606 186",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.2,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1023,7 +1116,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Sos Telemovel",
@@ -1031,7 +1123,10 @@
                     "phone": "+351 918 643 283",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 5.0,
-                    "company": "Collection Partner"
+                    "company": "Collection Partner",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1055,7 +1150,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Ikea Braga",
@@ -1063,7 +1157,11 @@
                     "phone": "+351 253 680 380",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.2,
-                    "company": "IKEA"
+                    "company": "IKEA",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1081,7 +1179,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Homa Braga",
@@ -1089,7 +1186,10 @@
                     "phone": "+351 252 717 477",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.9,
-                    "company": "Homa Braga"
+                    "company": "Homa Braga",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1107,7 +1207,6 @@
                             "slug": "municipios-e-jf"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "municipios-e-jf|municipios-e-jf",
                     "plainFilters": "",
                     "name": "Jf Crespos E Pousada De Braga",
@@ -1115,7 +1214,10 @@
                     "phone": "+351 291 754 574",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.2,
-                    "company": "Município"
+                    "company": "Município",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1133,7 +1235,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Moreplay Electrodomesticos Unip.Lda",
@@ -1141,7 +1242,10 @@
                     "phone": "+351 917 791 671",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.9,
-                    "company": "Moreplay Electrodomesticos"
+                    "company": "Moreplay Electrodomesticos",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1168,7 +1272,6 @@
                             "slug": "operador-gestao-residuos"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "operador-gestao-residuos|operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Sf Gestao De Residuos Lda",
@@ -1176,7 +1279,11 @@
                     "phone": "+351 918 828 768",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Sf Gestao"
+                    "company": "Sf Gestao",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1194,7 +1301,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "outros|outros",
                     "plainFilters": "",
                     "name": "Sucatas Abilio Raimundo Unip Lda",
@@ -1202,7 +1308,10 @@
                     "phone": "+351 253 865 865",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.8,
-                    "company": "Sucatas Abilio"
+                    "company": "Sucatas Abilio",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1220,7 +1329,6 @@
                             "slug": "municipios-e-jf"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "municipios-e-jf|municipios-e-jf",
                     "plainFilters": "",
                     "name": "Uniao Das Freguesias De Arentim E Cunha",
@@ -1228,7 +1336,10 @@
                     "phone": "+351 252 902 962",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Uniao Das"
+                    "company": "Uniao Das",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1246,7 +1357,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Supermercado Froiz Braga",
@@ -1254,7 +1364,10 @@
                     "phone": "+351 291 939 159",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.8,
-                    "company": "Supermercado Froiz"
+                    "company": "Supermercado Froiz",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1272,7 +1385,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Supermercado Froiz Braga",
@@ -1280,7 +1392,10 @@
                     "phone": "+351 917 976 256",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.0,
-                    "company": "Supermercado Froiz"
+                    "company": "Supermercado Froiz",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1298,7 +1413,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
                     "plainFilters": "",
                     "name": "Supermercado Froiz Braga",
@@ -1306,7 +1420,10 @@
                     "phone": "+351 918 113 353",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.8,
-                    "company": "Supermercado Froiz"
+                    "company": "Supermercado Froiz",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [],
@@ -1316,7 +1433,6 @@
                     "id": "cl6xhsumpn8oc081870k3v1o7",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "oleos-alimentares-usados",
                     "plainTypes": "loja",
                     "plainFilters": "",
                     "name": "Frasco A Frasco",
@@ -1324,7 +1440,10 @@
                     "phone": "+351 253 150 450",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.0,
-                    "company": "Frasco A"
+                    "company": "Frasco A",
+                    "wasteTypes": [
+                        "all"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1348,7 +1467,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Gualtar",
@@ -1356,7 +1474,11 @@
                     "phone": "+351 252 187 547",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.7,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1383,7 +1505,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Csmarket Unipessoal",
@@ -1391,7 +1512,11 @@
                     "phone": "+351 291 224 644",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.0,
-                    "company": "Csmarket Unipessoal"
+                    "company": "Csmarket Unipessoal",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1418,7 +1543,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Galerias Macieira And Silva Lda",
@@ -1426,7 +1550,11 @@
                     "phone": "+351 917 261 741",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.7,
-                    "company": "Galerias Macieira"
+                    "company": "Galerias Macieira",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1447,7 +1575,6 @@
                             "slug": "operador-gestao-residuos"
                         }
                     ],
-                    "plainWastes": "equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Steelnorlda",
@@ -1455,7 +1582,10 @@
                     "phone": "+351 918 298 838",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.9,
-                    "company": "Steelnorlda"
+                    "company": "Steelnorlda",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1482,7 +1612,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Secundaria De Amares",
@@ -1490,7 +1619,11 @@
                     "phone": "+351 253 335 935",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.7,
-                    "company": "Escola Secundaria"
+                    "company": "Escola Secundaria",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1504,7 +1637,6 @@
                     "id": "cla85y2i60vh50818wvh2ndy9",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
                     "plainFilters": "",
                     "name": "Auto Sueco Ii Automoveis Braga",
@@ -1512,7 +1644,10 @@
                     "phone": "+351 252 372 132",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.9,
-                    "company": "Auto Sueco"
+                    "company": "Auto Sueco",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1526,7 +1661,6 @@
                     "id": "cla85y2jr0vhe08188ii9yqb9",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
                     "plainFilters": "",
                     "name": "Auto Sueco Ii Automoveis Guimaraes",
@@ -1534,7 +1668,10 @@
                     "phone": "+351 291 409 229",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.6,
-                    "company": "Auto Sueco"
+                    "company": "Auto Sueco",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1552,7 +1689,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Auto Sueco Portugal Braga",
@@ -1560,7 +1696,10 @@
                     "phone": "+351 917 446 326",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.8,
-                    "company": "Auto Sueco"
+                    "company": "Auto Sueco",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1578,7 +1717,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Auto Sueco Portugal Guimaraes",
@@ -1586,7 +1724,10 @@
                     "phone": "+351 918 483 423",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.6,
-                    "company": "Auto Sueco"
+                    "company": "Auto Sueco",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1604,7 +1745,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Casa Do Povo Da Vila De Prado",
@@ -1612,7 +1752,10 @@
                     "phone": "+351 253 520 520",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 3.8,
-                    "company": "Casa Do"
+                    "company": "Casa Do",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1636,7 +1779,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
                     "plainFilters": "",
                     "name": "Radio Popular Guimaraes Ii",
@@ -1644,7 +1786,11 @@
                     "phone": "+351 252 557 617",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.5,
-                    "company": "Radio Popular"
+                    "company": "Radio Popular",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1668,7 +1814,6 @@
                             "slug": "operador-gestao-residuos"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "operador-gestao-residuos",
                     "plainFilters": "",
                     "name": "Geres Gestao Residuos Lda",
@@ -1676,7 +1821,11 @@
                     "phone": "+351 291 594 714",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.8,
-                    "company": "Geres Gestao"
+                    "company": "Geres Gestao",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1694,7 +1843,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "aderentes",
                     "plainFilters": "",
                     "name": "Lidl Braga Enfias",
@@ -1702,7 +1850,10 @@
                     "phone": "+351 917 631 811",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.5,
-                    "company": "Lidl"
+                    "company": "Lidl",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1729,7 +1880,6 @@
                             "slug": "sgru-proximidade"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "sgru-proximidade",
                     "plainFilters": "",
                     "name": "Braval",
@@ -1737,7 +1887,11 @@
                     "phone": "+351 918 668 908",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.7,
-                    "company": "Braval"
+                    "company": "Braval",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1758,7 +1912,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
                     "plainFilters": "",
                     "name": "Norauto Braga",
@@ -1766,7 +1919,10 @@
                     "phone": "+351 253 705 105",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.5,
-                    "company": "Norauto Braga"
+                    "company": "Norauto Braga",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1787,7 +1943,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
                     "plainFilters": "",
                     "name": "Norauto Guimaraes",
@@ -1795,7 +1950,10 @@
                     "phone": "+351 252 742 202",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.7,
-                    "company": "Norauto Guimaraes"
+                    "company": "Norauto Guimaraes",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1819,7 +1977,6 @@
                             "slug": "aderentes"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
                     "plainFilters": "",
                     "name": "Alfaelektor",
@@ -1827,7 +1984,11 @@
                     "phone": "+351 291 779 299",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.4,
-                    "company": "Alfaelektor"
+                    "company": "Alfaelektor",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1851,7 +2012,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Pegada",
@@ -1859,7 +2019,11 @@
                     "phone": "+351 917 816 396",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 3.6,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1886,7 +2050,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica Frei Caetano Brandao",
@@ -1894,7 +2057,11 @@
                     "phone": "+351 918 853 493",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.4,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1918,7 +2085,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Colegio Do Ave",
@@ -1926,7 +2092,11 @@
                     "phone": "+351 253 890 590",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 3.6,
-                    "company": "Colegio Do"
+                    "company": "Colegio Do",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1953,7 +2123,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Secundaria De Caldas Das Taipas",
@@ -1961,7 +2130,11 @@
                     "phone": "+351 252 927 687",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.3,
-                    "company": "Escola Secundaria"
+                    "company": "Escola Secundaria",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -1979,7 +2152,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Posto De Abastecimento Cepsa A3 Barcelos )",
@@ -1987,7 +2159,10 @@
                     "phone": "+351 291 964 784",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.6,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2005,7 +2180,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Posto De Abastecimento Cepsa A3 Barcelos",
@@ -2013,7 +2187,10 @@
                     "phone": "+351 917 101 881",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.3,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2037,7 +2214,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Joane",
@@ -2045,7 +2221,11 @@
                     "phone": "+351 918 138 978",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 3.5,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2069,7 +2249,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Eb Ji De Serrado",
@@ -2077,7 +2256,11 @@
                     "phone": "+351 253 175 175",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.2,
-                    "company": "Eb Ji"
+                    "company": "Eb Ji",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2101,7 +2284,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Vieite",
@@ -2109,7 +2291,11 @@
                     "phone": "+351 252 212 272",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 5.0,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2127,7 +2313,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Ale Hop Minho Center",
@@ -2135,7 +2320,10 @@
                     "phone": "+351 291 249 369",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.2,
-                    "company": "Ale Hop"
+                    "company": "Ale Hop",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2159,7 +2347,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Eb 23 De Braga Oeste",
@@ -2167,7 +2354,11 @@
                     "phone": "+351 917 286 466",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.9,
-                    "company": "Eb 23"
+                    "company": "Eb 23",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2194,7 +2385,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Caldas Das Taipas",
@@ -2202,7 +2392,11 @@
                     "phone": "+351 918 323 563",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.2,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2226,7 +2420,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Sao Mamede De Este",
@@ -2234,7 +2427,11 @@
                     "phone": "+351 253 360 660",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.9,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2258,7 +2455,6 @@
                             "slug": "pr-privado"
                         }
                     ],
-                    "plainWastes": "equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "pr-privado",
                     "plainFilters": "",
                     "name": "Asteguima",
@@ -2266,7 +2462,10 @@
                     "phone": "+351 252 397 757",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Asteguima"
+                    "company": "Asteguima",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2284,7 +2483,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Alves Bandeira Bomba De Gasolina Vilela",
@@ -2292,7 +2490,10 @@
                     "phone": "+351 291 434 854",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.9,
-                    "company": "Alves Bandeira"
+                    "company": "Alves Bandeira",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2316,7 +2517,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Loja Kik Guimaraes",
@@ -2324,7 +2524,11 @@
                     "phone": "+351 917 471 951",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.1,
-                    "company": "Loja Kik"
+                    "company": "Loja Kik",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2351,7 +2555,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Basica De Prado",
@@ -2359,7 +2562,11 @@
                     "phone": "+351 918 508 148",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.8,
-                    "company": "Escola Basica"
+                    "company": "Escola Basica",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2377,7 +2584,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Securitas Direct Braga",
@@ -2385,7 +2591,10 @@
                     "phone": "+351 253 545 245",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.0,
-                    "company": "Securitas Direct"
+                    "company": "Securitas Direct",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2412,7 +2621,6 @@
                             "slug": "escola"
                         }
                     ],
-                    "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
                     "plainFilters": "",
                     "name": "Escola Secundaria Alberto Sampaio",
@@ -2420,7 +2628,11 @@
                     "phone": "+351 252 582 342",
                     "schedule": "Seg-Sex: 8h-17h",
                     "rating": 4.8,
-                    "company": "Escola Secundaria"
+                    "company": "Escola Secundaria",
+                    "wasteTypes": [
+                        "glass",
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2438,7 +2650,6 @@
                             "slug": "outros"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
                     "plainFilters": "",
                     "name": "Bomba Gasolina Prio Pousada Saramagos",
@@ -2446,7 +2657,10 @@
                     "phone": "+351 291 619 439",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.0,
-                    "company": "Bomba Gasolina"
+                    "company": "Bomba Gasolina",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2464,7 +2678,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Bp Braga Palmeira",
@@ -2472,7 +2685,10 @@
                     "phone": "+351 917 656 536",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.7,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2490,7 +2706,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Bp Braga Imaculada Conceicao",
@@ -2498,7 +2713,10 @@
                     "phone": "+351 918 693 633",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.0,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2516,7 +2734,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Bp Braga 31 De Janeiro",
@@ -2524,7 +2741,10 @@
                     "phone": "+351 253 730 730",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 4.7,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2542,7 +2762,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Bp Braga Dume",
@@ -2550,7 +2769,10 @@
                     "phone": "+351 252 767 827",
                     "schedule": "Seg-Dom: 8h-22h",
                     "rating": 3.9,
-                    "company": "BP"
+                    "company": "BP",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2564,7 +2786,6 @@
                     "id": "cmaq1ndls4z4b0975b3wnr6ob",
                     "type": "PICKUP",
                     "location_types_pope": [],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
                     "plainFilters": "",
                     "name": "Supercor Braga",
@@ -2572,7 +2793,10 @@
                     "phone": "+351 291 804 924",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 4.7,
-                    "company": "Supercor Braga"
+                    "company": "Supercor Braga",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 },
                 {
                     "families_pope": [
@@ -2590,7 +2814,6 @@
                             "slug": "distribuicao"
                         }
                     ],
-                    "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
                     "plainFilters": "",
                     "name": "Ale Hop Rua Do Souto Braga",
@@ -2598,7 +2821,10 @@
                     "phone": "+351 917 841 121",
                     "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
                     "rating": 3.9,
-                    "company": "Ale Hop"
+                    "company": "Ale Hop",
+                    "wasteTypes": [
+                        "metal"
+                    ]
                 }
             ],
             "total": 93,
