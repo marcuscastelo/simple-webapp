@@ -23,11 +23,13 @@ import urllib.request
 import urllib.error
 import tkinter as tk
 from tkinter import ttk, messagebox
+import random
 
 DEFAULT_LAT = 41.5565278
 DEFAULT_LNG = -8.4048611
 DEFAULT_HEARTBEAT_FREQ = 5
 DEFAULT_UPDATE_FREQ = 10
+DEFAULT_ERROR_RADIUS = 0.05
 
 
 class GPSClientGUI:
@@ -65,18 +67,33 @@ class GPSClientGUI:
         up_entry = ttk.Entry(main, textvariable=self.up_var, width=20)
         up_entry.grid(row=3, column=1, sticky=tk.W, pady=4)
 
+        # Error radius for lat/lng and randomness toggles
+        err_label = ttk.Label(main, text="raio de erro (lat/lng):")
+        err_label.grid(row=4, column=0, sticky=tk.W, pady=4)
+        self.error_radius_var = tk.StringVar(value=str(DEFAULT_ERROR_RADIUS))
+        err_entry = ttk.Entry(main, textvariable=self.error_radius_var, width=20)
+        err_entry.grid(row=4, column=1, sticky=tk.W, pady=4)
+
+        self.randomize_lat_enabled = tk.BooleanVar(value=False)
+        rand_lat_check = ttk.Checkbutton(main, text="enable lat randomness", variable=self.randomize_lat_enabled)
+        rand_lat_check.grid(row=5, column=0, sticky=tk.W, pady=(8, 4))
+
+        self.randomize_lng_enabled = tk.BooleanVar(value=False)
+        rand_lng_check = ttk.Checkbutton(main, text="enable lng randomness", variable=self.randomize_lng_enabled)
+        rand_lng_check.grid(row=5, column=1, sticky=tk.W, pady=(8, 4))
+
         # Checkboxes
         self.heartbeat_enabled = tk.BooleanVar(value=True)
         hb_check = ttk.Checkbutton(main, text="heartbeat", variable=self.heartbeat_enabled)
-        hb_check.grid(row=4, column=0, sticky=tk.W, pady=(8, 4))
+        hb_check.grid(row=6, column=0, sticky=tk.W, pady=(8, 4))
 
         self.update_enabled = tk.BooleanVar(value=True)
         up_check = ttk.Checkbutton(main, text="update", variable=self.update_enabled)
-        up_check.grid(row=4, column=1, sticky=tk.W, pady=(8, 4))
+        up_check.grid(row=6, column=1, sticky=tk.W, pady=(8, 4))
 
         # Buttons
         btn_frame = ttk.Frame(main)
-        btn_frame.grid(row=5, column=0, columnspan=2, pady=(8, 0))
+        btn_frame.grid(row=7, column=0, columnspan=2, pady=(8, 0))
 
         show_btn = ttk.Button(btn_frame, text="Show config", command=self.show_config)
         show_btn.grid(row=0, column=0, padx=(0, 8))
@@ -99,18 +116,18 @@ class GPSClientGUI:
         # Server base URL
         self.base_url = tk.StringVar(value='http://localhost:3000/api/test-gps')
         url_label = ttk.Label(main, text="Server URL:")
-        url_label.grid(row=6, column=0, sticky=tk.W, pady=(8, 0))
+        url_label.grid(row=8, column=0, sticky=tk.W, pady=(8, 0))
         url_entry = ttk.Entry(main, textvariable=self.base_url, width=40)
-        url_entry.grid(row=6, column=1, sticky=tk.W, pady=(8, 0))
+        url_entry.grid(row=8, column=1, sticky=tk.W, pady=(8, 0))
 
         # Status and current id
         self.status_var = tk.StringVar(value='')
         status_label = ttk.Label(main, textvariable=self.status_var, foreground='blue')
-        status_label.grid(row=7, column=0, columnspan=2, sticky=tk.W, pady=(8, 0))
+        status_label.grid(row=9, column=0, columnspan=2, sticky=tk.W, pady=(8, 0))
 
         self.id_var = tk.StringVar(value='')
         id_label = ttk.Label(main, textvariable=self.id_var)
-        id_label.grid(row=8, column=0, columnspan=2, sticky=tk.W, pady=(4, 0))
+        id_label.grid(row=10, column=0, columnspan=2, sticky=tk.W, pady=(4, 0))
 
         # run control
         self.running = True
@@ -136,8 +153,18 @@ class GPSClientGUI:
             messagebox.showerror("Validation error", "Frequencies must be valid numbers")
             return None
 
+        try:
+            err = float(self.error_radius_var.get())
+        except ValueError:
+            messagebox.showerror("Validation error", "Raio de erro must be a valid number")
+            return None
+
         if hb <= 0 or up <= 0:
             messagebox.showerror("Validation error", "Frequencies must be positive numbers")
+            return None
+
+        if err < 0:
+            messagebox.showerror("Validation error", "Raio de erro must be a non-negative number")
             return None
 
         return {
@@ -145,6 +172,9 @@ class GPSClientGUI:
             "lng": lng,
             "heartbeat_freq": hb,
             "update_freq": up,
+            "error_radius": err,
+            "randomize_lat": bool(self.randomize_lat_enabled.get()),
+            "randomize_lng": bool(self.randomize_lng_enabled.get()),
             "heartbeat": bool(self.heartbeat_enabled.get()),
             "update": bool(self.update_enabled.get()),
         }
@@ -299,6 +329,16 @@ class GPSClientGUI:
             try:
                 lat = float(self.lat_var.get())
                 lng = float(self.lng_var.get())
+                # apply randomness if enabled
+                try:
+                    err = float(self.error_radius_var.get())
+                except Exception:
+                    err = 0.0
+                if self.randomize_lat_enabled.get() and err > 0:
+                    lat = lat + random.uniform(-err, err)
+                if self.randomize_lng_enabled.get() and err > 0:
+                    lng = lng + random.uniform(-err, err)
+
                 self._set_status('Sending update...')
                 res = self._http_post('update', { 'id': self.current_id, 'lat': lat, 'lng': lng })
                 self._set_status('Update ok')
