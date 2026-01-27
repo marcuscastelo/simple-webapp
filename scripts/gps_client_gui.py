@@ -84,11 +84,21 @@ class GPSClientGUI:
 
         # Checkboxes
         self.heartbeat_enabled = tk.BooleanVar(value=True)
-        hb_check = ttk.Checkbutton(main, text="heartbeat", variable=self.heartbeat_enabled)
+        hb_check = ttk.Checkbutton(
+            main,
+            text="heartbeat",
+            variable=self.heartbeat_enabled,
+            command=lambda: self._on_heartbeat_toggled(),
+        )
         hb_check.grid(row=6, column=0, sticky=tk.W, pady=(8, 4))
 
         self.update_enabled = tk.BooleanVar(value=True)
-        up_check = ttk.Checkbutton(main, text="update", variable=self.update_enabled)
+        up_check = ttk.Checkbutton(
+            main,
+            text="update",
+            variable=self.update_enabled,
+            command=lambda: self._on_update_toggled(),
+        )
         up_check.grid(row=6, column=1, sticky=tk.W, pady=(8, 4))
 
         # Buttons
@@ -284,6 +294,22 @@ class GPSClientGUI:
         # schedule first immediately
         self._heartbeat_job = self.root.after(0, lambda: self._do_heartbeat(interval))
 
+    def _cancel_heartbeat_job(self):
+        if self._heartbeat_job:
+            try:
+                self.root.after_cancel(self._heartbeat_job)
+            except Exception:
+                pass
+            self._heartbeat_job = None
+
+    def _on_heartbeat_toggled(self):
+        # Start or stop heartbeat schedule based on checkbox
+        if self.heartbeat_enabled.get():
+            self._schedule_heartbeat()
+        else:
+            self._cancel_heartbeat_job()
+            self._set_status('Heartbeat disabled')
+
     def _do_heartbeat(self, interval_ms: int):
         def job():
             if not self.current_id:
@@ -320,6 +346,22 @@ class GPSClientGUI:
             return
         interval = int(cfg['update_freq'] * 1000)
         self._update_job = self.root.after(0, lambda: self._do_update(interval))
+
+    def _cancel_update_job(self):
+        if self._update_job:
+            try:
+                self.root.after_cancel(self._update_job)
+            except Exception:
+                pass
+            self._update_job = None
+
+    def _on_update_toggled(self):
+        # Start or stop update schedule based on checkbox
+        if self.update_enabled.get():
+            self._schedule_update()
+        else:
+            self._cancel_update_job()
+            self._set_status('Update disabled')
 
     def _do_update(self, interval_ms: int):
         def job():
