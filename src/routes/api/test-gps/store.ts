@@ -21,7 +21,7 @@ export type GpsEntry = {
   lastSeen: number
 }
 
-export const TTL_MS = 3_000
+export const TTL_MS = 6_000
 
 // Simple file-backed persistence so entries survive dev reloads and multiple worker contexts
 let store = new Map<string, GpsEntry>()
