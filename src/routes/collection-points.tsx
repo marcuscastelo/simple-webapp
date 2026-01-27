@@ -1,22 +1,34 @@
-import { createSignal, For, createResource } from 'solid-js'
+import { createResource, createSignal, For } from 'solid-js'
+
 import { Select, SelectItem } from '~/components/ui/select'
 import { useCollectionPointsFilter } from '~/modules/collection-points/hooks/useCollectionPointsFilter'
 import { useMapUrlParams } from '~/modules/collection-points/hooks/useMapUrlParams'
+import { FeatureCollectionSchema } from '~/modules/collection-points/schemas'
 import { CollectionPointsList } from '~/modules/collection-points/sections/CollectionPointsList'
 import { MapContainer } from '~/modules/collection-points/sections/MapContainer'
-import wasteTypes from '~/wasteTypes.json'
 import type { CollectionPoint } from '~/modules/collection-points/types'
+import wasteTypes from '~/wasteTypes.json'
 
 async function fetchCollectionPoints(): Promise<CollectionPoint[]> {
   const res = await fetch('/api/location')
   if (!res.ok) throw new Error(`Failed to fetch locations: ${res.status}`)
-  const data = await res.json()
-  const features = data?.features ?? []
+  const data = (await res.json()) as unknown
 
-  return features.map((f: any, idx: number) => {
+  // Validate runtime shape of the response
+  const parsed = FeatureCollectionSchema.safeParse(data)
+  if (!parsed.success) {
+    // Log validation issues for debugging and surface an error to the caller
+    // so the resource enters the error state in the UI.
+    console.error('Invalid FeatureCollection from /api/location', parsed.error)
+    throw new Error('Invalid data from /api/location')
+  }
+
+  const features = parsed.data.features
+
+  return features.map((f, idx) => {
     const props = f.properties ?? {}
-    const wasteTypes: string[] = props.wasteTypes ?? []
-    const types = Array.isArray(wasteTypes) ? wasteTypes : []
+    const wTypesRaw: unknown = props.wasteTypes ?? []
+    const types = Array.isArray(wTypesRaw) ? (wTypesRaw as string[]) : []
     const name = props.name ?? props.slug ?? `Ponto ${idx + 1}`
     const company = props.company ?? ''
     const address = props.address ?? ''
@@ -53,9 +65,14 @@ export default function CollectionPoints() {
     setIsFullscreen,
   } = useMapUrlParams()
 
-  const [points] = createResource(fetchCollectionPoints)
+  const [points] = createResource<CollectionPoint[]>(fetchCollectionPoints)
 
-  const filteredPoints = useCollectionPointsFilter(points, selectedType)
+  // Resource returns undefined while loading; create an accessor that
+  // always yields an array so downstream hooks/components follow the
+  // project's pattern of not having to deal with undefined values.
+  const pointsAccessor = () => points() ?? []
+
+  const filteredPoints = useCollectionPointsFilter(pointsAccessor, selectedType)
 
   const handleLocationSelect = (lat: number, lng: number) => {
     setUserLat(lat)

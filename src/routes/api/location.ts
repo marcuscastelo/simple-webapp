@@ -1,5 +1,9 @@
 import type { Feature, FeatureCollection, Point } from 'geojson'
 
+import {
+  FeatureCollectionSchema,
+  POIProperties,
+} from '~/modules/collection-points/schemas'
 import * as POI from '~/poi.json'
 
 export async function POST(request: Request) {
@@ -37,6 +41,14 @@ type RawPOIPoint = {
   plainWastes?: unknown
   plainTypes?: unknown
   plainFilters?: unknown
+  // Enriched fields added by migration scripts
+  name?: string
+  address?: string
+  phone?: string
+  schedule?: string
+  rating?: number | string
+  company?: string
+  wasteTypes?: string[]
 }
 
 type POIFile = {
@@ -53,7 +65,7 @@ export function GET() {
     const poiFile = POI as unknown as POIFile
     const rawPoints = poiFile.data.publicGetMapInformation.points ?? []
 
-    const features: Feature<Point, Record<string, unknown>>[] = rawPoints
+    const features: Feature<Point, POIProperties>[] = rawPoints
       .map((poi) => {
         const latitude = parseFloat(poi.latitude as unknown as string)
         const longitude = parseFloat(poi.longitude as unknown as string)
@@ -65,7 +77,7 @@ export function GET() {
         // company, wasteTypes) — surface them on the properties object so
         // consumers (map and list views) receive friendly data instead of
         // raw slugs.
-        const properties: Record<string, unknown> = {
+        const properties: POIProperties = {
           id: poi.id,
           latitude,
           longitude,
@@ -74,20 +86,25 @@ export function GET() {
           families_pope: poi.families_pope,
           location_types_pope: poi.location_types_pope,
           // legacy/raw fields (may be absent after migration)
-          plainWastes: (poi as any).plainWastes,
-          plainTypes: (poi as any).plainTypes,
-          plainFilters: (poi as any).plainFilters,
+          plainWastes: poi.plainWastes,
+          plainTypes: poi.plainTypes,
+          plainFilters: poi.plainFilters,
           // enriched fields added by the migration scripts
-          name: (poi as any).name,
-          address: (poi as any).address,
-          phone: (poi as any).phone,
-          schedule: (poi as any).schedule,
-          rating: (poi as any).rating,
-          company: (poi as any).company,
-          wasteTypes: (poi as any).wasteTypes,
+          name: poi.name,
+          address: poi.address,
+          phone: poi.phone,
+          schedule: poi.schedule,
+          rating:
+            poi.rating === null || poi.rating === undefined
+              ? undefined
+              : typeof poi.rating === 'string'
+                ? Number(poi.rating)
+                : poi.rating,
+          company: poi.company,
+          wasteTypes: poi.wasteTypes,
         }
 
-        const feature: Feature<Point, Record<string, unknown>> = {
+        const feature: Feature<Point, POIProperties> = {
           type: 'Feature',
           id: poi.id,
           properties,
@@ -109,7 +126,24 @@ export function GET() {
       features,
     }
 
-    return new Response(JSON.stringify(featureCollection), {
+    // Validate the produced FeatureCollection against the zod schema.
+    // If validation fails, return an error so consumers are aware.
+    const parsed = FeatureCollectionSchema.safeParse(featureCollection)
+    if (!parsed.success) {
+      console.error(
+        'Validation error building FeatureCollection:',
+        parsed.error,
+      )
+      return new Response(
+        JSON.stringify({ status: 'error', error: parsed.error }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      )
+    }
+
+    return new Response(JSON.stringify(parsed.data), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })
