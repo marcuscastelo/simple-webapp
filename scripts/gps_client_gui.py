@@ -60,12 +60,16 @@ class GPSClientGUI:
         self.hb_var = tk.StringVar(value=str(DEFAULT_HEARTBEAT_FREQ))
         hb_entry = ttk.Entry(main, textvariable=self.hb_var, width=20)
         hb_entry.grid(row=2, column=1, sticky=tk.W, pady=4)
+        # when heartbeat frequency changes, reflect in schedule
+        self.hb_var.trace_add('write', lambda *args: self._on_hb_freq_changed())
 
         up_label = ttk.Label(main, text="update_freq (s):")
         up_label.grid(row=3, column=0, sticky=tk.W, pady=4)
         self.up_var = tk.StringVar(value=str(DEFAULT_UPDATE_FREQ))
         up_entry = ttk.Entry(main, textvariable=self.up_var, width=20)
         up_entry.grid(row=3, column=1, sticky=tk.W, pady=4)
+        # when update frequency changes, reflect in schedule
+        self.up_var.trace_add('write', lambda *args: self._on_up_freq_changed())
 
         # Error radius for lat/lng and randomness toggles
         err_label = ttk.Label(main, text="raio de erro (lat/lng):")
@@ -318,7 +322,7 @@ class GPSClientGUI:
             try:
                 self._set_status('Sending heartbeat...')
                 res = self._http_post('heartbeat', { 'id': self.current_id })
-                self._set_status('Heartbeat ok')
+                self._set_status('Heartbeat ok: ' + time.strftime('%H:%M:%S'))
             except Exception as e:
                 self._set_status(f'Heartbeat error: {e}')
 
@@ -363,6 +367,22 @@ class GPSClientGUI:
             self._cancel_update_job()
             self._set_status('Update disabled')
 
+    def _on_hb_freq_changed(self):
+        # Reschedule heartbeat to reflect new frequency if enabled
+        if not self.hb_var.get() or self.hb_var.get().strip() == '':
+            # Ignore empty (user deleting to change)
+            return
+        if self.heartbeat_enabled.get():
+            self._schedule_heartbeat()
+
+    def _on_up_freq_changed(self):
+        # Reschedule update to reflect new frequency if enabled
+        if not self.up_var.get() or self.up_var.get().strip() == '':
+            # Ignore empty (user deleting to change)
+            return
+        if self.update_enabled.get():
+            self._schedule_update()
+
     def _do_update(self, interval_ms: int):
         def job():
             if not self.current_id:
@@ -383,7 +403,7 @@ class GPSClientGUI:
 
                 self._set_status('Sending update...')
                 res = self._http_post('update', { 'id': self.current_id, 'lat': lat, 'lng': lng })
-                self._set_status('Update ok')
+                self._set_status('Update ok: ' + time.strftime('%H:%M:%S') + f' (lat: {lat:.6f}, lng: {lng:.6f})')
             except Exception as e:
                 self._set_status(f'Update error: {e}')
 
