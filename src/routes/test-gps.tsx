@@ -2,9 +2,10 @@ import { createEffect, createSignal, For, onMount } from 'solid-js'
 
 export default function TestGPS() {
   const [gpsPositions, setGpsPositions] = createSignal<
-    { lat: number; lng: number }[]
+    Record<string, unknown>[]
   >([])
 
+  const [time, setTime] = createSignal(new Date())
   const [tick, setTick] = createSignal(0)
 
   createEffect(() => {
@@ -18,8 +19,7 @@ export default function TestGPS() {
     fetch(backendUrl)
       .then((response) => response.json())
       .then((data) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        setGpsPositions(data.positions)
+        setGpsPositions(data)
       })
       .catch((error) => {
         console.error('Error fetching GPS positions:', error)
@@ -29,7 +29,8 @@ export default function TestGPS() {
   onMount(() => {
     const interval = setInterval(() => {
       setTick((prev) => prev + 1)
-    }, 5000)
+      setTime(new Date())
+    }, 1000)
 
     return () => clearInterval(interval)
   })
@@ -49,13 +50,8 @@ export default function TestGPS() {
         <div>
           <h2 class="text-2xl font-semibold mb-4">Fetched GPS Positions:</h2>
           <ul class="list-disc list-inside">
-            <For each={gpsPositions()}>
-              {(position) => (
-                <li>
-                  Latitude: {position.lat}, Longitude: {position.lng}
-                </li>
-              )}
-            </For>
+            {time().toISOString().replace('T', ' ').replace('Z', '')}
+            <pre>{JSON.stringify(gpsPositions(), null, 2)}</pre>
           </ul>
         </div>
       </div>
