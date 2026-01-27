@@ -26,7 +26,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Radio Popular Braga Retail Center",
+                    "address": "Rua Radio Popular Braga Retail Center, Braga",
+                    "phone": "+351 252 137 197",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.2,
+                    "company": "Radio Popular"
                 },
                 {
                     "families_pope": [
@@ -52,7 +58,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-publico",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Nova Arcada",
+                    "address": "Rua Nova Arcada, Braga",
+                    "phone": "+351 291 174 294",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 5.0,
+                    "company": "Nova Arcada"
                 },
                 {
                     "families_pope": [
@@ -75,7 +87,13 @@
                     ],
                     "plainWastes": "lampadas|pilhas-portateis|lampadas|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Braga Retail Center",
+                    "address": "Rua Braga Retail Center, Braga",
+                    "phone": "+351 917 211 391",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.2,
+                    "company": "Braga Retail"
                 },
                 {
                     "families_pope": [
@@ -98,7 +116,13 @@
                     ],
                     "plainWastes": "lampadas|pilhas-portateis|lampadas|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-publico",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Centro Comercial Minho Center",
+                    "address": "Rua Centro Comercial Minho Center, Braga",
+                    "phone": "+351 918 248 488",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.9,
+                    "company": "Centro Comercial"
                 },
                 {
                     "families_pope": [
@@ -124,7 +148,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Leroy Merlin Braga",
+                    "address": "Rua Leroy Merlin Braga, Braga",
+                    "phone": "+351 253 285 585",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.2,
+                    "company": "Leroy Merlin"
                 },
                 {
                     "families_pope": [
@@ -150,7 +180,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bragadis Sociedade De Distribuicao S.A",
+                    "address": "Rua Bragadis Sociedade De Distribuicao S.A, Braga",
+                    "phone": "+351 252 322 682",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.9,
+                    "company": "Bragadis Sociedade"
                 },
                 {
                     "families_pope": [
@@ -176,7 +212,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Braga Parque",
+                    "address": "Rua Braga Parque, Braga",
+                    "phone": "+351 291 359 779",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Braga Parque"
                 },
                 {
                     "families_pope": [
@@ -202,7 +244,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Palmeira",
+                    "address": "Rua Escola Basica De Palmeira, Braga",
+                    "phone": "+351 917 396 876",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.8,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -228,7 +276,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "ponto-electrao|pr-privado",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Gnr Povoa De Lanhoso",
+                    "address": "Rua Gnr Povoa De Lanhoso, Braga",
+                    "phone": "+351 918 433 973",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Gnr Povoa"
                 },
                 {
                     "families_pope": [
@@ -257,7 +311,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Manhente",
+                    "address": "Rua Escola Basica De Manhente, Braga",
+                    "phone": "+351 253 470 170",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.8,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -283,7 +343,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Profissional De Braga",
+                    "address": "Rua Escola Profissional De Braga, Braga",
+                    "phone": "+351 252 507 267",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.0,
+                    "company": "Escola Profissional"
                 },
                 {
                     "families_pope": [
@@ -309,7 +375,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Leroy Merlin Guimaraes",
+                    "address": "Rua Leroy Merlin Guimaraes, Braga",
+                    "phone": "+351 291 544 364",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.8,
+                    "company": "Leroy Merlin"
                 },
                 {
                     "families_pope": [
@@ -335,7 +407,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Secundaria Padre Benjamim Salgado",
+                    "address": "Rua Escola Secundaria Padre Benjamim Salgado, Braga",
+                    "phone": "+351 917 581 461",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.0,
+                    "company": "Escola Secundaria"
                 },
                 {
                     "families_pope": [
@@ -361,7 +439,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica Abel Salazar",
+                    "address": "Rua Escola Basica Abel Salazar, Braga",
+                    "phone": "+351 918 618 558",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.7,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -390,7 +474,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica Trigal De Santa Maria",
+                    "address": "Rua Escola Basica Trigal De Santa Maria, Braga",
+                    "phone": "+351 253 655 655",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.0,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -419,7 +509,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica Bernardino Machado",
+                    "address": "Rua Escola Basica Bernardino Machado, Braga",
+                    "phone": "+351 252 692 752",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.7,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -439,7 +535,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Onlybattery Guimaraes",
+                    "address": "Rua Onlybattery Guimaraes, Braga",
+                    "phone": "+351 291 729 849",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.9,
+                    "company": "Collection Partner"
                 },
                 {
                     "families_pope": [
@@ -459,7 +561,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Onlybattery Braga",
+                    "address": "Rua Onlybattery Braga, Braga",
+                    "phone": "+351 917 766 946",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.6,
+                    "company": "Collection Partner"
                 },
                 {
                     "families_pope": [
@@ -479,7 +587,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Famalicao",
+                    "address": "Rua Lidl Famalicao, Braga",
+                    "phone": "+351 918 803 143",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 3.9,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -499,7 +613,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Povoa De Lanhoso",
+                    "address": "Rua Lidl Povoa De Lanhoso, Braga",
+                    "phone": "+351 253 840 240",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.6,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -519,7 +639,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Braga",
+                    "address": "Rua Lidl Braga, Braga",
+                    "phone": "+351 252 877 337",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 3.8,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -539,7 +665,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Vila Verde",
+                    "address": "Rua Lidl Vila Verde, Braga",
+                    "phone": "+351 291 914 434",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.6,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -559,7 +691,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Vila Verde",
+                    "address": "Rua Lidl Vila Verde, Braga",
+                    "phone": "+351 917 951 531",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 3.8,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -579,7 +717,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Guimaraes",
+                    "address": "Rua Lidl Guimaraes, Braga",
+                    "phone": "+351 918 988 628",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.5,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -599,7 +743,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "loja|pret-loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Braga",
+                    "address": "Rua Lidl Braga, Braga",
+                    "phone": "+351 253 125 725",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 3.8,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -625,7 +775,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Profissional Do Minho",
+                    "address": "Rua Escola Profissional Do Minho, Braga",
+                    "phone": "+351 252 162 822",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.5,
+                    "company": "Escola Profissional"
                 },
                 {
                     "families_pope": [],
@@ -637,7 +793,13 @@
                     "location_types_pope": [],
                     "plainWastes": "guardas-chuva",
                     "plainTypes": "loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Ponto Vermelho",
+                    "address": "Rua Ponto Vermelho, Braga",
+                    "phone": "+351 291 199 919",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.7,
+                    "company": "Ponto Vermelho"
                 },
                 {
                     "families_pope": [],
@@ -649,7 +811,13 @@
                     "location_types_pope": [],
                     "plainWastes": "guardas-chuva",
                     "plainTypes": "loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Cindinha Bulkstore E Guesthouse Loja A Granel",
+                    "address": "Rua Cindinha Bulkstore E Guesthouse Loja A Granel, Braga",
+                    "phone": "+351 917 236 116",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.4,
+                    "company": "Cindinha Bulkstore"
                 },
                 {
                     "families_pope": [],
@@ -661,7 +829,13 @@
                     "location_types_pope": [],
                     "plainWastes": "oleos-lubrificantes",
                     "plainTypes": "ecocentro",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Municipio De Braga",
+                    "address": "Rua Municipio De Braga, Braga",
+                    "phone": "+351 918 273 213",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.7,
+                    "company": "Município"
                 },
                 {
                     "families_pope": [],
@@ -673,7 +847,13 @@
                     "location_types_pope": [],
                     "plainWastes": "pneus",
                     "plainTypes": "ecocentro",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Braval Valorizacao E Tratamento De Residuos Solidos S.A.",
+                    "address": "Rua Braval Valorizacao E Tratamento De Residuos Solidos S.A., Braga",
+                    "phone": "+351 253 310 310",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.4,
+                    "company": "Braval"
                 },
                 {
                     "families_pope": [],
@@ -685,7 +865,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Braguinox Industria De Reciclagem De Metais Lda",
+                    "address": "Rua Braguinox Industria De Reciclagem De Metais Lda, Braga",
+                    "phone": "+351 252 347 407",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.6,
+                    "company": "Braguinox Industria"
                 },
                 {
                     "families_pope": [],
@@ -697,7 +883,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Geres Gestao De Residuos Lda",
+                    "address": "Rua Geres Gestao De Residuos Lda, Braga",
+                    "phone": "+351 291 384 504",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.4,
+                    "company": "Geres Gestao"
                 },
                 {
                     "families_pope": [],
@@ -709,7 +901,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Goncalo And Simao Lda",
+                    "address": "Rua Goncalo And Simao Lda, Braga",
+                    "phone": "+351 917 421 601",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.6,
+                    "company": "Goncalo And"
                 },
                 {
                     "families_pope": [],
@@ -721,7 +919,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Recife Desmontagem De Veiculos Lda",
+                    "address": "Rua Recife Desmontagem De Veiculos Lda, Braga",
+                    "phone": "+351 918 458 698",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.3,
+                    "company": "Recife Desmontagem"
                 },
                 {
                     "families_pope": [],
@@ -733,7 +937,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Steelnor Lda",
+                    "address": "Rua Steelnor Lda, Braga",
+                    "phone": "+351 253 495 795",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.5,
+                    "company": "Steelnor Lda"
                 },
                 {
                     "families_pope": [],
@@ -745,7 +955,13 @@
                     "location_types_pope": [],
                     "plainWastes": "veiculos-em-fim-de-vida",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Zenit Automoveis Unipessoal Lda",
+                    "address": "Rua Zenit Automoveis Unipessoal Lda, Braga",
+                    "phone": "+351 252 532 892",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.3,
+                    "company": "Zenit Automoveis"
                 },
                 {
                     "families_pope": [],
@@ -757,7 +973,13 @@
                     "location_types_pope": [],
                     "plainWastes": "oleos-alimentares-usados",
                     "plainTypes": "loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Caucau Bio",
+                    "address": "Rua Caucau Bio, Braga",
+                    "phone": "+351 291 569 989",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.5,
+                    "company": "Caucau Bio"
                 },
                 {
                     "families_pope": [
@@ -777,7 +999,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Guimaraes",
+                    "address": "Rua Lidl Guimaraes, Braga",
+                    "phone": "+351 917 606 186",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.2,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -797,7 +1025,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Sos Telemovel",
+                    "address": "Rua Sos Telemovel, Braga",
+                    "phone": "+351 918 643 283",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 5.0,
+                    "company": "Collection Partner"
                 },
                 {
                     "families_pope": [
@@ -823,7 +1057,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Ikea Braga",
+                    "address": "Rua Ikea Braga, Braga",
+                    "phone": "+351 253 680 380",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.2,
+                    "company": "IKEA"
                 },
                 {
                     "families_pope": [
@@ -843,7 +1083,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Homa Braga",
+                    "address": "Rua Homa Braga, Braga",
+                    "phone": "+351 252 717 477",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.9,
+                    "company": "Homa Braga"
                 },
                 {
                     "families_pope": [
@@ -863,7 +1109,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "municipios-e-jf|municipios-e-jf",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Jf Crespos E Pousada De Braga",
+                    "address": "Rua Jf Crespos E Pousada De Braga, Braga",
+                    "phone": "+351 291 754 574",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.2,
+                    "company": "Município"
                 },
                 {
                     "families_pope": [
@@ -883,7 +1135,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Moreplay Electrodomesticos Unip.Lda",
+                    "address": "Rua Moreplay Electrodomesticos Unip.Lda, Braga",
+                    "phone": "+351 917 791 671",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.9,
+                    "company": "Moreplay Electrodomesticos"
                 },
                 {
                     "families_pope": [
@@ -912,7 +1170,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "operador-gestao-residuos|operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Sf Gestao De Residuos Lda",
+                    "address": "Rua Sf Gestao De Residuos Lda, Braga",
+                    "phone": "+351 918 828 768",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Sf Gestao"
                 },
                 {
                     "families_pope": [
@@ -932,7 +1196,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "outros|outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Sucatas Abilio Raimundo Unip Lda",
+                    "address": "Rua Sucatas Abilio Raimundo Unip Lda, Braga",
+                    "phone": "+351 253 865 865",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.8,
+                    "company": "Sucatas Abilio"
                 },
                 {
                     "families_pope": [
@@ -952,7 +1222,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "municipios-e-jf|municipios-e-jf",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Uniao Das Freguesias De Arentim E Cunha",
+                    "address": "Rua Uniao Das Freguesias De Arentim E Cunha, Braga",
+                    "phone": "+351 252 902 962",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Uniao Das"
                 },
                 {
                     "families_pope": [
@@ -972,7 +1248,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Supermercado Froiz Braga",
+                    "address": "Rua Supermercado Froiz Braga, Braga",
+                    "phone": "+351 291 939 159",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.8,
+                    "company": "Supermercado Froiz"
                 },
                 {
                     "families_pope": [
@@ -992,7 +1274,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Supermercado Froiz Braga",
+                    "address": "Rua Supermercado Froiz Braga, Braga",
+                    "phone": "+351 917 976 256",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.0,
+                    "company": "Supermercado Froiz"
                 },
                 {
                     "families_pope": [
@@ -1012,7 +1300,13 @@
                     ],
                     "plainWastes": "pilhas-portateis|pilhas-portateis",
                     "plainTypes": "distribuicao|distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Supermercado Froiz Braga",
+                    "address": "Rua Supermercado Froiz Braga, Braga",
+                    "phone": "+351 918 113 353",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.8,
+                    "company": "Supermercado Froiz"
                 },
                 {
                     "families_pope": [],
@@ -1024,7 +1318,13 @@
                     "location_types_pope": [],
                     "plainWastes": "oleos-alimentares-usados",
                     "plainTypes": "loja",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Frasco A Frasco",
+                    "address": "Rua Frasco A Frasco, Braga",
+                    "phone": "+351 253 150 450",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.0,
+                    "company": "Frasco A"
                 },
                 {
                     "families_pope": [
@@ -1050,7 +1350,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis|lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola|escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Gualtar",
+                    "address": "Rua Escola Basica De Gualtar, Braga",
+                    "phone": "+351 252 187 547",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.7,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1079,7 +1385,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Csmarket Unipessoal",
+                    "address": "Rua Csmarket Unipessoal, Braga",
+                    "phone": "+351 291 224 644",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.0,
+                    "company": "Csmarket Unipessoal"
                 },
                 {
                     "families_pope": [
@@ -1108,7 +1420,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Galerias Macieira And Silva Lda",
+                    "address": "Rua Galerias Macieira And Silva Lda, Braga",
+                    "phone": "+351 917 261 741",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.7,
+                    "company": "Galerias Macieira"
                 },
                 {
                     "families_pope": [
@@ -1131,7 +1449,13 @@
                     ],
                     "plainWastes": "equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Steelnorlda",
+                    "address": "Rua Steelnorlda, Braga",
+                    "phone": "+351 918 298 838",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.9,
+                    "company": "Steelnorlda"
                 },
                 {
                     "families_pope": [
@@ -1160,7 +1484,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Secundaria De Amares",
+                    "address": "Rua Escola Secundaria De Amares, Braga",
+                    "phone": "+351 253 335 935",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.7,
+                    "company": "Escola Secundaria"
                 },
                 {
                     "families_pope": [
@@ -1176,7 +1506,13 @@
                     "location_types_pope": [],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Auto Sueco Ii Automoveis Braga",
+                    "address": "Rua Auto Sueco Ii Automoveis Braga, Braga",
+                    "phone": "+351 252 372 132",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.9,
+                    "company": "Auto Sueco"
                 },
                 {
                     "families_pope": [
@@ -1192,7 +1528,13 @@
                     "location_types_pope": [],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Auto Sueco Ii Automoveis Guimaraes",
+                    "address": "Rua Auto Sueco Ii Automoveis Guimaraes, Braga",
+                    "phone": "+351 291 409 229",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.6,
+                    "company": "Auto Sueco"
                 },
                 {
                     "families_pope": [
@@ -1212,7 +1554,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Auto Sueco Portugal Braga",
+                    "address": "Rua Auto Sueco Portugal Braga, Braga",
+                    "phone": "+351 917 446 326",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.8,
+                    "company": "Auto Sueco"
                 },
                 {
                     "families_pope": [
@@ -1232,7 +1580,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Auto Sueco Portugal Guimaraes",
+                    "address": "Rua Auto Sueco Portugal Guimaraes, Braga",
+                    "phone": "+351 918 483 423",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.6,
+                    "company": "Auto Sueco"
                 },
                 {
                     "families_pope": [
@@ -1252,7 +1606,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Casa Do Povo Da Vila De Prado",
+                    "address": "Rua Casa Do Povo Da Vila De Prado, Braga",
+                    "phone": "+351 253 520 520",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 3.8,
+                    "company": "Casa Do"
                 },
                 {
                     "families_pope": [
@@ -1278,7 +1638,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Radio Popular Guimaraes Ii",
+                    "address": "Rua Radio Popular Guimaraes Ii, Braga",
+                    "phone": "+351 252 557 617",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.5,
+                    "company": "Radio Popular"
                 },
                 {
                     "families_pope": [
@@ -1304,7 +1670,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes",
                     "plainTypes": "operador-gestao-residuos",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Geres Gestao Residuos Lda",
+                    "address": "Rua Geres Gestao Residuos Lda, Braga",
+                    "phone": "+351 291 594 714",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.8,
+                    "company": "Geres Gestao"
                 },
                 {
                     "families_pope": [
@@ -1324,7 +1696,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Lidl Braga Enfias",
+                    "address": "Rua Lidl Braga Enfias, Braga",
+                    "phone": "+351 917 631 811",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.5,
+                    "company": "Lidl"
                 },
                 {
                     "families_pope": [
@@ -1353,7 +1731,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "sgru-proximidade",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Braval",
+                    "address": "Rua Braval, Braga",
+                    "phone": "+351 918 668 908",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.7,
+                    "company": "Braval"
                 },
                 {
                     "families_pope": [
@@ -1376,7 +1760,13 @@
                     ],
                     "plainWastes": "equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Norauto Braga",
+                    "address": "Rua Norauto Braga, Braga",
+                    "phone": "+351 253 705 105",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.5,
+                    "company": "Norauto Braga"
                 },
                 {
                     "families_pope": [
@@ -1399,7 +1789,13 @@
                     ],
                     "plainWastes": "equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Norauto Guimaraes",
+                    "address": "Rua Norauto Guimaraes, Braga",
+                    "phone": "+351 252 742 202",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.7,
+                    "company": "Norauto Guimaraes"
                 },
                 {
                     "families_pope": [
@@ -1425,7 +1821,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "aderentes",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Alfaelektor",
+                    "address": "Rua Alfaelektor, Braga",
+                    "phone": "+351 291 779 299",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.4,
+                    "company": "Alfaelektor"
                 },
                 {
                     "families_pope": [
@@ -1451,7 +1853,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Pegada",
+                    "address": "Rua Escola Basica De Pegada, Braga",
+                    "phone": "+351 917 816 396",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 3.6,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1480,7 +1888,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica Frei Caetano Brandao",
+                    "address": "Rua Escola Basica Frei Caetano Brandao, Braga",
+                    "phone": "+351 918 853 493",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.4,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1506,7 +1920,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Colegio Do Ave",
+                    "address": "Rua Colegio Do Ave, Braga",
+                    "phone": "+351 253 890 590",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 3.6,
+                    "company": "Colegio Do"
                 },
                 {
                     "families_pope": [
@@ -1535,7 +1955,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Secundaria De Caldas Das Taipas",
+                    "address": "Rua Escola Secundaria De Caldas Das Taipas, Braga",
+                    "phone": "+351 252 927 687",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.3,
+                    "company": "Escola Secundaria"
                 },
                 {
                     "families_pope": [
@@ -1555,7 +1981,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Posto De Abastecimento Cepsa A3 Barcelos )",
+                    "address": "Rua Posto De Abastecimento Cepsa A3 Barcelos ), Braga",
+                    "phone": "+351 291 964 784",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.6,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -1575,7 +2007,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Posto De Abastecimento Cepsa A3 Barcelos",
+                    "address": "Rua Posto De Abastecimento Cepsa A3 Barcelos, Braga",
+                    "phone": "+351 917 101 881",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.3,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -1601,7 +2039,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Joane",
+                    "address": "Rua Escola Basica De Joane, Braga",
+                    "phone": "+351 918 138 978",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 3.5,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1627,7 +2071,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Eb Ji De Serrado",
+                    "address": "Rua Eb Ji De Serrado, Braga",
+                    "phone": "+351 253 175 175",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.2,
+                    "company": "Eb Ji"
                 },
                 {
                     "families_pope": [
@@ -1653,7 +2103,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Vieite",
+                    "address": "Rua Escola Basica De Vieite, Braga",
+                    "phone": "+351 252 212 272",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 5.0,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1673,7 +2129,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Ale Hop Minho Center",
+                    "address": "Rua Ale Hop Minho Center, Braga",
+                    "phone": "+351 291 249 369",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.2,
+                    "company": "Ale Hop"
                 },
                 {
                     "families_pope": [
@@ -1699,7 +2161,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Eb 23 De Braga Oeste",
+                    "address": "Rua Eb 23 De Braga Oeste, Braga",
+                    "phone": "+351 917 286 466",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.9,
+                    "company": "Eb 23"
                 },
                 {
                     "families_pope": [
@@ -1728,7 +2196,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Caldas Das Taipas",
+                    "address": "Rua Escola Basica De Caldas Das Taipas, Braga",
+                    "phone": "+351 918 323 563",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.2,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1754,7 +2228,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Sao Mamede De Este",
+                    "address": "Rua Escola Basica De Sao Mamede De Este, Braga",
+                    "phone": "+351 253 360 660",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.9,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1780,7 +2260,13 @@
                     ],
                     "plainWastes": "equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "pr-privado",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Asteguima",
+                    "address": "Rua Asteguima, Braga",
+                    "phone": "+351 252 397 757",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Asteguima"
                 },
                 {
                     "families_pope": [
@@ -1800,7 +2286,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Alves Bandeira Bomba De Gasolina Vilela",
+                    "address": "Rua Alves Bandeira Bomba De Gasolina Vilela, Braga",
+                    "phone": "+351 291 434 854",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.9,
+                    "company": "Alves Bandeira"
                 },
                 {
                     "families_pope": [
@@ -1826,7 +2318,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Loja Kik Guimaraes",
+                    "address": "Rua Loja Kik Guimaraes, Braga",
+                    "phone": "+351 917 471 951",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.1,
+                    "company": "Loja Kik"
                 },
                 {
                     "families_pope": [
@@ -1855,7 +2353,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Basica De Prado",
+                    "address": "Rua Escola Basica De Prado, Braga",
+                    "phone": "+351 918 508 148",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.8,
+                    "company": "Escola Basica"
                 },
                 {
                     "families_pope": [
@@ -1875,7 +2379,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Securitas Direct Braga",
+                    "address": "Rua Securitas Direct Braga, Braga",
+                    "phone": "+351 253 545 245",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.0,
+                    "company": "Securitas Direct"
                 },
                 {
                     "families_pope": [
@@ -1904,7 +2414,13 @@
                     ],
                     "plainWastes": "lampadas|equipamentos-de-grandes-dimensoes|equipamentos-de-pequenas-dimensoes|pilhas-portateis",
                     "plainTypes": "escola",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Escola Secundaria Alberto Sampaio",
+                    "address": "Rua Escola Secundaria Alberto Sampaio, Braga",
+                    "phone": "+351 252 582 342",
+                    "schedule": "Seg-Sex: 8h-17h",
+                    "rating": 4.8,
+                    "company": "Escola Secundaria"
                 },
                 {
                     "families_pope": [
@@ -1924,7 +2440,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "outros",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bomba Gasolina Prio Pousada Saramagos",
+                    "address": "Rua Bomba Gasolina Prio Pousada Saramagos, Braga",
+                    "phone": "+351 291 619 439",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.0,
+                    "company": "Bomba Gasolina"
                 },
                 {
                     "families_pope": [
@@ -1944,7 +2466,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bp Braga Palmeira",
+                    "address": "Rua Bp Braga Palmeira, Braga",
+                    "phone": "+351 917 656 536",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.7,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -1964,7 +2492,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bp Braga Imaculada Conceicao",
+                    "address": "Rua Bp Braga Imaculada Conceicao, Braga",
+                    "phone": "+351 918 693 633",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.0,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -1984,7 +2518,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bp Braga 31 De Janeiro",
+                    "address": "Rua Bp Braga 31 De Janeiro, Braga",
+                    "phone": "+351 253 730 730",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 4.7,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -2004,7 +2544,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Bp Braga Dume",
+                    "address": "Rua Bp Braga Dume, Braga",
+                    "phone": "+351 252 767 827",
+                    "schedule": "Seg-Dom: 8h-22h",
+                    "rating": 3.9,
+                    "company": "BP"
                 },
                 {
                     "families_pope": [
@@ -2020,7 +2566,13 @@
                     "location_types_pope": [],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Supercor Braga",
+                    "address": "Rua Supercor Braga, Braga",
+                    "phone": "+351 291 804 924",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 4.7,
+                    "company": "Supercor Braga"
                 },
                 {
                     "families_pope": [
@@ -2040,7 +2592,13 @@
                     ],
                     "plainWastes": "pilhas-portateis",
                     "plainTypes": "distribuicao",
-                    "plainFilters": ""
+                    "plainFilters": "",
+                    "name": "Ale Hop Rua Do Souto Braga",
+                    "address": "Rua Ale Hop Rua Do Souto Braga, Braga",
+                    "phone": "+351 917 841 121",
+                    "schedule": "Seg-Sex: 9h-18h | Sáb: 9h-13h",
+                    "rating": 3.9,
+                    "company": "Ale Hop"
                 }
             ],
             "total": 93,
