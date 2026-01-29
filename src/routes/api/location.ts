@@ -64,7 +64,7 @@ export function GET() {
   try {
     // Build a GeoJSON FeatureCollection from the bundled POI sample file
     const poiFile = POI as unknown as POIFile
-    const rawPoints = poiFile.data.publicGetMapInformation.points ?? []
+    const rawPoints = [...(poiFile.data.publicGetMapInformation.points ?? [])]
 
     rawPoints.push(
       ...getActiveEntries().map((entry) => ({
