@@ -7,14 +7,11 @@
  *
  * This centralizes the compatibility logic so route handlers stay simple.
  */
-export async function parseJsonRequest(request: Request) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const r: any = request
+export async function parseJsonRequest(request: Request): Promise<unknown> {
+  const r = request as unknown as { json?: () => Promise<unknown> }
   if (typeof r.json === 'function') {
-    // prefer native json() when present
-    return await r.json()
+    return await (r.json as () => Promise<unknown>).call(request)
   }
-  // fallback to reading text and parsing
   const txt = await request.text()
   if (!txt) return {}
   return JSON.parse(txt)

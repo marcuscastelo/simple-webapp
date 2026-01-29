@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, onMount } from 'solid-js'
+import { createEffect, createSignal, onMount } from 'solid-js'
 
 export default function TestGPS() {
   const [gpsPositions, setGpsPositions] = createSignal<

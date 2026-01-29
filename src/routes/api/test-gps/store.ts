@@ -1,6 +1,4 @@
 import { randomUUID } from 'crypto'
-import fs from 'fs'
-import path from 'path'
 
 // Polyfill: some SolidStart dev runtimes provide Request objects without the
 // convenient request.json() helper. To keep route handlers simple and JSON-only
@@ -10,7 +8,7 @@ import path from 'path'
 declare global {
   // augment the Request interface so TypeScript stops complaining
   interface Request {
-    json?: () => Promise<any>
+    json?: () => Promise<unknown>
   }
 }
 
@@ -23,7 +21,8 @@ export type GpsEntry = {
 
 export const TTL_MS = 6_000
 
-// Simple file-backed persistence so entries survive dev reloads and multiple worker contexts
+// Simple in-memory store for dev — file-backed persistence is intentionally
+// omitted to avoid adding platform-specific I/O in unit-testable code.
 let store = new Map<string, GpsEntry>()
 
 function loadStoreFromFile() {
@@ -32,15 +31,6 @@ function loadStoreFromFile() {
 
 function persistStoreToFile(m: Map<string, GpsEntry>) {
   store = m
-}
-
-function pruneExpired() {
-  const now = Date.now()
-  for (const [id, entry] of store.entries()) {
-    if (now - entry.lastSeen > TTL_MS) {
-      store.delete(id)
-    }
-  }
 }
 
 export function createEntry(

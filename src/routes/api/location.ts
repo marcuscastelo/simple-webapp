@@ -9,9 +9,46 @@ import { getActiveEntries } from '~/routes/api/test-gps/store'
 
 export async function POST(request: Request) {
   try {
-    const { latitude, longitude } = (await request.json()) as {
-      latitude: number
-      longitude: number
+    // Parse request body defensively. Some runtimes (Edge, frameworks)
+    // may expose a `.json()` helper; others only provide the standard
+    // Fetch `Request` with `.text()`. Treat the parsed body as unknown
+    // and validate its shape to avoid unsafe `any` usage.
+    // Avoid casting to `any` — treat the incoming request as `unknown`
+    // and detect a runtime `.json()` helper if present.
+    const reqLike = request as unknown as { json?: unknown }
+    const rawBody: unknown =
+      typeof reqLike.json === 'function'
+        ? await (reqLike.json as () => Promise<unknown>).call(request)
+        : JSON.parse(await request.text())
+
+    if (typeof rawBody !== 'object' || rawBody === null) {
+      return new Response(
+        JSON.stringify({ status: 'error', message: 'Invalid request body' }),
+        { status: 400 },
+      )
+    }
+
+    const body = rawBody as Record<string, unknown>
+
+    const latitude =
+      typeof body.latitude === 'number'
+        ? body.latitude
+        : typeof body.latitude === 'string'
+          ? Number(body.latitude)
+          : NaN
+
+    const longitude =
+      typeof body.longitude === 'number'
+        ? body.longitude
+        : typeof body.longitude === 'string'
+          ? Number(body.longitude)
+          : NaN
+
+    if (Number.isNaN(latitude) || Number.isNaN(longitude)) {
+      return new Response(
+        JSON.stringify({ status: 'error', message: 'Invalid coordinates' }),
+        { status: 400 },
+      )
     }
     // Here you would typically process the location data,
     // e.g., save it to a database or perform some calculations.
