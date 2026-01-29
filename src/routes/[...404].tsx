@@ -14,9 +14,9 @@ const NotFound = () => {
   })
 
   return (
-    <div class="flex min-h-screen items-center justify-center bg-linear-to-br from-primary/5 to-accent/5">
+    <div class="flex min-h-screen items-center justify-center bg-linear-to-br from-primary-500/5 to-accent-500/5">
       <div class="text-center space-y-6 p-8">
-        <h1 class="text-8xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h1 class="text-8xl font-bold bg-linear-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
           404
         </h1>
         <div class="space-y-2">

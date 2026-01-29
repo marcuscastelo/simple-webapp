@@ -51,7 +51,7 @@ const Dashboard = () => {
         <div class="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div class="flex items-center gap-4">
             <Avatar class="h-16 w-16">
-              <AvatarFallback class="bg-linear-to-br from-primary to-accent text-primary-foreground text-xl">
+              <AvatarFallback class="bg-linear-to-br from-primary-500 to-accent-500 text-primary-950 text-xl">
                 JS
               </AvatarFallback>
             </Avatar>
@@ -78,7 +78,7 @@ const Dashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div class="text-3xl font-bold text-primary">
+              <div class="text-3xl font-bold text-primary-500">
                 {userStats.totalRecycled}kg
               </div>
             </CardContent>
@@ -92,7 +92,7 @@ const Dashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div class="text-3xl font-bold text-accent">
+              <div class="text-3xl font-bold text-accent-500">
                 {userStats.totalRewards}€
               </div>
             </CardContent>
@@ -120,7 +120,7 @@ const Dashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div class="text-3xl font-bold text-primary">
+              <div class="text-3xl font-bold text-primary-500">
                 {userStats.recyclingRate}%
               </div>
             </CardContent>
@@ -144,8 +144,8 @@ const Dashboard = () => {
                 {(activity) => (
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-lg border bg-card hover:shadow-md transition-shadow">
                     <div class="flex items-start gap-4">
-                      <div class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                        <Recycle class="h-6 w-6 text-primary" />
+                      <div class="h-12 w-12 rounded-lg bg-primary-500/10 flex items-center justify-center shrink-0">
+                        <Recycle class="h-6 w-6 text-primary-500" />
                       </div>
                       <div>
                         <div class="flex items-center gap-2 mb-1">
@@ -162,8 +162,8 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div class="flex items-center gap-2">
-                      <Gift class="h-4 w-4 text-accent" />
-                      <span class="font-bold text-accent text-lg">
+                      <Gift class="h-4 w-4 text-accent-500" />
+                      <span class="font-bold text-accent-500 text-lg">
                         {activity.reward}
                       </span>
                     </div>

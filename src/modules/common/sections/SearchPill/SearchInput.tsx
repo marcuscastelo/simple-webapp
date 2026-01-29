@@ -71,7 +71,7 @@ export function SearchInput(props: SearchInputProps) {
       />
       <Show when={props.onSearch}>
         <button
-          class="ml-3 bg-primary text-black rounded-full p-2 hover:opacity-95"
+          class="ml-3 bg-primary-500 text-black rounded-full p-2 hover:opacity-95"
           onClick={() => props.onSearch?.(props.value())}
           aria-label="search"
         >

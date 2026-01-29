@@ -52,10 +52,10 @@ const Auth = () => {
       <div class="w-full max-w-md">
         <div class="text-center mb-8">
           <A href="/" class="inline-flex items-center gap-2 mb-4">
-            <div class="h-12 w-12 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-              <Recycle class="h-7 w-7 text-primary-foreground" />
+            <div class="h-12 w-12 rounded-full bg-linear-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
+              <Recycle class="h-7 w-7 text-primary-950" />
             </div>
-            <span class="font-bold text-2xl bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span class="font-bold text-2xl bg-linear-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
               EcoRewards
             </span>
           </A>
@@ -166,11 +166,11 @@ const Auth = () => {
 
         <p class="text-center text-sm text-muted-foreground mt-6">
           Ao continuar, concorda com os nossos{' '}
-          <A href="/terms" class="text-primary hover:underline">
+          <A href="/terms" class="text-primary-500 hover:underline">
             Termos de Uso
           </A>{' '}
           e{' '}
-          <A href="/privacy" class="text-primary hover:underline">
+          <A href="/privacy" class="text-primary-500 hover:underline">
             Política de Privacidade
           </A>
         </p>

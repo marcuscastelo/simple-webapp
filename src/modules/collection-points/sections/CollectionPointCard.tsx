@@ -35,8 +35,8 @@ export function CollectionPointCard(props: CollectionPointCardProps) {
               {props.point.company}
             </CardDescription>
           </div>
-          <div class="flex items-center gap-1 bg-accent/20 px-2 py-1 rounded-lg">
-            <Star class="h-4 w-4 text-accent fill-accent" />
+          <div class="flex items-center gap-1 bg-accent-500/20 px-2 py-1 rounded-lg">
+            <Star class="h-4 w-4 text-accent-500 fill-accent-500" />
             <span class="font-semibold">{props.point.rating}</span>
           </div>
         </div>

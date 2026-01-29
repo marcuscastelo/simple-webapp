@@ -20,25 +20,25 @@ const Home = () => {
       icon: Recycle,
       value: '250+',
       label: 'Toneladas Recicladas',
-      color: 'text-primary',
+      color: 'text-primary-500',
     },
     {
       icon: Users,
       value: '10.5K',
       label: 'Utilizadores Ativos',
-      color: 'text-accent',
+      color: 'text-accent-500',
     },
     {
       icon: Building2,
       value: '150+',
       label: 'Empresas Parceiras',
-      color: 'text-primary',
+      color: 'text-primary-500',
     },
     {
       icon: TrendingUp,
       value: '92%',
       label: 'Taxa de Reciclagem',
-      color: 'text-accent',
+      color: 'text-accent-500',
     },
   ]
 
@@ -72,7 +72,7 @@ const Home = () => {
             <div class="space-y-8">
               <h1 class="text-5xl md:text-6xl font-bold leading-tight">
                 Recicle e receba{' '}
-                <span class="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span class="bg-linear-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
                   recompensas!
                 </span>
               </h1>
@@ -95,7 +95,7 @@ const Home = () => {
               </div>
             </div>
             <div class="relative">
-              <div class="absolute inset-0 bg-linear-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
+              <div class="absolute inset-0 bg-linear-to-br from-primary-500/20 to-accent-500/20 rounded-3xl blur-3xl" />
               <img
                 src={heroImage}
                 alt="Pessoas reciclando felizes"
@@ -147,8 +147,8 @@ const Home = () => {
                 return (
                   <Card class="border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                     <CardContent class="p-8 space-y-4">
-                      <div class="h-16 w-16 rounded-2xl bg-linear-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-                        <Icon class="h-8 w-8 text-primary-foreground" />
+                      <div class="h-16 w-16 rounded-2xl bg-linear-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
+                        <Icon class="h-8 w-8 text-primary-950" />
                       </div>
                       <h3 class="text-2xl font-bold">{feature.title}</h3>
                       <p class="text-muted-foreground leading-relaxed">

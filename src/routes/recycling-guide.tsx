@@ -89,7 +89,7 @@ function RecyclingGuide() {
   ]
 
   return (
-    <div class="min-h-screen py-12 bg-base-150">
+    <div class="min-h-screen py-12 bg-base-200">
       <div class="container mx-auto px-4">
         <div class="mb-12 text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">
