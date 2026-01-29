@@ -31,7 +31,7 @@ export function CollectionPointsMap(props: {
   const { service: placesService } = useGooglePlacesService({ mapRef })
 
   const { clusters, getClusterExpansionZoom } = useSupercluster(
-    features,
+    () => features,
     bounds,
     zoom,
     () => ({
