@@ -1,5 +1,5 @@
 import { FeatureCollection, Point } from 'geojson'
-import { createEffect, createSignal } from 'solid-js'
+import { createEffect, createSignal, onMount } from 'solid-js'
 
 import { POIBasic } from '~/modules/map/hooks/usePOI'
 
@@ -25,6 +25,19 @@ export function useFeatures() {
     loadFeaturesDataset()
       .then((data) => setFeatures(data))
       .catch(console.error)
+  })
+
+  onMount(() => {
+    setInterval(() => {
+      loadFeaturesDataset()
+        .then((data) => {
+          // If hashes are different, update features
+          if (JSON.stringify(data) !== JSON.stringify(features())) {
+            setFeatures(data)
+          }
+        })
+        .catch(console.error)
+    }, 1000)
   })
 
   return [features, setFeatures] as const
