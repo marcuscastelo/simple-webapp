@@ -5,6 +5,7 @@ import {
   POIProperties,
 } from '~/modules/collection-points/schemas'
 import * as POI from '~/poi.json'
+import { getActiveEntries } from '~/routes/api/test-gps/store'
 
 export async function POST(request: Request) {
   try {
@@ -64,6 +65,16 @@ export function GET() {
     // Build a GeoJSON FeatureCollection from the bundled POI sample file
     const poiFile = POI as unknown as POIFile
     const rawPoints = poiFile.data.publicGetMapInformation.points ?? []
+
+    rawPoints.push(
+      ...getActiveEntries().map((entry) => ({
+        id: `gps-${entry.id}`,
+        latitude: entry.lat?.toString() ?? '0',
+        longitude: entry.lng?.toString() ?? '0',
+        slug: 'dynamic-gps-entry',
+        type: 'gps',
+      })),
+    )
 
     const features: Feature<Point, POIProperties>[] = rawPoints
       .map((poi) => {

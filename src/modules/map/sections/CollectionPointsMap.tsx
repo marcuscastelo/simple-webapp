@@ -1,5 +1,5 @@
 import { Key } from '@solid-primitives/keyed'
-import { Leaf, Recycle } from 'lucide-solid'
+import { Leaf, RadioIcon, Recycle } from 'lucide-solid'
 import { AdvancedMarker, Map } from 'solid-google-maps'
 import { createEffect, Show } from 'solid-js'
 import Supercluster from 'supercluster'
@@ -159,11 +159,16 @@ function DynamicFeatureClusterMarker(props: {
         />
       </Show>
       <Show when={!isCluster()}>
-        <FeatureMarker
-          feature={
+        {(() => {
+          const feature =
             props.featureOrCluster as Supercluster.PointFeature<POIBasic>
-          }
-        />
+
+          return feature.properties.type === 'gps' ? (
+            <GpsFeatureMarker feature={feature} />
+          ) : (
+            <FeatureMarker feature={feature} />
+          )
+        })()}
       </Show>
     </>
   )
@@ -219,6 +224,31 @@ function FeatureMarker(props: {
           <div class="absolute inset-0 rounded-full bg-marker-background-single" />
           <div class="relative z-10 text-marker-icon-single flex items-center justify-center">
             <Leaf class="w-5 h-5" />
+          </div>
+        </div>
+      </div>
+    </AdvancedMarker>
+  )
+}
+
+function GpsFeatureMarker(props: {
+  feature: Supercluster.PointFeature<POIBasic>
+  onClick?: () => void
+}) {
+  const position = () => {
+    const [lng, lat] = props.feature.geometry.coordinates
+    return { lat, lng }
+  }
+  return (
+    <AdvancedMarker position={position()} onClick={props.onClick}>
+      <div class="flex items-center justify-center">
+        <div
+          class="relative rounded-full shadow-md flex items-center justify-center"
+          style="width:40px;height:40px"
+        >
+          <div class="absolute inset-0 rounded-full bg-blue-700" />
+          <div class="relative z-10 text-blue-200 flex items-center justify-center">
+            <RadioIcon class="w-5 h-5" />
           </div>
         </div>
       </div>
