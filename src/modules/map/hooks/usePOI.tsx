@@ -31,9 +31,7 @@ export function usePOI() {
               type: poi.type,
               families_pope: poi.families_pope,
               location_types_pope: poi.location_types_pope,
-              wasteTypes: Array.isArray(poi.wasteTypes)
-                ? (poi.wasteTypes as string[])
-                : [],
+              wasteTypes: Array.isArray(poi.wasteTypes) ? poi.wasteTypes : [],
               plainTypes: poi.plainTypes,
               plainFilters: poi.plainFilters,
             }) satisfies POIBasic,

@@ -1,5 +1,5 @@
 import { FeatureCollection, Point } from 'geojson'
-import { createEffect, onMount } from 'solid-js'
+import { onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
 import { POIBasic } from '~/modules/map/hooks/usePOI'
@@ -21,14 +21,13 @@ export function useFeatures() {
     features: [],
   })
 
-  // load data asynchronously
-  createEffect(() => {
-    loadFeaturesDataset()
+  onMount(() => {
+    // initial load
+    void loadFeaturesDataset()
       .then((data) => setFeatures(data))
       .catch(console.error)
-  })
 
-  onMount(() => {
+    // periodic polling
     setInterval(() => {
       loadFeaturesDataset()
         .then((data) => {
