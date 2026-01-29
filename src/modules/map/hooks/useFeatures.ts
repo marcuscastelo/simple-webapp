@@ -32,15 +32,49 @@ export function useFeatures() {
     setInterval(() => {
       loadFeaturesDataset()
         .then((data) => {
-          // If hashes are different, update features
-          data.features.forEach((feature, index) => {
-            if (
-              JSON.stringify(feature) !==
-              JSON.stringify(features.features[index])
-            ) {
-              setFeatures('features', index, feature)
+          console.debug(
+            'Received GPS count = ',
+            data.features.filter((f) => f.properties.type === 'gps').length,
+          )
+          const oldById = new Map(
+            features.features.map((f) => [f.properties.id, f]),
+          )
+
+          const newById = new Map(
+            data.features.map((f) => [f.properties.id, f]),
+          )
+
+          /* ---------- REMOÇÕES ---------- */
+          setFeatures('features', (fs) =>
+            fs.filter((f) => newById.has(f.properties.id)),
+          )
+
+          /* ---------- INSERÇÕES ---------- */
+          const toInsert: typeof data.features = []
+
+          for (const [id, feature] of newById) {
+            if (!oldById.has(id)) {
+              toInsert.push(feature)
             }
-          })
+          }
+
+          if (toInsert.length) {
+            setFeatures('features', (fs) => [...fs, ...toInsert])
+          }
+
+          /* ---------- UPDATES ---------- */
+          for (let i = 0; i < features.features.length; i++) {
+            const current = features.features[i]
+            const incoming = newById.get(current.properties.id)
+            if (!incoming) continue
+
+            const [lng1, lat1] = current.geometry.coordinates
+            const [lng2, lat2] = incoming.geometry.coordinates
+
+            if (lng1 !== lng2 || lat1 !== lat2) {
+              setFeatures('features', i, 'geometry', incoming.geometry)
+            }
+          }
         })
         .catch(console.error)
     }, 1000)
