@@ -104,7 +104,7 @@ function RecyclingGuide() {
         <div class="grid lg:grid-cols-2 gap-8">
           <For each={wasteTypes}>
             {(waste) => (
-              <Card class="shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card class="shadow-lg bg-base-50 hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <div class="flex items-center gap-4">
                     <div
