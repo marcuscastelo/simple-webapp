@@ -67,28 +67,32 @@ const Home = () => {
       {/* Hero Section */}
       <section class="relative overflow-hidden">
         <div class="absolute inset-0 bg-base-200" />
-        <div class="container mx-auto px-4 py-20 relative">
+        <div class="container mx-auto px-4 py-8 sm:py-20 relative">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
-              <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+              <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 Recicle e receba{' '}
                 <span class="bg-linear-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
                   recompensas!
                 </span>
               </h1>
-              <p class="text-xl text-muted-foreground">
+              <p class="text-base sm:text-xl text-muted-foreground">
                 Transforme os seus resíduos em valor. Junte-se à nossa
                 comunidade e contribua para um planeta mais sustentável enquanto
                 ganha benefícios.
               </p>
               <div class="flex flex-wrap gap-4">
                 <A href="/dashboard">
-                  <Button variant="hero" size="lg" class="shadow-lg">
+                  <Button
+                    variant="hero"
+                    size="lg"
+                    class="shadow-lg w-full sm:w-auto"
+                  >
                     Começar Agora
                   </Button>
                 </A>
                 <A href="/collection-points">
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" class="w-full sm:w-auto">
                     Ver Pontos de Recolha
                   </Button>
                 </A>
@@ -99,7 +103,7 @@ const Home = () => {
               <img
                 src={heroImage}
                 alt="Pessoas reciclando felizes"
-                class="relative rounded-3xl shadow-2xl w-full h-auto"
+                class="relative rounded-3xl shadow-2xl w-full h-40 sm:h-64 md:h-auto object-cover"
               />
             </div>
           </div>
