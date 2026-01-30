@@ -42,7 +42,7 @@ export type AutocompleteDropdownProps = {
 export function AutocompleteDropdown(props: AutocompleteDropdownProps) {
   return (
     <Show when={props.isOpen() && props.query().length > 0}>
-      <div class="absolute top-full left-0 right-0 mt-2 bg-base-300 border border-base-300 rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
+      <div class="absolute top-full left-0 right-0 mt-2 bg-base-50 border border-base-300 rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
         <Show
           when={!props.loading() && props.predictions().length === 0}
           fallback={
