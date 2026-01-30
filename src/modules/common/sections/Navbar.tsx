@@ -1,11 +1,5 @@
-import { A } from '@solidjs/router'
-import {
-  BookOpenIcon,
-  InfoIcon,
-  MapPin,
-  MapPinIcon,
-  RecycleIcon,
-} from 'lucide-solid'
+import { A, useLocation } from '@solidjs/router'
+import { BookOpenIcon, InfoIcon, MapPinIcon, RecycleIcon } from 'lucide-solid'
 import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
 
 import logo from '~/assets/logo.png'
@@ -17,6 +11,10 @@ import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
 
 export function Navbar() {
+  const location = useLocation()
+
+  const isActive = (path: string) => location.pathname === path
+
   return (
     <header class="bg-base-50/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
@@ -30,18 +28,57 @@ export function Navbar() {
             />
           </div> */}
           <div class="flex justify-between gap-3">
-            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+            <A
+              href="/"
+              title="Home"
+              aria-current={isActive('/') ? 'page' : undefined}
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+                isActive('/')
+                  ? 'bg-primary-300'
+                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+              }`}
+            >
               <RecycleIcon class="h-4 w-4" />
-            </div>
-            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+            </A>
+
+            <A
+              href="/collection-points"
+              title="Pontos de recolha"
+              aria-current={isActive('/collection-points') ? 'page' : undefined}
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+                isActive('/collection-points')
+                  ? 'bg-primary-300'
+                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+              }`}
+            >
               <MapPinIcon class="h-4 w-4" />
-            </div>
-            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+            </A>
+
+            <A
+              href="/recycling-guide"
+              title="Guia de reciclagem"
+              aria-current={isActive('/recycling-guide') ? 'page' : undefined}
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+                isActive('/recycling-guide')
+                  ? 'bg-primary-300'
+                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+              }`}
+            >
               <BookOpenIcon class="h-4 w-4" />
-            </div>
-            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+            </A>
+
+            <A
+              href="/dashboard"
+              title="Informações"
+              aria-current={isActive('/dashboard') ? 'page' : undefined}
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+                isActive('/dashboard')
+                  ? 'bg-primary-300'
+                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+              }`}
+            >
               <InfoIcon class="h-4 w-4" />
-            </div>
+            </A>
           </div>
           <div class="flex gap-10">
             <ThemeSwapButton />
