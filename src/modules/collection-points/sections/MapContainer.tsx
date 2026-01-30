@@ -74,8 +74,34 @@ export function MapContainer(props: MapContainerProps) {
     getCurrentPosition()
   }
 
+  const [cardRef, setCardRef] = createSignal<HTMLElement | null>(null)
+
+  const handleToggleFullscreen = async () => {
+    const next = !isFullscreen()
+    if (next) {
+      try {
+        await cardRef()?.requestFullscreen?.()
+      } catch (err) {
+        // fallback: still toggle CSS fullscreen even if Fullscreen API fails
+        console.warn('requestFullscreen failed', err)
+      }
+    } else {
+      if (document.fullscreenElement) {
+        try {
+          await document.exitFullscreen?.()
+        } catch (err) {
+          console.warn('exitFullscreen failed', err)
+        }
+      }
+    }
+
+    // Update parent fullscreen state
+    props.onFullscreenToggle(next)
+  }
+
   return (
     <Card
+      ref={setCardRef}
       class={cn(
         'mb-8 shadow-lg overflow-hidden h-[200px] md:h-[400px] transition-all duration-300 ease-in-out relative',
         {
@@ -84,11 +110,11 @@ export function MapContainer(props: MapContainerProps) {
         },
       )}
     >
-      {/* Toggle fullscreen button (overlay on right) */}
-      <div class="absolute top-3 right-3 z-60">
+      {/* Toggle fullscreen button (overlay on right) - hidden on small screens (mobile uses FAB) */}
+      <div class="absolute top-3 right-3 z-60 hidden md:block">
         <button
           class="inline-flex items-center gap-2 rounded-md bg-base-50/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
-          onClick={() => props.onFullscreenToggle((v) => !v)}
+          onClick={() => void handleToggleFullscreen()}
           aria-pressed={isFullscreen()}
           aria-label={isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'}
         >
@@ -124,7 +150,7 @@ export function MapContainer(props: MapContainerProps) {
       {/* Mobile FABs: locate + fullscreen toggle */}
       <div class="fixed right-4 bottom-20 z-60 flex flex-col gap-3 md:hidden">
         <button
-          class="bg-white text-primary-700 p-3 rounded-full shadow-md flex items-center justify-center"
+          class="bg-base-50 border border-primary-950 text-primary-700 p-3 rounded-full shadow-md flex items-center justify-center"
           onClick={locateUser}
           aria-label="Localizar-me"
           aria-busy={geoLoading()}
@@ -135,8 +161,8 @@ export function MapContainer(props: MapContainerProps) {
           </Show>
         </button>
         <button
-          class="bg-base-50/90 text-primary-700 p-3 rounded-full shadow-md flex items-center justify-center"
-          onClick={() => props.onFullscreenToggle((v) => !v)}
+          class="bg-base-50 border border-primary-950 text-primary-700 p-3 rounded-full shadow-md flex items-center justify-center"
+          onClick={() => void handleToggleFullscreen()}
           aria-pressed={isFullscreen()}
           aria-label={
             isFullscreen() ? 'Fechar em ecrã inteiro' : 'Abrir em ecrã inteiro'
