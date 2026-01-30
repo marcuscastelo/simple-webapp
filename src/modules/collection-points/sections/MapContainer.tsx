@@ -1,4 +1,4 @@
-import { Loader2, MapPin, Maximize, Minimize } from 'lucide-solid'
+import { CrosshairIcon, Loader2, Maximize, Minimize } from 'lucide-solid'
 import { Accessor, createMemo, createSignal, Setter, Show } from 'solid-js'
 
 import { Card } from '~/components/ui/card'
@@ -71,12 +71,45 @@ export function MapContainer(props: MapContainerProps) {
       setLocError('Geolocalização não suportada no dispositivo')
       return
     }
+    // mark that user interacted with FABs so the pulse hint stops
+    if (showPulse()) {
+      setShowPulse(false)
+      try {
+        if (typeof window !== 'undefined')
+          window.localStorage.setItem(storageKey, '1')
+      } catch {
+        /* ignore */
+      }
+    }
     getCurrentPosition()
   }
 
   const [cardRef, setCardRef] = createSignal<HTMLElement | null>(null)
+  // Show the pulsing hint until the user interacts with a FAB once.
+  // Persist in localStorage so it doesn't reappear on reloads.
+  const storageKey = 'reciclamais.fabPulseSeen'
+  let initialPulse = true
+  if (typeof window !== 'undefined') {
+    try {
+      initialPulse = window.localStorage.getItem(storageKey) !== '1'
+    } catch {
+      initialPulse = true
+    }
+  }
+  const [showPulse, setShowPulse] = createSignal(initialPulse)
 
   const handleToggleFullscreen = async () => {
+    // mark that user interacted with FABs so the pulse hint stops
+    if (showPulse()) {
+      setShowPulse(false)
+      try {
+        if (typeof window !== 'undefined')
+          window.localStorage.setItem(storageKey, '1')
+      } catch {
+        /* ignore */
+      }
+    }
+
     const next = !isFullscreen()
     if (next) {
       try {
@@ -148,7 +181,12 @@ export function MapContainer(props: MapContainerProps) {
       />
 
       {/* Mobile FABs: locate + fullscreen toggle */}
-      <div class="fixed right-4 bottom-20 z-60 flex flex-col gap-3 md:hidden">
+      <div
+        class={cn(
+          'fixed right-4 bottom-20 z-60 flex flex-col gap-3 md:hidden',
+          { 'animate-pulse': showPulse() },
+        )}
+      >
         <button
           class="bg-base-50 border border-primary-950 text-primary-700 p-3 rounded-full shadow-md flex items-center justify-center"
           onClick={locateUser}
@@ -156,7 +194,10 @@ export function MapContainer(props: MapContainerProps) {
           aria-busy={geoLoading()}
           disabled={geoLoading()}
         >
-          <Show when={geoLoading()} fallback={<MapPin class="h-5 w-5" />}>
+          <Show
+            when={geoLoading()}
+            fallback={<CrosshairIcon class="h-5 w-5" />}
+          >
             <Loader2 class="h-5 w-5 animate-spin" />
           </Show>
         </button>
