@@ -69,7 +69,7 @@ const Home = () => {
         <div class="absolute inset-0 bg-base-200" />
         <div class="container mx-auto px-4 py-8 sm:py-20 relative">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
+            <div class="space-y-8 order-2 lg:order-1">
               <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 Recicle e receba{' '}
                 <span class="bg-linear-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
@@ -98,7 +98,7 @@ const Home = () => {
                 </A>
               </div>
             </div>
-            <div class="relative">
+            <div class="relative order-1 lg:order-2">
               <div class="absolute inset-0 bg-linear-to-br from-primary-500/20 to-accent-500/20 rounded-3xl blur-3xl" />
               <img
                 src={heroImage}
