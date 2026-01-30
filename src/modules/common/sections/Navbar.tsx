@@ -1,12 +1,12 @@
 import { A, useLocation } from '@solidjs/router'
 import { BookOpenIcon, InfoIcon, MapPinIcon, RecycleIcon } from 'lucide-solid'
 import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
+import { Portal } from 'solid-js/web'
 
 import logo from '~/assets/logo.png'
 import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
-import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
-import { mapActions } from '~/modules/map/application/mapActions'
+// search and map actions are not used in this component
 import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
 
@@ -14,25 +14,42 @@ export function Navbar() {
   const location = useLocation()
 
   const isActive = (path: string) => location.pathname === path
+  const [mobileOpen, setMobileOpen] = createSignal(false)
+  let mobileMenuRef: HTMLDivElement | undefined
+
+  // close mobile menu on outside click or Esc
+  createEffect(() => {
+    if (!mobileOpen()) return
+    const onDocClick = (ev: MouseEvent) => {
+      const target = ev.target as Node | null
+      if (mobileMenuRef && target && !mobileMenuRef.contains(target)) {
+        setMobileOpen(false)
+      }
+    }
+    const onKey = (ev: KeyboardEvent) => {
+      if (ev.key === 'Escape') setMobileOpen(false)
+    }
+    document.addEventListener('click', onDocClick)
+    document.addEventListener('keydown', onKey)
+    onCleanup(() => {
+      document.removeEventListener('click', onDocClick)
+      document.removeEventListener('keydown', onKey)
+    })
+  })
 
   return (
     <header class="bg-base-50/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />
-          {/* <div class="max-w-1/2 flex-1">
-            <SearchPill
-              onSearch={mapActions.openMapsPageWithSearch}
-              onPlaceSelected={mapActions.openMapPageWithPlaceId}
-              onUseLocationClick={mapActions.openMapPageWithCoordinates}
-            />
-          </div> */}
-          <div class="flex justify-between gap-3">
+
+          {/* Desktop nav icons */}
+          <div class="hidden md:flex justify-between gap-3">
             <A
               href="/"
               title="Home"
               aria-current={isActive('/') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
                 isActive('/')
                   ? 'bg-primary-300'
                   : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
@@ -45,7 +62,7 @@ export function Navbar() {
               href="/collection-points"
               title="Pontos de recolha"
               aria-current={isActive('/collection-points') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
                 isActive('/collection-points')
                   ? 'bg-primary-300'
                   : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
@@ -58,7 +75,7 @@ export function Navbar() {
               href="/recycling-guide"
               title="Guia de reciclagem"
               aria-current={isActive('/recycling-guide') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
                 isActive('/recycling-guide')
                   ? 'bg-primary-300'
                   : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
@@ -71,7 +88,7 @@ export function Navbar() {
               href="/dashboard"
               title="Informações"
               aria-current={isActive('/dashboard') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition-transform transition-colors duration-150 ease-in-out transform ${
+              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
                 isActive('/dashboard')
                   ? 'bg-primary-300'
                   : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
@@ -80,12 +97,147 @@ export function Navbar() {
               <InfoIcon class="h-4 w-4" />
             </A>
           </div>
-          <div class="flex gap-10">
-            <ThemeSwapButton />
-            <GoogleLoginButton />
+
+          <div class="flex items-center gap-4">
+            {/* hamburger visible only on mobile */}
+            <div class="md:hidden">
+              <button
+                aria-label="Open menu"
+                aria-expanded={mobileOpen()}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMobileOpen(true)
+                }}
+                class="p-2 rounded-lg bg-base-200 hover:bg-base-300/60 active:scale-95 active:opacity-90 transition-transform duration-150"
+              >
+                <svg
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 6h16M4 12h16M4 18h16"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* desktop actions */}
+            <div class="hidden md:flex items-center gap-6">
+              <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                <ThemeSwapButton />
+              </div>
+              <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                <GoogleLoginButton />
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile slide-over (overlay) - rendered into document.body to avoid ancestor clipping */}
+      <Portal>
+        <div
+          class={`fixed inset-0 z-50 md:hidden pointer-events-none ${mobileOpen() ? 'pointer-events-auto' : ''}`}
+          aria-hidden={!mobileOpen()}
+        >
+          <div
+            class={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out ${mobileOpen() ? 'opacity-30' : 'opacity-0'} z-40`}
+            onClick={() => setMobileOpen(false)}
+          />
+
+          <div
+            class={`absolute right-0 top-0 h-full w-72 transform transition-transform duration-300 ease-in-out ${mobileOpen() ? 'translate-x-0' : 'translate-x-full'} z-50 pointer-events-auto`}
+          >
+            <div class="h-full bg-base-500/95 text-base-content backdrop-blur-sm flex flex-col pointer-events-auto">
+              <div class="p-4 flex items-center justify-between">
+                <A href="/" class="flex items-center gap-3 select-none">
+                  <img src={logo} alt="Recicla+" class="h-8" />
+                </A>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setMobileOpen(false)}
+                  class="p-2 rounded-md active:scale-95 active:opacity-90 transition-transform duration-150"
+                >
+                  <svg
+                    class="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 18L18 6M6 6l12 12"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <nav class="px-4 mt-4">
+                <A
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+                >
+                  <RecycleIcon class="h-5 w-5" />
+                  <span>Home</span>
+                </A>
+                <A
+                  href="/collection-points"
+                  onClick={() => setMobileOpen(false)}
+                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+                >
+                  <MapPinIcon class="h-5 w-5" />
+                  <span>Pontos de recolha</span>
+                </A>
+                <A
+                  href="/recycling-guide"
+                  onClick={() => setMobileOpen(false)}
+                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+                >
+                  <BookOpenIcon class="h-5 w-5" />
+                  <span>Guia de reciclagem</span>
+                </A>
+                <A
+                  href="/dashboard"
+                  onClick={() => setMobileOpen(false)}
+                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+                >
+                  <InfoIcon class="h-5 w-5" />
+                  <span>Informações</span>
+                </A>
+              </nav>
+
+              <div class="mt-6 px-4">
+                <div class="mb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                      <ThemeSwapButton />
+                    </div>
+                    <span>Tema</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center gap-3">
+                    <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                      <GoogleLoginButton />
+                    </div>
+                    <span>Conta</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Portal>
     </header>
   )
 }
@@ -161,7 +313,7 @@ function GoogleLoginButton() {
         fallback={
           <A href="/auth" class="flex items-center">
             <div
-              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-500 border border-base-300 shadow-sm"
+              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
               aria-hidden="false"
               role="img"
             >
@@ -197,7 +349,7 @@ function GoogleLoginButton() {
           <button
             onClick={toggleMenu}
             aria-expanded={open()}
-            class="h-10 w-10 rounded-full overflow-hidden bg-base-500 border border-base-300 shadow-sm"
+            class="h-10 w-10 rounded-full overflow-hidden bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
             title="Conta"
           >
             {avatarUrl() ? (
@@ -239,13 +391,13 @@ function GoogleLoginButton() {
             >
               <A
                 href="/dashboard"
-                class="block px-4 py-2 text-sm text-base-content hover:bg-base-500"
+                class="block px-4 py-2 text-sm text-base-content hover:bg-base-500 active:opacity-90"
               >
                 Perfil
               </A>
               <button
                 onClick={handleLogout}
-                class="w-full text-left block px-4 py-2 text-sm text-base-content hover:bg-base-500"
+                class="w-full text-left block px-4 py-2 text-sm text-base-content hover:bg-base-500 active:opacity-90"
               >
                 Sair
               </button>
