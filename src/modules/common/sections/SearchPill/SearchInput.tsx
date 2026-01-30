@@ -65,9 +65,8 @@ export function SearchInput(props: SearchInputProps) {
   )
 
   return (
-    <div
-      class={`flex items-center bg-base-50 border border-base-300 rounded-full px-3 ${isCompact() ? 'py-1' : 'py-2'} shadow-sm`}
-    >
+    <div class="flex items-center h-10 bg-base-50 border border-base-300 rounded-full px-3 shadow-sm">
+      {/* keep a constant height (h-10) so input never shrinks vertically; compact only adjusts icon/text sizes */}
       <button
         class={`p-1 rounded-full hover:bg-base-400 text-muted-foreground ${isCompact() ? 'mr-1' : 'mr-2'}`}
         onClick={() => props.onUseLocationClick?.()}
@@ -75,7 +74,7 @@ export function SearchInput(props: SearchInputProps) {
         title="Usar minha localização"
         disabled={!props.onUseLocationClick}
       >
-        <CrosshairIcon class={`${isCompact() ? 'h-3 w-3' : 'h-4 w-4'}`} />
+        <CrosshairIcon class={`${isCompact() ? 'h-4 w-4' : 'h-4 w-4'}`} />
       </button>
       <input
         ref={(r) => props.ref?.(r)}
@@ -84,7 +83,7 @@ export function SearchInput(props: SearchInputProps) {
         onFocus={() => props.onFocus()}
         onBlur={() => props.onBlur()}
         placeholder={placeholder()}
-        class={`outline-none bg-transparent ${isCompact() ? 'text-xs' : 'text-sm'} flex-1`}
+        class={`outline-none bg-transparent ${isCompact() ? 'text-xs' : 'text-sm'} flex-1 h-full leading-none`}
       />
       <Show when={props.onSearch}>
         <button
@@ -92,7 +91,7 @@ export function SearchInput(props: SearchInputProps) {
           onClick={() => props.onSearch?.(props.value())}
           aria-label="search"
         >
-          <SearchIcon class={`${isCompact() ? 'h-3 w-3' : 'h-4 w-4'}`} />
+          <SearchIcon class={`${isCompact() ? 'h-4 w-4' : 'h-4 w-4'}`} />
         </button>
       </Show>
     </div>
