@@ -213,17 +213,15 @@ export function Navbar() {
             <div class="mb-4">
               <div class="flex items-center gap-3">
                 <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
-                  <ThemeSwapButton />
+                  <ThemeSwapButton text="Tema" textClass="block" />
                 </div>
-                <span>Tema</span>
               </div>
             </div>
             <div>
               <div class="flex items-center gap-3">
                 <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
-                  <GoogleLoginButton />
+                  <GoogleLoginButton text="Conta" textClass="block" />
                 </div>
-                <span>Conta</span>
               </div>
             </div>
           </div>
@@ -243,7 +241,7 @@ function Logo() {
   )
 }
 
-function GoogleLoginButton() {
+function GoogleLoginButton(props: { text?: string; textClass?: string } = {}) {
   const { authState } = useAuthState()
 
   const isAuthenticated = () => authState().isAuthenticated
@@ -302,7 +300,7 @@ function GoogleLoginButton() {
       <Show
         when={isAuthenticated()}
         fallback={
-          <A href="/auth" class="flex items-center">
+          <A href="/auth" class="flex items-center gap-3">
             <div
               class="h-10 w-10 rounded-full flex items-center justify-center bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
               aria-hidden="false"
@@ -333,6 +331,9 @@ function GoogleLoginButton() {
               </svg>
               <span class="sr-only">Entrar com Google</span>
             </div>
+            {props.text && (
+              <span class={props.textClass ?? ''}>{props.text}</span>
+            )}
           </A>
         }
       >
@@ -340,15 +341,48 @@ function GoogleLoginButton() {
           <button
             onClick={toggleMenu}
             aria-expanded={open()}
-            class="h-10 w-10 rounded-full overflow-hidden bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
+            class={`h-10 rounded-full overflow-hidden bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150 ${props.text ? 'flex items-center gap-3 px-2' : 'w-10'}`}
             title="Conta"
           >
             {avatarUrl() ? (
-              <img
-                src={avatarUrl()}
-                alt="User avatar"
-                class="h-full w-full object-cover"
-              />
+              props.text ? (
+                <img
+                  src={avatarUrl()}
+                  alt="User avatar"
+                  class="h-8 w-8 rounded-full object-cover"
+                />
+              ) : (
+                <img
+                  src={avatarUrl()}
+                  alt="User avatar"
+                  class="h-full w-full object-cover"
+                />
+              )
+            ) : props.text ? (
+              <>
+                <svg
+                  class="h-5 w-5 text-muted-foreground"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
+                    stroke="#9CA3AF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20 21v-1c0-2.761-4.03-5-8-5s-8 2.239-8 5v1"
+                    stroke="#9CA3AF"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class={props.textClass ?? ''}>{props.text}</span>
+              </>
             ) : (
               <svg
                 class="h-5 w-5 m-auto text-muted-foreground"
@@ -372,7 +406,7 @@ function GoogleLoginButton() {
                 />
               </svg>
             )}
-            <span class="sr-only">Conta</span>
+            {!props.text && <span class="sr-only">Conta</span>}
           </button>
 
           {open() && (
