@@ -175,7 +175,7 @@ const Home = () => {
                 diferença. Comece hoje a reciclar e a ganhar recompensas!
               </p>
               <A href="/auth">
-                <Button size="lg" class="shadow-xl">
+                <Button size="lg" class="shadow-xl text-base-950">
                   Criar Conta Grátis
                 </Button>
               </A>
