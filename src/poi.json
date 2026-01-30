@@ -909,7 +909,7 @@
                     "rating": 3.7,
                     "company": "Município",
                     "wasteTypes": [
-                        "all"
+                        "metal", "glass", "plastic"
                     ]
                 },
                 {
@@ -1069,7 +1069,7 @@
                     "rating": 3.5,
                     "company": "Caucau Bio",
                     "wasteTypes": [
-                        "all"
+                        "metal", "glass", "plastic"
                     ]
                 },
                 {
@@ -1442,7 +1442,7 @@
                     "rating": 4.0,
                     "company": "Frasco A",
                     "wasteTypes": [
-                        "all"
+                        "metal", "glass", "plastic"
                     ]
                 },
                 {
