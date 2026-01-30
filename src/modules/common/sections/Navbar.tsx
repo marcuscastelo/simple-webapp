@@ -1,9 +1,9 @@
 import { A, useLocation } from '@solidjs/router'
 import { BookOpenIcon, InfoIcon, MapPinIcon, RecycleIcon } from 'lucide-solid'
 import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
-import { Portal } from 'solid-js/web'
 
 import logo from '~/assets/logo.png'
+import SlideOver from '~/components/ui/SlideOver'
 import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
 // search and map actions are not used in this component
@@ -140,104 +140,95 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile slide-over (overlay) - rendered into document.body to avoid ancestor clipping */}
-      <Portal>
-        <div
-          class={`fixed inset-0 z-50 md:hidden pointer-events-none ${mobileOpen() ? 'pointer-events-auto' : ''}`}
-          aria-hidden={!mobileOpen()}
-        >
-          <div
-            class={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out ${mobileOpen() ? 'opacity-30' : 'opacity-0'} z-40`}
-            onClick={() => setMobileOpen(false)}
-          />
+      <SlideOver
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        widthClass="w-72"
+        slideDuration={250}
+        backdropDuration={250}
+      >
+        <div class="h-full bg-base-500/95 text-base-content backdrop-blur-sm flex flex-col pointer-events-auto">
+          <div class="p-4 flex items-center justify-between">
+            <A href="/" class="flex items-center gap-3 select-none">
+              <img src={logo} alt="Recicla+" class="h-8" />
+            </A>
+            <button
+              aria-label="Close menu"
+              onClick={() => setMobileOpen(false)}
+              class="p-2 rounded-md active:scale-95 active:opacity-90 transition-transform duration-150"
+            >
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 18L18 6M6 6l12 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
 
-          <div
-            class={`absolute right-0 top-0 h-full w-72 transform transition-transform duration-300 ease-in-out ${mobileOpen() ? 'translate-x-0' : 'translate-x-full'} z-50 pointer-events-auto`}
-          >
-            <div class="h-full bg-base-500/95 text-base-content backdrop-blur-sm flex flex-col pointer-events-auto">
-              <div class="p-4 flex items-center justify-between">
-                <A href="/" class="flex items-center gap-3 select-none">
-                  <img src={logo} alt="Recicla+" class="h-8" />
-                </A>
-                <button
-                  aria-label="Close menu"
-                  onClick={() => setMobileOpen(false)}
-                  class="p-2 rounded-md active:scale-95 active:opacity-90 transition-transform duration-150"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M6 18L18 6M6 6l12 12"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
+          <nav class="px-4 mt-4">
+            <A
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+            >
+              <RecycleIcon class="h-5 w-5" />
+              <span>Home</span>
+            </A>
+            <A
+              href="/collection-points"
+              onClick={() => setMobileOpen(false)}
+              class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+            >
+              <MapPinIcon class="h-5 w-5" />
+              <span>Pontos de recolha</span>
+            </A>
+            <A
+              href="/recycling-guide"
+              onClick={() => setMobileOpen(false)}
+              class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+            >
+              <BookOpenIcon class="h-5 w-5" />
+              <span>Guia de reciclagem</span>
+            </A>
+            <A
+              href="/dashboard"
+              onClick={() => setMobileOpen(false)}
+              class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
+            >
+              <InfoIcon class="h-5 w-5" />
+              <span>Informações</span>
+            </A>
+          </nav>
+
+          <div class="mt-6 px-4">
+            <div class="mb-4">
+              <div class="flex items-center gap-3">
+                <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                  <ThemeSwapButton />
+                </div>
+                <span>Tema</span>
               </div>
-
-              <nav class="px-4 mt-4">
-                <A
-                  href="/"
-                  onClick={() => setMobileOpen(false)}
-                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
-                >
-                  <RecycleIcon class="h-5 w-5" />
-                  <span>Home</span>
-                </A>
-                <A
-                  href="/collection-points"
-                  onClick={() => setMobileOpen(false)}
-                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
-                >
-                  <MapPinIcon class="h-5 w-5" />
-                  <span>Pontos de recolha</span>
-                </A>
-                <A
-                  href="/recycling-guide"
-                  onClick={() => setMobileOpen(false)}
-                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
-                >
-                  <BookOpenIcon class="h-5 w-5" />
-                  <span>Guia de reciclagem</span>
-                </A>
-                <A
-                  href="/dashboard"
-                  onClick={() => setMobileOpen(false)}
-                  class="flex items-center gap-3 px-3 py-2 rounded-md text-base-content hover:bg-base-200 active:scale-95 active:opacity-90 transition-transform duration-150"
-                >
-                  <InfoIcon class="h-5 w-5" />
-                  <span>Informações</span>
-                </A>
-              </nav>
-
-              <div class="mt-6 px-4">
-                <div class="mb-4">
-                  <div class="flex items-center gap-3">
-                    <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
-                      <ThemeSwapButton />
-                    </div>
-                    <span>Tema</span>
-                  </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-3">
+                <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+                  <GoogleLoginButton />
                 </div>
-                <div>
-                  <div class="flex items-center gap-3">
-                    <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
-                      <GoogleLoginButton />
-                    </div>
-                    <span>Conta</span>
-                  </div>
-                </div>
+                <span>Conta</span>
               </div>
             </div>
           </div>
         </div>
-      </Portal>
+      </SlideOver>
     </header>
   )
 }
