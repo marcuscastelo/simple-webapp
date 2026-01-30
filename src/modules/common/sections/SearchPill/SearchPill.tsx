@@ -134,6 +134,7 @@ export function SearchPill(props: SearchPillProps) {
         onUseLocationClick={
           props.onUseLocationClick ? handleUseLocationClick : undefined
         }
+        loading={geoLoading}
         onSearch={props.onSearch}
         ref={setInputRef}
         compact={props.compact}

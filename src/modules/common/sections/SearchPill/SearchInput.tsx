@@ -1,4 +1,8 @@
-import { Crosshair as CrosshairIcon, Search as SearchIcon } from 'lucide-solid'
+import {
+  Crosshair as CrosshairIcon,
+  Loader2,
+  Search as SearchIcon,
+} from 'lucide-solid'
 import { type Accessor, createMemo, Show } from 'solid-js'
 
 /**
@@ -44,6 +48,9 @@ export type SearchInputProps = {
    */
   compact?: boolean
 
+  /** When true, show a loading indicator for the location button */
+  loading?: Accessor<boolean>
+
   /**
    * Optional placeholder override
    */
@@ -72,9 +79,21 @@ export function SearchInput(props: SearchInputProps) {
         onClick={() => props.onUseLocationClick?.()}
         aria-label="Use my location"
         title="Usar minha localização"
-        disabled={!props.onUseLocationClick}
+        disabled={
+          !props.onUseLocationClick || (props.loading ? props.loading() : false)
+        }
+        aria-busy={props.loading ? props.loading() : false}
       >
-        <CrosshairIcon class={`${isCompact() ? 'h-4 w-4' : 'h-4 w-4'}`} />
+        <Show
+          when={props.loading ? props.loading() : false}
+          fallback={
+            <CrosshairIcon class={`${isCompact() ? 'h-4 w-4' : 'h-4 w-4'}`} />
+          }
+        >
+          <Loader2
+            class={`${isCompact() ? 'h-4 w-4' : 'h-4 w-4'} animate-spin`}
+          />
+        </Show>
       </button>
       <input
         ref={(r) => props.ref?.(r)}

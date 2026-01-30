@@ -7,6 +7,7 @@ import SlideOver from '~/components/ui/SlideOver'
 import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
 import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
+import { mapActions } from '~/modules/map/application/mapActions'
 // search and map actions are not used in this component
 import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
@@ -129,7 +130,11 @@ export function Navbar() {
             class={`${compactSearch() ? 'flex-none px-0' : 'flex-1 px-4'} flex justify-center`}
           >
             <div class={`w-full ${compactSearch() ? 'max-w-xs' : 'max-w-md'}`}>
-              <SearchPill compact={compactSearch()} />
+              <SearchPill
+                compact={compactSearch()}
+                onUseLocationClick={mapActions.openMapPageWithCoordinates}
+                onPlaceSelected={mapActions.openMapPageWithPlaceId}
+              />
             </div>
           </div>
 
