@@ -12,6 +12,8 @@ export type SearchPillProps = {
   onUseLocationClick?: (lat: number, lng: number) => void
   onSearch?: (query: string) => void
   onPlaceSelected?: (place: google.maps.places.PlaceResult['place_id']) => void
+  /** Render compact variant (smaller input/icons) */
+  compact?: boolean
 }
 /**
  * Search pill component with Google Places autocomplete.
@@ -123,7 +125,7 @@ export function SearchPill(props: SearchPillProps) {
   }
 
   return (
-    <div class="flex-1 mx-4 min-w-0 relative">
+    <div class="flex-1 min-w-0 relative">
       <SearchInput
         value={query}
         onInput={setQuery}
@@ -134,6 +136,7 @@ export function SearchPill(props: SearchPillProps) {
         }
         onSearch={props.onSearch}
         ref={setInputRef}
+        compact={props.compact}
       />
 
       <Suspense fallback={null}>

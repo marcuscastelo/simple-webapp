@@ -1,6 +1,5 @@
 import { Crosshair as CrosshairIcon, Search as SearchIcon } from 'lucide-solid'
-import type { Accessor } from 'solid-js'
-import { Show } from 'solid-js'
+import { type Accessor, createMemo, Show } from 'solid-js'
 
 /**
  * Props for the SearchInput component.
@@ -40,6 +39,15 @@ export type SearchInputProps = {
    * Ref callback for the input element.
    */
   ref?: (element: HTMLInputElement) => void
+  /**
+   * When true, renders a compact variant suitable for very small widths
+   */
+  compact?: boolean
+
+  /**
+   * Optional placeholder override
+   */
+  placeholder?: string
 }
 
 /**
@@ -49,16 +57,25 @@ export type SearchInputProps = {
  * @returns Search input UI
  */
 export function SearchInput(props: SearchInputProps) {
+  const isCompact = createMemo(() => !!props.compact)
+  const placeholder = createMemo(
+    () =>
+      props.placeholder ??
+      (isCompact() ? 'Pesquisar' : 'Pesquisar pontos de recolha'),
+  )
+
   return (
-    <div class="flex items-center bg-base-50 border border-base-300 rounded-full px-3 py-2 shadow-sm">
+    <div
+      class={`flex items-center bg-base-50 border border-base-300 rounded-full px-3 ${isCompact() ? 'py-1' : 'py-2'} shadow-sm`}
+    >
       <button
-        class="p-1 rounded-full hover:bg-base-400 text-muted-foreground mr-2"
+        class={`p-1 rounded-full hover:bg-base-400 text-muted-foreground ${isCompact() ? 'mr-1' : 'mr-2'}`}
         onClick={() => props.onUseLocationClick?.()}
         aria-label="Use my location"
         title="Usar minha localização"
         disabled={!props.onUseLocationClick}
       >
-        <CrosshairIcon class="h-4 w-4" />
+        <CrosshairIcon class={`${isCompact() ? 'h-3 w-3' : 'h-4 w-4'}`} />
       </button>
       <input
         ref={(r) => props.ref?.(r)}
@@ -66,16 +83,16 @@ export function SearchInput(props: SearchInputProps) {
         onInput={(e) => props.onInput(e.currentTarget.value)}
         onFocus={() => props.onFocus()}
         onBlur={() => props.onBlur()}
-        placeholder="Pesquisar pontos de recolha"
-        class="outline-none bg-transparent text-sm flex-1"
+        placeholder={placeholder()}
+        class={`outline-none bg-transparent ${isCompact() ? 'text-xs' : 'text-sm'} flex-1`}
       />
       <Show when={props.onSearch}>
         <button
-          class="ml-3 bg-primary-500 text-black rounded-full p-2 hover:opacity-95"
+          class={`ml-3 bg-primary-500 text-black rounded-full ${isCompact() ? 'p-1' : 'p-2'} hover:opacity-95`}
           onClick={() => props.onSearch?.(props.value())}
           aria-label="search"
         >
-          <SearchIcon class="h-4 w-4" />
+          <SearchIcon class={`${isCompact() ? 'h-3 w-3' : 'h-4 w-4'}`} />
         </button>
       </Show>
     </div>

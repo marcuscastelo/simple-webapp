@@ -1,11 +1,12 @@
 import { A, useLocation } from '@solidjs/router'
 import { BookOpenIcon, InfoIcon, MapPinIcon, RecycleIcon } from 'lucide-solid'
-import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
+import { createEffect, createSignal, onCleanup, onMount, Show } from 'solid-js'
 
 import logo from '~/assets/logo.png'
 import SlideOver from '~/components/ui/SlideOver'
 import { authActions } from '~/modules/auth/application/authActions'
 import { useAuthState } from '~/modules/auth/application/authState'
+import { SearchPill } from '~/modules/common/sections/SearchPill/SearchPill'
 // search and map actions are not used in this component
 import { openConfirmModal } from '~/modules/modal/helpers/modalHelpers'
 import { ThemeSwapButton } from '~/modules/theme/ui/ThemeSwapButton'
@@ -16,6 +17,25 @@ export function Navbar() {
   const isActive = (path: string) => location.pathname === path
   const [mobileOpen, setMobileOpen] = createSignal(false)
   let mobileMenuRef: HTMLDivElement | undefined
+  const [compactSearch, setCompactSearch] = createSignal(false)
+
+  onMount(() => {
+    if (typeof window === 'undefined') return
+    const mq = window.matchMedia('(max-width: 442px)')
+    const listener = (ev: MediaQueryListEvent | MediaQueryList) => {
+      // ev may be a MediaQueryListEvent or MediaQueryList depending on browser
+      const matches = 'matches' in ev ? ev.matches : mq.matches
+      setCompactSearch(!!matches)
+    }
+    // set initial
+    setCompactSearch(mq.matches)
+    if (mq.addEventListener) mq.addEventListener('change', listener)
+    else mq.addListener(listener)
+    onCleanup(() => {
+      if (mq.removeEventListener) mq.removeEventListener('change', listener)
+      else mq.removeListener(listener)
+    })
+  })
 
   // close mobile menu on outside click or Esc
   createEffect(() => {
@@ -41,61 +61,76 @@ export function Navbar() {
     <header class="bg-base-50/60 backdrop-blur-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
-          <Logo />
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0">
+              <Logo />
+            </div>
 
-          {/* Desktop nav icons */}
-          <div class="hidden md:flex justify-between gap-3">
-            <A
-              href="/"
-              title="Home"
-              aria-current={isActive('/') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
-                isActive('/')
-                  ? 'bg-primary-300'
-                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
-              }`}
-            >
-              <RecycleIcon class="h-4 w-4" />
-            </A>
+            {/* Desktop nav icons (kept left of the centered search) */}
+            <div class="hidden md:flex justify-between gap-3">
+              <A
+                href="/"
+                title="Home"
+                aria-current={isActive('/') ? 'page' : undefined}
+                class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
+                  isActive('/')
+                    ? 'bg-primary-300'
+                    : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+                }`}
+              >
+                <RecycleIcon class="h-4 w-4" />
+              </A>
 
-            <A
-              href="/collection-points"
-              title="Pontos de recolha"
-              aria-current={isActive('/collection-points') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
-                isActive('/collection-points')
-                  ? 'bg-primary-300'
-                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
-              }`}
-            >
-              <MapPinIcon class="h-4 w-4" />
-            </A>
+              <A
+                href="/collection-points"
+                title="Pontos de recolha"
+                aria-current={
+                  isActive('/collection-points') ? 'page' : undefined
+                }
+                class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
+                  isActive('/collection-points')
+                    ? 'bg-primary-300'
+                    : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+                }`}
+              >
+                <MapPinIcon class="h-4 w-4" />
+              </A>
 
-            <A
-              href="/recycling-guide"
-              title="Guia de reciclagem"
-              aria-current={isActive('/recycling-guide') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
-                isActive('/recycling-guide')
-                  ? 'bg-primary-300'
-                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
-              }`}
-            >
-              <BookOpenIcon class="h-4 w-4" />
-            </A>
+              <A
+                href="/recycling-guide"
+                title="Guia de reciclagem"
+                aria-current={isActive('/recycling-guide') ? 'page' : undefined}
+                class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
+                  isActive('/recycling-guide')
+                    ? 'bg-primary-300'
+                    : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+                }`}
+              >
+                <BookOpenIcon class="h-4 w-4" />
+              </A>
 
-            <A
-              href="/dashboard"
-              title="Informações"
-              aria-current={isActive('/dashboard') ? 'page' : undefined}
-              class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
-                isActive('/dashboard')
-                  ? 'bg-primary-300'
-                  : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
-              }`}
-            >
-              <InfoIcon class="h-4 w-4" />
-            </A>
+              <A
+                href="/dashboard"
+                title="Informações"
+                aria-current={isActive('/dashboard') ? 'page' : undefined}
+                class={`flex-1 text-center justify-items-center rounded-lg p-2 px-3 transition duration-150 ease-in-out transform ${
+                  isActive('/dashboard')
+                    ? 'bg-primary-300'
+                    : 'bg-transparent hover:bg-primary-200/30 hover:scale-105 active:scale-95'
+                }`}
+              >
+                <InfoIcon class="h-4 w-4" />
+              </A>
+            </div>
+          </div>
+
+          {/* Centered SearchPill */}
+          <div
+            class={`${compactSearch() ? 'flex-none px-0' : 'flex-1 px-4'} flex justify-center`}
+          >
+            <div class={`w-full ${compactSearch() ? 'max-w-xs' : 'max-w-md'}`}>
+              <SearchPill compact={compactSearch()} />
+            </div>
           </div>
 
           <div class="flex items-center gap-4">
