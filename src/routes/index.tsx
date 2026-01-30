@@ -145,7 +145,7 @@ const Home = () => {
               {(feature) => {
                 const Icon = feature.icon
                 return (
-                  <Card class="border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <Card class="border-none bg-base-50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                     <CardContent class="p-8 space-y-4">
                       <div class="h-16 w-16 rounded-2xl bg-linear-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
                         <Icon class="h-8 w-8 text-primary-950" />
@@ -167,7 +167,7 @@ const Home = () => {
       <section class="py-20 relative overflow-hidden">
         <div class="absolute inset-0 bg-base-200" />
         <div class="container mx-auto px-4 relative">
-          <Card class="border-none shadow-xl bg-base-100">
+          <Card class="border-none shadow-xl bg-base-50">
             <CardContent class="p-12 text-center space-y-6">
               <h2 class="text-4xl font-bold">Pronto para Começar?</h2>
               <p class="text-xl opacity-90 max-w-2xl mx-auto">
