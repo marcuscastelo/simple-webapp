@@ -167,8 +167,16 @@ export function MapContainer(props: MapContainerProps) {
       </div>
 
       <Show when={isFullscreen()}>
-        {/* Search bar (overlay on left) */}
-        <div class="absolute top-3 left-3 z-60">
+        {/* Search bar: on larger screens keep it at the left; on small screens center it */}
+        <div class="absolute top-3 left-3 z-60 hidden md:block">
+          <SearchPill
+            onSearch={props.onSearchChange}
+            onPlaceSelected={props.onPlaceSelected}
+            onUseLocationClick={props.onLocationSelect}
+          />
+        </div>
+
+        <div class="absolute top-3 left-0 right-0 z-60 md:hidden flex justify-center px-4">
           <SearchPill
             onSearch={props.onSearchChange}
             onPlaceSelected={props.onPlaceSelected}
