@@ -28,7 +28,7 @@ export function MapContainer(props: MapContainerProps) {
   return (
     <Card
       class={cn(
-        'mb-8 shadow-lg overflow-hidden h-[400px] transition-all duration-300 ease-in-out relative',
+        'mb-8 shadow-lg overflow-hidden h-[200px] md:h-[400px] transition-all duration-300 ease-in-out relative',
         {
           'h-screen w-screen fixed inset-0 rounded-none z-50': isFullscreen(),
         },
@@ -37,7 +37,7 @@ export function MapContainer(props: MapContainerProps) {
       {/* Toggle fullscreen button (overlay on right) */}
       <div class="absolute top-3 right-3 z-60">
         <button
-          class="inline-flex items-center gap-2 rounded-md bg-base-500/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
+          class="inline-flex items-center gap-2 rounded-md bg-base-50/80 px-2 py-1 text-sm shadow hover:brightness-95 transition"
           onClick={() => props.onFullscreenToggle((v) => !v)}
           aria-pressed={isFullscreen()}
           aria-label={isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'}
