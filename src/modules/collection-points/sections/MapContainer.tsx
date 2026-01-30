@@ -26,64 +26,7 @@ interface MapContainerProps {
 export function MapContainer(props: MapContainerProps) {
   const isFullscreen = createMemo(() => props.isFullscreen())
   const [locError, setLocError] = createSignal<string | null>(null)
-
-  const {
-    getCurrentPosition,
-    loading: geoLoading,
-    isSupported,
-  } = useGeolocation({
-    enableHighAccuracy: true,
-    timeout: 15000,
-    onSuccess: (position) => {
-      props.onLocationSelect(position.lat, position.lng)
-      setLocError(null)
-    },
-    onError: (err) => {
-      console.error('Geolocation error', err)
-      switch (err.code) {
-        case err.PERMISSION_DENIED:
-        case 1:
-          setLocError(
-            'Permissão negada para aceder à localização. Ative-a nas definições do navegador.',
-          )
-          break
-        case err.POSITION_UNAVAILABLE:
-        case 2:
-          setLocError(
-            'Posição indisponível. Verifique o sinal GPS ou tente novamente.',
-          )
-          break
-        case err.TIMEOUT:
-        case 3:
-          setLocError(
-            'Tempo esgotado ao obter localização. Verifique o sinal GPS ou tente novamente.',
-          )
-          break
-        default:
-          setLocError('Não foi possível obter a localização')
-      }
-    },
-  })
-
-  const locateUser = () => {
-    setLocError(null)
-    if (!isSupported) {
-      setLocError('Geolocalização não suportada no dispositivo')
-      return
-    }
-    // mark that user interacted with FABs so the pulse hint stops
-    if (showPulse()) {
-      setShowPulse(false)
-      try {
-        if (typeof window !== 'undefined')
-          window.localStorage.setItem(storageKey, '1')
-      } catch {
-        /* ignore */
-      }
-    }
-    getCurrentPosition()
-  }
-
+  // reference to the card element for Fullscreen API
   const [cardRef, setCardRef] = createSignal<HTMLElement | null>(null)
   // Show the pulsing hint until the user interacts with a FAB once.
   // Persist in localStorage so it doesn't reappear on reloads.
@@ -130,6 +73,67 @@ export function MapContainer(props: MapContainerProps) {
 
     // Update parent fullscreen state
     props.onFullscreenToggle(next)
+  }
+
+  const {
+    getCurrentPosition,
+    loading: geoLoading,
+    isSupported,
+  } = useGeolocation({
+    enableHighAccuracy: true,
+    timeout: 15000,
+    onSuccess: (position) => {
+      props.onLocationSelect(position.lat, position.lng)
+      setLocError(null)
+      // after successful locate, enter fullscreen like the fullscreen button
+      if (!isFullscreen()) {
+        void handleToggleFullscreen()
+      }
+    },
+    onError: (err) => {
+      console.error('Geolocation error', err)
+      switch (err.code) {
+        case err.PERMISSION_DENIED:
+        case 1:
+          setLocError(
+            'Permissão negada para aceder à localização. Ative-a nas definições do navegador.',
+          )
+          break
+        case err.POSITION_UNAVAILABLE:
+        case 2:
+          setLocError(
+            'Posição indisponível. Verifique o sinal GPS ou tente novamente.',
+          )
+          break
+        case err.TIMEOUT:
+        case 3:
+          setLocError(
+            'Tempo esgotado ao obter localização. Verifique o sinal GPS ou tente novamente.',
+          )
+          break
+        default:
+          setLocError('Não foi possível obter a localização')
+      }
+    },
+  })
+
+  const locateUser = () => {
+    setLocError(null)
+    if (!isSupported) {
+      setLocError('Geolocalização não suportada no dispositivo')
+      return
+    }
+    // mark that user interacted with FABs so the pulse hint stops
+    if (showPulse()) {
+      setShowPulse(false)
+      try {
+        if (typeof window !== 'undefined')
+          window.localStorage.setItem(storageKey, '1')
+      } catch {
+        /* ignore */
+      }
+    }
+    getCurrentPosition()
   }
 
   return (
