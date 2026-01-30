@@ -147,7 +147,7 @@ export function Navbar() {
         slideDuration={250}
         backdropDuration={250}
       >
-        <div class="h-full bg-base-500/95 text-base-content backdrop-blur-sm flex flex-col pointer-events-auto">
+        <div class="h-full bg-base-50/95 text-base-content backdrop-blur-sm flex flex-col pointer-events-auto">
           <div class="p-4 flex items-center justify-between">
             <A href="/" class="flex items-center gap-3 select-none">
               <img src={logo} alt="Recicla+" class="h-8" />
@@ -211,8 +211,8 @@ export function Navbar() {
 
           <div class="mt-6 px-4">
             <div class="mb-4">
-              <div class="flex items-center gap-3">
-                <div class="active:scale-95 active:opacity-90 transition-transform duration-150">
+              <div class="flex items-center gap-3 ">
+                <div class="active:scale-95 flex-1 active:opacity-90 transition-transform duration-150">
                   <ThemeSwapButton text="Tema" textClass="block" />
                 </div>
               </div>
@@ -408,8 +408,7 @@ function GoogleLoginButton(props: { text?: string; textClass?: string } = {}) {
             )}
             {!props.text && <span class="sr-only">Conta</span>}
           </button>
-
-          {open() && (
+          <Show when={open()}>
             <div
               ref={(el) => (menuRef = el)}
               class="absolute right-0 mt-2 w-40 bg-base-500 border border-base-300 rounded-md shadow-lg overflow-hidden z-50"
@@ -427,7 +426,7 @@ function GoogleLoginButton(props: { text?: string; textClass?: string } = {}) {
                 Sair
               </button>
             </div>
-          )}
+          </Show>
         </div>
       </Show>
     </div>

@@ -11,7 +11,7 @@ type ThemeSwapProps = {
 
 export function ThemeSwapButton(props: ThemeSwapProps = {}) {
   return (
-    <label class="swap swap-rotate flex items-center gap-2">
+    <label class="swap swap-rotate flex items-center justify-start gap-2">
       <input
         type="checkbox"
         class="theme-controller"

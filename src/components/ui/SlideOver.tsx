@@ -29,7 +29,7 @@ export function SlideOver(props: SlideOverProps) {
         aria-hidden={!props.open()}
       >
         <div
-          class={`absolute inset-0 bg-black transition-opacity ease-in-out ${props.open() ? 'opacity-30' : 'opacity-0'} z-40`}
+          class={`absolute inset-0 bg-black transition-opacity ease-in-out ${props.open() ? 'opacity-10' : 'opacity-0'} z-40`}
           style={`transition-duration: ${props.backdropDuration ?? 250}ms;`}
           onClick={() => props.onClose?.()}
         />
