@@ -1,4 +1,11 @@
 import { A } from '@solidjs/router'
+import {
+  BookOpenIcon,
+  InfoIcon,
+  MapPin,
+  MapPinIcon,
+  RecycleIcon,
+} from 'lucide-solid'
 import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
 
 import logo from '~/assets/logo.png'
@@ -15,12 +22,26 @@ export function Navbar() {
       <div class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between gap-4">
           <Logo />
-          <div class="max-w-1/2 flex-1">
+          {/* <div class="max-w-1/2 flex-1">
             <SearchPill
               onSearch={mapActions.openMapsPageWithSearch}
               onPlaceSelected={mapActions.openMapPageWithPlaceId}
               onUseLocationClick={mapActions.openMapPageWithCoordinates}
             />
+          </div> */}
+          <div class="flex justify-between gap-3">
+            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+              <RecycleIcon class="h-4 w-4" />
+            </div>
+            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+              <MapPinIcon class="h-4 w-4" />
+            </div>
+            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+              <BookOpenIcon class="h-4 w-4" />
+            </div>
+            <div class="flex-1 text-center justify-items-center bg-primary-300 rounded-lg p-2 px-3">
+              <InfoIcon class="h-4 w-4" />
+            </div>
           </div>
           <div class="flex gap-10">
             <ThemeSwapButton />
