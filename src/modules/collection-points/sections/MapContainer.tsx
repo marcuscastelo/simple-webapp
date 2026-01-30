@@ -170,7 +170,6 @@ export function MapContainer(props: MapContainerProps) {
         {/* Search bar: on larger screens keep it at the left; on small screens center it */}
         <div class="absolute top-3 left-3 z-60 hidden md:block">
           <SearchPill
-            onSearch={props.onSearchChange}
             onPlaceSelected={props.onPlaceSelected}
             onUseLocationClick={props.onLocationSelect}
           />
