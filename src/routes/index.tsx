@@ -169,7 +169,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-base-200" />
+        <div class="absolute inset-0 bg-base-100" />
         <div class="container mx-auto px-4 relative">
           <Card class="border-none shadow-xl bg-base-50">
             <CardContent class="p-12 text-center space-y-6">
