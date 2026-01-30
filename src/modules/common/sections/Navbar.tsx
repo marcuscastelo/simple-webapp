@@ -337,7 +337,7 @@ function GoogleLoginButton(props: { text?: string; textClass?: string } = {}) {
         fallback={
           <A href="/auth" class="flex items-center gap-3">
             <div
-              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-500 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
+              class="h-10 w-10 rounded-full flex items-center justify-center bg-base-50 border border-base-300 shadow-sm active:scale-95 active:opacity-90 transition-transform duration-150"
               aria-hidden="false"
               role="img"
             >
