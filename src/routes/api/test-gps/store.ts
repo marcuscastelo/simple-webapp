@@ -19,7 +19,7 @@ export type GpsEntry = {
   lastSeen: number
 }
 
-export const TTL_MS = 6_000
+export const TTL_MS = 60_000
 
 // Simple in-memory store for dev — file-backed persistence is intentionally
 // omitted to avoid adding platform-specific I/O in unit-testable code.
